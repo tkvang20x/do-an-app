@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="groups"
+            type="com.example.do_an_app.model.group.Result" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/csGroups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imgImage"
+            android:layout_width="160dp"
+            android:layout_height="240dp"
+            android:background="@drawable/boder_text"
+            android:scaleType="centerCrop"
+            android:src="@drawable/anh_sach"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/idRectangle"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/boder_text"
+            android:backgroundTint="#8DEBF3FF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtNameGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Truyện tranh"
+            android:textColor="#141ED2"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/idRectangle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/idRectangle"
+            setText="@{groups.group_name}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

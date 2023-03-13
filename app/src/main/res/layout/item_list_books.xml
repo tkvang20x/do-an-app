@@ -9,17 +9,18 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="160dp"
-        android:layout_height="260dp"
+        android:layout_width="170dp"
+        android:layout_height="270dp"
         android:elevation="5dp"
-        android:id="@+id/csBooks"
-        android:paddingEnd="10dp">
+        android:id="@+id/csListBooks"
+        android:layout_marginStart="10dp">
 
         <ImageView
             android:id="@+id/imgAvatar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/txtNameBooks"
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:scaleType="centerCrop"

@@ -5,7 +5,7 @@ import com.example.do_an_app.model.Image
 
 object Const {
 //    var  mMySharedPreference : MySharedPreference = MySharedPreference(HomeFragment().context!!)
-    const val BASE_URL="https://33b0-42-119-191-135.ngrok.io"
+    const val BASE_URL="https://ccfe-1-55-6-54.ngrok.io"
     lateinit var TOKEN :String
 
     val list_image: List<Image> = arrayListOf(

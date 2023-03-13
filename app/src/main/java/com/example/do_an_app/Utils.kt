@@ -1,5 +1,6 @@
 package com.example.do_an_app
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -67,6 +68,16 @@ object Utils {
             tv.text = ""
         } else {
             tv.text = string
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("setTextGroups")
+    fun setTextGroups(tv: TextView, string: String?) {
+        if (string == null) {
+            tv.text = "Thể loại: Tất cả"
+        } else {
+            tv.text =  "Thể loại:" + string
         }
     }
 

@@ -7,10 +7,14 @@
         android:title="Trang chủ" />
 
     <item
-        android:id="@+id/fragmentCV"
-        android:title="Tạo CV" />
+        android:icon="@drawable/baseline_menu_book_24"
+        android:id="@+id/fragmentGroups"
+        android:title="Thể loại" />
     <item
         android:id="@+id/fragmentProfile"
         android:title="Cá nhân" />
+    <item
+        android:id="@+id/fragmentVoucher"
+        android:title="Phiếu mượn" />
 
 </menu>

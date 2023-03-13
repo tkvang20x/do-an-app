@@ -7,5 +7,43 @@
     <fragment
         android:id="@+id/fragmentHome"
         android:name="com.example.do_an_app.fragment.FragmentHome"
-        android:label="FragmentHome" />
+        android:label="FragmentHome" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentDetailBooks"
+            app:destination="@id/fragmentDetailBooks" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentListBooks"
+            app:destination="@id/fragmentListBooks" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailBooks"
+        android:name="com.example.do_an_app.fragment.FragmentDetailBooks"
+        android:label="FragmentDetailBooks" />
+    <fragment
+        android:id="@+id/fragmentListBooks"
+        android:name="com.example.do_an_app.fragment.FragmentListBooks"
+        android:label="FragmentListBooks" >
+        <action
+            android:id="@+id/action_fragmentListBooks_to_fragmentDetailBooks"
+            app:destination="@id/fragmentDetailBooks" />
+        <action
+            android:id="@+id/action_fragmentListBooks_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGroups"
+        android:name="com.example.do_an_app.fragment.FragmentGroups"
+        android:label="FragmentGroups" >
+        <action
+            android:id="@+id/action_fragmentGroups_to_fragmentListGroupsBooks"
+            app:destination="@id/fragmentListGroupsBooks" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentListGroupsBooks"
+        android:name="com.example.do_an_app.fragment.FragmentListGroupsBooks"
+        android:label="FragmentListGroupsBooks" >
+        <action
+            android:id="@+id/action_fragmentListGroupsBooks_to_fragmentDetailBooks"
+            app:destination="@id/fragmentDetailBooks" />
+    </fragment>
 </navigation>

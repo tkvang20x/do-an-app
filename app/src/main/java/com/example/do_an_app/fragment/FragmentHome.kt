@@ -23,6 +23,7 @@ import com.example.do_an_app.model.Image
 import com.example.do_an_app.viewmodel.BooksViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.do_an_app.model.books.Result
+import com.example.do_an_app.viewmodel.UserViewModel
 import com.smarteist.autoimageslider.SliderView
 
 class FragmentHome : Fragment(), CallBack {
@@ -30,9 +31,10 @@ class FragmentHome : Fragment(), CallBack {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: BooksAdapter
     private lateinit var booksViewModel: BooksViewModel
+    private lateinit var userViewModel: UserViewModel
     private val list = arrayListOf<Result>()
     private lateinit var adapter_image: ImageSliderAdapter
-
+    private var id_user = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,6 +42,9 @@ class FragmentHome : Fragment(), CallBack {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.loading.visibility = View.VISIBLE
+
+        val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
+        view.visibility = View.VISIBLE
 
         adapter_image = ImageSliderAdapter(Const.list_image)
         binding.slider.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
@@ -54,7 +59,7 @@ class FragmentHome : Fragment(), CallBack {
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
 
         booksViewModel = ViewModelProvider(requireActivity()).get(BooksViewModel::class.java)
-        booksViewModel.getBooks(1, 10, "", "")
+        booksViewModel.getBooks(1, 10, "", "", "")
         booksViewModel.dataBooks.observe(viewLifecycleOwner) {
             if (it != null) {
                 list.clear()
@@ -66,12 +71,41 @@ class FragmentHome : Fragment(), CallBack {
             binding.loading.visibility = View.GONE
         }
 
+        userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
+        userViewModel.getUser()
+        userViewModel.dataUser.observe(viewLifecycleOwner) {
+
+            if (it == null) {
+                binding.imgAvtUser.setImageResource(R.mipmap.ic_launcher)
+            } else {
+//                id_user = it.data.id.toString()
+                Glide.with(binding.imgAvtUser)
+                    .load(Const.BASE_URL + it.data.avatar.replace("\\", "/"))
+                    .placeholder(R.mipmap.ic_launcher_round)
+                    .error(R.mipmap.ic_launcher)
+                    .into(binding.imgAvtUser)
+            }
+        }
+
+        binding.tvViewAll1.setOnClickListener {
+            findNavController().navigate(R.id.action_fragmentHome_to_fragmentListBooks)
+            list.clear()
+        }
+
+        binding.btnSearch.setOnClickListener {
+            val bundel = Bundle()
+            bundel.putString("name", binding.txtSearch.text.toString())
+            findNavController().navigate(R.id.action_fragmentHome_to_fragmentListBooks, bundel)
+        }
 
         return binding.root
     }
 
     override fun onClick(books: Result) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putString("code", books.code)
+        findNavController().navigate(R.id.action_fragmentHome_to_fragmentDetailBooks, bundle)
+        list.clear()
     }
 
     override fun onLongClick(job: Result) {
