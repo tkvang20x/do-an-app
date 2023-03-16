@@ -1,5 +1,6 @@
 package com.example.do_an_app.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.do_an_app.Const
@@ -21,6 +22,8 @@ class LoginViewModel : ViewModel() {
     fun postLogin(login : DataLogin){
         api.postLogin(login).enqueue(object : Callback<Login> {
             override fun onResponse(call: Call<Login>, response: Response<Login>) {
+                Log.d("loginnnnnnnnnnnnnnnnn", response.body().toString())
+
                 dataLogin.postValue(response.body())
             }
 

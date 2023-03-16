@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.do_an_app.model.users.Data" />
+    </data>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgAvtUser"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/anh_sach"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                setAvt="@{user.avatar}"
+                />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgChangeAvt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toEndOf="@id/imgAvtUser"
+                app:layout_constraintBottom_toBottomOf="@id/imgAvtUser"
+                android:padding="2dp"
+                android:src="@drawable/ic_baseline_photo_camera_24"
+                app:civ_circle_background_color="#49DD09"
+                android:layout_marginStart="-30dp"/>
+            <ImageView
+                android:id="@+id/imgSetting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_settings_24"/>
+
+            <TextView
+                android:id="@+id/tvDescriptionUser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginTop="16dp"
+                android:text="Đây là mô tả của bản thân "
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgAvtUser"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescriptionUser"
+                android:background="#1CE0EA"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp" />
+
+            <TextView
+                android:id="@+id/tvUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="16dp"
+                android:text="Chỉnh sửa"
+                android:textAlignment="center"
+                android:textColor="#19FF00"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/tvInforGeneral"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/boder_text"
+                android:text="Thông tin cá nhân"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line" />
+
+            <TextView
+                android:id="@+id/tvNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Họ và tên: "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvInforGeneral" />
+
+            <TextView
+                android:id="@+id/tvNameValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:text="Lê Trung Kiên "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@id/tvNameTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvInforGeneral"
+                setText="@{user.name}"/>
+
+            <TextView
+                android:id="@+id/tvBirthdayTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Ngày sinh: "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNameValue" />
+
+            <TextView
+                android:id="@+id/tvBirthdayValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="20/07/2000 "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBirthdayTitle"
+                app:layout_constraintStart_toEndOf="@id/tvBirthdayTitle"
+                app:layout_constraintTop_toTopOf="@id/tvBirthdayTitle"
+                setText="@{user.date_of_birth}"/>
+
+            <TextView
+                android:id="@+id/tvGenderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Giới tính: "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBirthdayValue" />
+
+            <TextView
+                android:id="@+id/tvGenderValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Nam"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvGenderTitle"
+                app:layout_constraintStart_toEndOf="@id/tvGenderTitle"
+                app:layout_constraintTop_toTopOf="@id/tvGenderTitle"
+                setText="@{user.gender}"
+                />
+
+            <TextView
+                android:id="@+id/tvEmailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Email: "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvGenderValue" />
+
+            <TextView
+                android:id="@+id/tvEmailValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="letrungkien2007@gmail.com"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvEmailTitle"
+                app:layout_constraintStart_toEndOf="@id/tvEmailTitle"
+                app:layout_constraintTop_toTopOf="@id/tvEmailTitle"
+                setText="@{user.email}"
+                />
+
+            <TextView
+                android:id="@+id/tvPhoneTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:text="SDT: "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEmailValue" />
+
+            <TextView
+                android:id="@+id/tvPhoneValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="0962983318"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvPhoneTitle"
+                app:layout_constraintStart_toEndOf="@id/tvPhoneTitle"
+                app:layout_constraintTop_toTopOf="@id/tvPhoneTitle"
+                setText="@{user.phone}"
+                />
+
+            <TextView
+                android:id="@+id/tvAddressTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="16dp"
+                android:text="Đại học: "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPhoneValue" />
+
+            <TextView
+                android:id="@+id/tvAddressValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Học viện KTMM"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvAddressTitle"
+                app:layout_constraintTop_toTopOf="@id/tvAddressTitle"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                setText="@{user.university}"/>
+
+            <TextView
+                android:id="@+id/tvFavoriteTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAddressValue"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="Khóa: " />
+
+            <TextView
+                android:id="@+id/tvFavoriteValue"
+                app:layout_constraintStart_toEndOf="@id/tvFavoriteTitle"
+                app:layout_constraintTop_toTopOf="@id/tvFavoriteTitle"
+                app:layout_constraintBottom_toBottomOf="@id/tvFavoriteTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="CT3"
+                setText="@{user.course}"/>
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvSkillTitle"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvFavoriteValue"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:text="Kĩ năng: " />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvSkillValue"-->
+<!--                app:layout_constraintStart_toEndOf="@id/tvSkillTitle"-->
+<!--                app:layout_constraintTop_toTopOf="@id/tvSkillTitle"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/tvSkillTitle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                setText="@{user.skill}"-->
+<!--                android:text="Lắng nghe, hoàn thành công việc" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

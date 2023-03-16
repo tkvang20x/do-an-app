@@ -3,6 +3,7 @@ package com.example.btl_timviec.sharepreference
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
+import com.example.do_an_app.model.users.Data
 
 class MySharedPreference {
     var Shared_Reference: String = "shared_reference"

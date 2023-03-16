@@ -23,6 +23,7 @@ import com.example.do_an_app.model.Image
 import com.example.do_an_app.viewmodel.BooksViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.do_an_app.model.books.Result
+import com.example.do_an_app.model.users.Data
 import com.example.do_an_app.viewmodel.UserViewModel
 import com.smarteist.autoimageslider.SliderView
 
@@ -35,6 +36,11 @@ class FragmentHome : Fragment(), CallBack {
     private val list = arrayListOf<Result>()
     private lateinit var adapter_image: ImageSliderAdapter
     private var id_user = ""
+
+    companion object {
+        var data_user:Data =
+            Data("", "", "", "", "", "", "", "", "", true, false, "", "", "", "", "", "USER", "", "")
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -78,6 +84,7 @@ class FragmentHome : Fragment(), CallBack {
             if (it == null) {
                 binding.imgAvtUser.setImageResource(R.mipmap.ic_launcher)
             } else {
+                data_user = it.data
 //                id_user = it.data.id.toString()
                 Glide.with(binding.imgAvtUser)
                     .load(Const.BASE_URL + it.data.avatar.replace("\\", "/"))

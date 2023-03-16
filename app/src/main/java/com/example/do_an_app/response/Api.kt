@@ -1,5 +1,6 @@
 package com.example.do_an_app.response
 
+import com.example.do_an_app.model.avatar.DataAvatar
 import com.example.do_an_app.model.books.BooksDataList
 import com.example.do_an_app.model.books.DetailBooks
 import com.example.do_an_app.model.group.GroupsData
@@ -7,6 +8,7 @@ import com.example.do_an_app.model.login.DataLogin
 import com.example.do_an_app.model.login.Login
 import com.example.do_an_app.model.register.DataRegister
 import com.example.do_an_app.model.register.RegisterUser
+import com.example.do_an_app.model.users.DataUpdate
 import com.example.do_an_app.model.users.UserData
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -31,4 +33,15 @@ interface Api {
     @GET("/do-an/v1/groups")
     fun getGroups() : Call<GroupsData>
 
+
+    @Multipart
+    @PUT("/do-an/v1/users/{code}/avatar")
+    fun uploadAvatar(
+        @Header("Authorization") token: String?,
+        @Path("code") code: String?,
+        @Part avatar: MultipartBody.Part?
+    ): Call<DataAvatar?>?
+
+    @PUT("/do-an/v1/users/{code}")
+    fun updateUser(@Header("Authorization") token: String?,@Path("code") code: String?, @Body data_update: DataUpdate?) : Call<UserData>
 }

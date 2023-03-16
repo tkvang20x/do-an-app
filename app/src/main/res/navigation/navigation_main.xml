@@ -46,4 +46,20 @@
             android:id="@+id/action_fragmentListGroupsBooks_to_fragmentDetailBooks"
             app:destination="@id/fragmentDetailBooks" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.do_an_app.fragment.FragmentProfile"
+        android:label="FragmentProfile" >
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentUpdateProfile"
+            app:destination="@id/fragmentUpdateProfile" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUpdateProfile"
+        android:name="com.example.do_an_app.fragment.FragmentUpdateProfile"
+        android:label="FragmentUpdateProfile" >
+        <action
+            android:id="@+id/action_fragmentUpdateProfile_to_fragmentProfile"
+            app:destination="@id/fragmentProfile" />
+    </fragment>
 </navigation>
