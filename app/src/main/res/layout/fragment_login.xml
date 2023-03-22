@@ -32,7 +32,7 @@
             android:layout_marginTop="20dp"
             android:text="Chào mừng đến với thư viện KMA"
             android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_marginTop="20dp"
             android:text="Đăng nhập"
             android:textColor="#11FF00"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:layout_marginLeft="20dp" />
 
@@ -54,9 +54,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_margin="20dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColorHint="@color/white"
             android:textFontWeight="100"
             android:hint="Tài khoản"
@@ -84,15 +84,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvUsername"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:textStyle="normal"
             android:textColorHint="@color/white"
             android:textFontWeight="100"
-            android:hint="Mật khẩu"
+            android:hint="@string/mat_khau"
             app:startIconDrawable="@drawable/ic_baseline_lock_24"
             app:endIconMode="password_toggle"
             app:counterMaxLength="20"
@@ -110,13 +111,14 @@
                 android:textStyle="normal" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
+            android:theme="@style/Theme.Button"
             android:id="@+id/btnLogin"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Đăng nhập"
+            android:layout_height="40dp"
+            android:text="@string/dang_nhap"
             android:background="@drawable/boder_radius"
-            android:padding="10dp"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPassword"
@@ -129,9 +131,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             android:layout_marginTop="20dp"
-            android:text="Đăng ký"
+            android:text="@string/dang_ky"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:layout_marginEnd="20dp" />
 
         <TextView
@@ -142,9 +144,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/btnLogin"
             android:layout_marginTop="20dp"
-            android:text="Khi bạn đăng nhập , mặc định bạn đồng ý với Điều khoản dịch vụ và CHính sách bảo mật của TopCV"
+            android:text="@string/text1"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:textAlignment="center"
             android:paddingLeft="50dp"
             android:paddingRight="50dp" />

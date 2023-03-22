@@ -3,31 +3,31 @@ package com.example.do_an_app.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.do_an_app.callback.CallBack
-import com.example.do_an_app.databinding.ItemBooksBinding
-import com.example.do_an_app.model.books.Result
+import com.example.do_an_app.callback.CallBackItemBook
+import com.example.do_an_app.databinding.ItemBookInViewVoucherBinding
+import com.example.do_an_app.model.voucher.BooksBorrowed
 
-class BooksAdapter(private val list: ArrayList<Result>, private val callback: CallBack) : RecyclerView.Adapter<BooksAdapter.ViewHolder>() {
+class ItemBookAdapter (private val list: ArrayList<BooksBorrowed>, private val callback: CallBackItemBook) : RecyclerView.Adapter<ItemBookAdapter.ViewHolder>() {
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
-    class ViewHolder(val binding: ItemBooksBinding) :RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Result){
-            binding.books = item
+    class ViewHolder(val binding: ItemBookInViewVoucherBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: BooksBorrowed){
+            binding.book = item
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemBooksBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(ItemBookInViewVoucherBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       holder.bind(list[position])
+        holder.bind(list[position])
 
-        holder.binding.csBooks.setOnClickListener {
+        holder.binding.csItemBook.setOnClickListener {
             callback.onClick(list[position])
         }
 
-        holder.binding.csBooks.setOnLongClickListener {
+        holder.binding.csItemBook.setOnLongClickListener {
             callback.onLongClick(list[position])
 
             return@setOnLongClickListener true

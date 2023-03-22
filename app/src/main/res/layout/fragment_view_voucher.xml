@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="voucher"
+            type="com.example.do_an_app.model.voucher.ResultDetail" />
+        <variable
+            name="books"
+            type="com.example.do_an_app.model.books.DataX" />
+        <variable
+            name="user"
+            type="com.example.do_an_app.model.users.Data" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+        <TextView
+            android:id="@+id/tvTitleFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Phiếu mượn cá nhân"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"/>
+        <ImageView
+            android:id="@+id/imgAvatarUser"
+            android:layout_width="90dp"
+            android:layout_height="120dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleFragment"
+            android:layout_marginStart="20dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            setAvt="@{voucher.users.avatar}" />
+
+        <TextView
+            android:id="@+id/txtCodeVoucher"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/imgAvatarUser"
+            app:layout_constraintTop_toTopOf="@id/imgAvatarUser"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
+            android:text="Thám tử lừng danh CONAN"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            setText="@{voucher.voucher_id}"/>
+
+        <TextView
+            android:id="@+id/txtCodeUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/imgAvatarUser"
+            app:layout_constraintTop_toBottomOf="@id/txtCodeVoucher"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
+            android:text="Gosho Aoyama"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            setText="@{voucher.users.name}"/>
+        <TextView
+            android:id="@+id/tvStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày mượn: "
+            android:drawableLeft="@drawable/baseline_calendar_month_24"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@id/imgAvatarUser"
+            app:layout_constraintTop_toBottomOf="@id/txtCodeUser"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            />
+
+        <TextView
+            android:id="@+id/txtStartDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="20/07/2000"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="@id/tvStartDate"
+            app:layout_constraintBottom_toBottomOf="@id/tvStartDate"
+            app:layout_constraintStart_toEndOf="@id/tvStartDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            setText="@{voucher.start_date}"/>
+
+        <TextView
+            android:id="@+id/tvDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày hẹn trả: "
+            android:drawableLeft="@drawable/baseline_calendar_month_24"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@id/imgAvatarUser"
+            app:layout_constraintTop_toBottomOf="@id/tvStartDate"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            />
+
+        <TextView
+            android:id="@+id/txtDueDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="20/07/2000"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="@id/tvDueDate"
+            app:layout_constraintBottom_toBottomOf="@id/tvDueDate"
+            app:layout_constraintStart_toEndOf="@id/tvDueDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            setText="@{voucher.start_date}"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgAvatarUser"
+            android:background="#646464"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp" />
+
+        <TextView
+            android:id="@+id/tvIntroduce"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line"
+            android:text="Danh sách sách đã mượn"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/white" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvListBook"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvIntroduce"
+            app:layout_constraintBottom_toTopOf="@id/btnAddVoucher"
+            tools:listitem="@layout/item_book_in_view_voucher"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAddVoucher"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:text="Huỷ phiếu mượn"
+            android:background="@drawable/background_button_cancel"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_gravity="center"
+            android:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="book"
+            type="com.example.do_an_app.model.voucher.BooksBorrowed" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="20dp"
+        app:cardPreventCornerOverlap="false"
+        app:contentPadding="0dp"
+        android:id="@+id/csItemBook">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="10dp"
+            android:elevation="2dp"
+            android:id="@+id/csBook">
+
+            <ImageView
+                android:id="@+id/imgAvt"
+                android:layout_width="45dp"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/tvVoucherId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Mã sách"
+                app:layout_constraintStart_toEndOf="@id/imgAvt"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="20dp"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                setText="@{book.code_id}"/>
+
+            <TextView
+                android:id="@+id/txtNameBooks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Đây là tên sachs "
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvVoucherId"
+                app:layout_constraintTop_toBottomOf="@id/tvVoucherId"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                setText="@{book.books.name}"
+                />
+
+            <TextView
+                android:id="@+id/txtAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Tác giả: "
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvVoucherId"
+                app:layout_constraintTop_toBottomOf="@id/txtNameBooks"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                setText="@{book.books.author}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

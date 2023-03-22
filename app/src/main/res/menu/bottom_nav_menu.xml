@@ -15,7 +15,8 @@
         android:id="@+id/fragmentProfile"
         android:title="Cá nhân" />
     <item
-        android:id="@+id/fragmentVoucher"
+        android:icon="@drawable/baseline_sticky_note_2_24"
+        android:id="@+id/fragmentCreateVoucher"
         android:title="Phiếu mượn" />
 
 </menu>

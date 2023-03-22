@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="voucher"
+            type="com.example.do_an_app.model.voucher.Result" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="20dp"
+        app:cardPreventCornerOverlap="false"
+        app:contentPadding="0dp"
+        android:id="@+id/csItemJob">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:elevation="2dp"
+            android:id="@+id/cdVoucher">
+
+            <ImageView
+                android:id="@+id/imgAvt"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/tvVoucherId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Mã voucher"
+                app:layout_constraintStart_toEndOf="@id/imgAvt"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="20dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                setText="@{voucher.voucher_id}"/>
+
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Đây là mô tả cho phiếu mượn "
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvVoucherId"
+                app:layout_constraintTop_toBottomOf="@id/tvVoucherId"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                setText="@{voucher.description}"
+                />
+
+            <TextView
+                android:id="@+id/tvStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày mượn: "
+                android:drawableLeft="@drawable/baseline_calendar_month_24"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtDescription"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                />
+
+            <TextView
+                android:id="@+id/txtStartDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="20/07/2000"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="@id/tvStartDate"
+                app:layout_constraintBottom_toBottomOf="@id/tvStartDate"
+                app:layout_constraintStart_toEndOf="@id/tvStartDate"
+                app:layout_constraintTop_toBottomOf="@id/txtDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                setText="@{voucher.start_date}"/>
+
+
+            <TextView
+                android:id="@+id/tvDueDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày hẹn trả: "
+                android:drawableLeft="@drawable/baseline_calendar_month_24"
+                android:textSize="12sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStartDate"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                />
+            <TextView
+                android:id="@+id/txtDueDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="20/03/2023"
+                android:textSize="12sp"
+                app:layout_constraintTop_toTopOf="@id/tvDueDate"
+                app:layout_constraintBottom_toBottomOf="@id/tvDueDate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtStartDate"
+                app:layout_constraintStart_toEndOf="@id/tvDueDate"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                setText="@{voucher.due_date}"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

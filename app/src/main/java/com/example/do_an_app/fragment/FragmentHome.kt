@@ -35,11 +35,12 @@ class FragmentHome : Fragment(), CallBack {
     private lateinit var userViewModel: UserViewModel
     private val list = arrayListOf<Result>()
     private lateinit var adapter_image: ImageSliderAdapter
-    private var id_user = ""
 
     companion object {
         var data_user:Data =
             Data("", "", "", "", "", "", "", "", "", true, false, "", "", "", "", "", "USER", "", "")
+
+        var code_user = ""
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -85,7 +86,7 @@ class FragmentHome : Fragment(), CallBack {
                 binding.imgAvtUser.setImageResource(R.mipmap.ic_launcher)
             } else {
                 data_user = it.data
-//                id_user = it.data.id.toString()
+                code_user = it.data.code.toString()
                 Glide.with(binding.imgAvtUser)
                     .load(Const.BASE_URL + it.data.avatar.replace("\\", "/"))
                     .placeholder(R.mipmap.ic_launcher_round)

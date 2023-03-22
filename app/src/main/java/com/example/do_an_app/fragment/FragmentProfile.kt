@@ -40,7 +40,6 @@ class FragmentProfile: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
-        Log.d("updateeeeeeeeeeeeeeeee", data_user.toString())
         val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
         view.visibility = View.VISIBLE
 

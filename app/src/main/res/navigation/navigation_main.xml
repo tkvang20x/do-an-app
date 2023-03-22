@@ -62,4 +62,68 @@
             android:id="@+id/action_fragmentUpdateProfile_to_fragmentProfile"
             app:destination="@id/fragmentProfile" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentVoucher"
+        android:name="com.example.do_an_app.fragment.FragmentVoucher"
+        android:label="FragmentVoucher" >
+        <action
+            android:id="@+id/action_fragmentVoucher_to_fragmentViewVoucher"
+            app:destination="@id/fragmentViewVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCreateVoucher"
+        android:name="com.example.do_an_app.fragment.FragmentCreateVoucher"
+        android:label="FragmentCreateVoucher" >
+        <action
+            android:id="@+id/action_fragmentCreateVoucher_to_fragmentVoucher"
+            app:destination="@id/fragmentVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentViewVoucher"
+        android:name="com.example.do_an_app.fragment.FragmentViewVoucher"
+        android:label="FragmentViewVoucher" >
+        <action
+            android:id="@+id/action_fragmentViewVoucher_to_fragmentVoucher"
+            app:destination="@id/fragmentVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStatusCancel"
+        android:name="com.example.do_an_app.fragment.fragmentstatus.FragmentStatusCancel"
+        android:label="FragmentStatusCancel" >
+        <action
+            android:id="@+id/action_fragmentStatusCancel_to_fragmentViewVoucher"
+            app:destination="@id/fragmentViewVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStatusConfirm"
+        android:name="com.example.do_an_app.fragment.fragmentstatus.FragmentStatusConfirm"
+        android:label="FragmentStatusConfirm" >
+        <action
+            android:id="@+id/action_fragmentStatusConfirm_to_fragmentViewVoucher"
+            app:destination="@id/fragmentViewVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStatusExpired"
+        android:name="com.example.do_an_app.fragment.fragmentstatus.FragmentStatusExpired"
+        android:label="FragmentStatusExpired" >
+        <action
+            android:id="@+id/action_fragmentStatusExpired_to_fragmentViewVoucher"
+            app:destination="@id/fragmentViewVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStatusPayed"
+        android:name="com.example.do_an_app.fragment.fragmentstatus.FragmentStatusPayed"
+        android:label="FragmentStatusPayed" >
+        <action
+            android:id="@+id/action_fragmentStatusPayed_to_fragmentViewVoucher"
+            app:destination="@id/fragmentViewVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStatusWaiting"
+        android:name="com.example.do_an_app.fragment.fragmentstatus.FragmentStatusWaiting"
+        android:label="FragmentStatusWaiting" >
+        <action
+            android:id="@+id/action_fragmentStatusWaiting_to_fragmentViewVoucher"
+            app:destination="@id/fragmentViewVoucher" />
+    </fragment>
 </navigation>
