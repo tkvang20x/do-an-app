@@ -5,29 +5,29 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.do_an_app.callback.CallBack
 import com.example.do_an_app.databinding.ItemBooksBinding
-import com.example.do_an_app.databinding.ItemListBooksBinding
 import com.example.do_an_app.model.books.Result
 
-class ItemListBooksAdapter(private val list: MutableList<Result>, private val callback: CallBack) : RecyclerView.Adapter<ItemListBooksAdapter.ViewHolder>() {
-
-    class ViewHolder(val binding: ItemListBooksBinding) :RecyclerView.ViewHolder(binding.root) {
+class Books2Adapter(private val list: ArrayList<Result>, private val callback: CallBack) : RecyclerView.Adapter<Books2Adapter.ViewHolder>() {
+    private val VIEW_TYPE_ITEM = 0
+    private val VIEW_TYPE_LOADING = 1
+    class ViewHolder(val binding: ItemBooksBinding) :RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Result){
             binding.books = item
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemListBooksBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(ItemBooksBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        holder.bind(list[position])
 
-        holder.binding.csListBooks.setOnClickListener {
+        holder.binding.csBooks.setOnClickListener {
             callback.onClick(list[position])
         }
 
-        holder.binding.csListBooks.setOnLongClickListener {
+        holder.binding.csBooks.setOnLongClickListener {
             callback.onLongClick(list[position])
 
             return@setOnLongClickListener true
@@ -39,10 +39,11 @@ class ItemListBooksAdapter(private val list: MutableList<Result>, private val ca
         return list.size
     }
 
-    fun addItems(items :List<Result>){
-        for (element in items){
-            list.add(element)
-        }
-        notifyDataSetChanged()
+    override fun onViewDetachedFromWindow(holder: ViewHolder) {
+        holder.setIsRecyclable(false)
+        super.onViewDetachedFromWindow(holder)
+    }
+    override fun getItemViewType(position: Int): Int {
+        return if (list.get(position) == null) VIEW_TYPE_LOADING else VIEW_TYPE_ITEM
     }
 }

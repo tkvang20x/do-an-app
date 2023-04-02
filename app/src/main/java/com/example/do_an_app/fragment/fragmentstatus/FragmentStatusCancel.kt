@@ -34,7 +34,7 @@ class FragmentStatusCancel: Fragment(), CallbackVoucher {
         binding.loading.visibility = View.VISIBLE
 
         voucherViewModel = VoucherViewModel()
-        voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "CANCEL")
+        voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "CANCELLED")
         voucherViewModel.dataVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
                 list5.addAll(it.data.result)
@@ -43,25 +43,26 @@ class FragmentStatusCancel: Fragment(), CallbackVoucher {
             // Ẩn progressBar khi kết thúc load dữ liệu
             binding.loading.visibility = View.GONE
         }
+        adapter = VoucherAdapter(list5, this)
+        binding.rvList5.adapter = adapter
+        binding.rvList5.layoutManager =
+            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = VoucherAdapter(list5, this)
-        binding.rvList5.adapter = adapter
-        binding.rvList5.layoutManager =
-            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
+
     }
 
     override fun onClick(voucher: Result) {
         val bundle = Bundle()
         bundle.putString("voucher_id", voucher.voucher_id)
-        findNavController().navigate(R.id.action_fragmentStatusCancel_to_fragmentViewVoucher, bundle)
+        findNavController().navigate(R.id.action_fragmentVoucher_to_fragmentViewVoucher, bundle)
     }
 
     override fun onLongClick(groups: Result) {
-        TODO("Not yet implemented")
+       return
     }
 }

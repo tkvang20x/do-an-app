@@ -9,8 +9,8 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="170dp"
-        android:layout_height="270dp"
+        android:layout_width="140dp"
+        android:layout_height="210dp"
         android:elevation="5dp"
         android:id="@+id/csListBooks"
         android:layout_marginStart="10dp">
@@ -21,8 +21,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/txtNameBooks"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"
             setAvt="@{books.avatar}"/>
@@ -39,12 +39,11 @@
             android:textAlignment="center"
             android:padding="5dp"
             android:textColor="@color/white"
-            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
             setText="@{books.name}"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             />
 

@@ -72,6 +72,16 @@ object Utils {
     }
 
     @JvmStatic
+    @BindingAdapter("setInt")
+    fun setInt(tv: TextView, int: Int?) {
+        if (int == null) {
+            tv.text = ""
+        } else {
+            tv.text = int.toString()
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("setTextGroups")
     fun setTextGroups(tv: TextView, string: String?) {
         if (string == null) {

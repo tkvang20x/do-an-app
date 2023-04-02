@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="voucher"
-            type="com.example.do_an_app.model.voucher.Result" />
+            name="book2"
+            type="com.example.do_an_app.model.voucher.ListIdBook" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -16,7 +16,7 @@
         app:cardElevation="20dp"
         app:cardPreventCornerOverlap="false"
         app:contentPadding="0dp"
-        android:id="@+id/csItemJob">
+        android:id="@+id/csItemBook">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,8 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@mipmap/ic_launcher"/>
+                android:src="@mipmap/ic_launcher"
+                setAvt="@{book2.avatar}"/>
 
             <TextView
                 android:id="@+id/tvVoucherId"
@@ -49,7 +50,7 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="2"
-                setText="@{voucher.voucher_id}"/>
+                setText="@{book2.code_id}"/>
 
             <TextView
                 android:id="@+id/txtNameBooks"
@@ -64,7 +65,7 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="1"
-                setText="@{voucher.description}"
+                setText="@{book2.name_books}"
                 />
 
             <TextView
@@ -80,7 +81,7 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="1"
-                setText="@{voucher.description}"
+                setText="@{book2.author}"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

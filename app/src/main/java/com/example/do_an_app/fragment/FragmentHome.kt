@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.do_an_app.Const
 import com.example.do_an_app.R
+import com.example.do_an_app.adapter.Books2Adapter
 import com.example.do_an_app.adapter.BooksAdapter
 import com.example.do_an_app.adapter.ImageSliderAdapter
 import com.example.do_an_app.callback.CallBack
@@ -31,17 +32,41 @@ class FragmentHome : Fragment(), CallBack {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: BooksAdapter
+    private lateinit var adapter2: Books2Adapter
     private lateinit var booksViewModel: BooksViewModel
+    private lateinit var books2ViewModel: BooksViewModel
     private lateinit var userViewModel: UserViewModel
     private val list = arrayListOf<Result>()
+    private val list2 = arrayListOf<Result>()
     private lateinit var adapter_image: ImageSliderAdapter
 
     companion object {
-        var data_user:Data =
-            Data("", "", "", "", "", "", "", "", "", true, false, "", "", "", "", "", "USER", "", "")
+        var data_user: Data =
+            Data(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                true,
+                false,
+                "",
+                "",
+                "",
+                "",
+                "",
+                "USER",
+                "",
+                ""
+            )
 
         var code_user = ""
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -64,8 +89,7 @@ class FragmentHome : Fragment(), CallBack {
         binding.rvList.adapter = adapter
         binding.rvList.layoutManager =
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
-
-        booksViewModel = ViewModelProvider(requireActivity()).get(BooksViewModel::class.java)
+        booksViewModel = BooksViewModel()
         booksViewModel.getBooks(1, 10, "", "", "")
         booksViewModel.dataBooks.observe(viewLifecycleOwner) {
             if (it != null) {
@@ -78,6 +102,25 @@ class FragmentHome : Fragment(), CallBack {
             binding.loading.visibility = View.GONE
         }
 
+
+        adapter2 = Books2Adapter(list2, this)
+        binding.rvList2.adapter = adapter2
+        binding.rvList2.layoutManager =
+            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
+        books2ViewModel = BooksViewModel()
+        books2ViewModel.getBooks(2, 10, "", "", "")
+        books2ViewModel.dataBooks.observe(viewLifecycleOwner) {
+            if (it != null) {
+                list2.clear()
+                list2.addAll(it.data.result)
+                adapter2.notifyDataSetChanged()
+
+            }
+            // Ẩn progressBar khi kết thúc load dữ liệu
+            binding.loading.visibility = View.GONE
+        }
+
+
         userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
         userViewModel.getUser()
         userViewModel.dataUser.observe(viewLifecycleOwner) {
@@ -87,11 +130,14 @@ class FragmentHome : Fragment(), CallBack {
             } else {
                 data_user = it.data
                 code_user = it.data.code.toString()
-                Glide.with(binding.imgAvtUser)
-                    .load(Const.BASE_URL + it.data.avatar.replace("\\", "/"))
-                    .placeholder(R.mipmap.ic_launcher_round)
-                    .error(R.mipmap.ic_launcher)
-                    .into(binding.imgAvtUser)
+                if (it.data.avatar != null) {
+                    Glide.with(binding.imgAvtUser)
+                        .load(Const.BASE_URL + it.data.avatar.replace("\\", "/"))
+                        .placeholder(R.mipmap.ic_launcher_round)
+                        .error(R.mipmap.ic_launcher)
+                        .into(binding.imgAvtUser)
+                }
+
             }
         }
 

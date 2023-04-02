@@ -7,6 +7,7 @@ import com.example.do_an_app.model.avatar.DataAvatar
 import com.example.do_an_app.model.users.UserData
 import com.example.do_an_app.model.voucher.DataDetailVoucher
 import com.example.do_an_app.model.voucher.DataVoucher
+import com.example.do_an_app.model.voucher.DataVoucherCreate
 import com.example.do_an_app.response.Api
 import com.example.do_an_app.response.ApiRetrofit
 import retrofit2.Call
@@ -39,6 +40,30 @@ class VoucherViewModel: ViewModel() {
 
     fun getDetailVoucher(voucher_id : String) {
         api.getDetailVoucher("Bearer $token", voucher_id).enqueue(object :
+            Callback<DataDetailVoucher> {
+            override fun onResponse(call: Call<DataDetailVoucher>, response: Response<DataDetailVoucher>) {
+                dataDetailVoucher.postValue(response.body())
+            }
+            override fun onFailure(call: Call<DataDetailVoucher>, t: Throwable) {
+                dataDetailVoucher.postValue(null)
+            }
+        })
+    }
+
+    fun postVoucher(dataCreate : DataVoucherCreate) {
+        api.postVoucher("Bearer $token", dataCreate).enqueue(object :
+            Callback<DataDetailVoucher> {
+            override fun onResponse(call: Call<DataDetailVoucher>, response: Response<DataDetailVoucher>) {
+                dataDetailVoucher.postValue(response.body())
+            }
+            override fun onFailure(call: Call<DataDetailVoucher>, t: Throwable) {
+                dataDetailVoucher.postValue(null)
+            }
+        })
+    }
+
+    fun updateStatusVoucher(voucher_id : String, status_update: String) {
+        api.updateStatusVoucher("Bearer $token", voucher_id, status_update).enqueue(object :
             Callback<DataDetailVoucher> {
             override fun onResponse(call: Call<DataDetailVoucher>, response: Response<DataDetailVoucher>) {
                 dataDetailVoucher.postValue(response.body())

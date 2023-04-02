@@ -1,7 +1,8 @@
 package com.example.do_an_app.model.books
 
 data class DataX(
-    val amount: Int,
+    val total_books: Int,
+    val total_ready: Int,
     val author: String,
     val avatar: String,
     val code: String,

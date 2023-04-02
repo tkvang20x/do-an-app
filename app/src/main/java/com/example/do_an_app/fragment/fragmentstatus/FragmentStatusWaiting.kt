@@ -45,24 +45,27 @@ class FragmentStatusWaiting: Fragment(), CallbackVoucher {
             binding.loading.visibility = View.GONE
         }
 
+        adapter = VoucherAdapter(list1, this)
+        binding.rvList1.adapter = adapter
+        binding.rvList1.layoutManager =
+            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = VoucherAdapter(list1, this)
-        binding.rvList1.adapter = adapter
-        binding.rvList1.layoutManager =
-            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
+
     }
 
     override fun onClick(voucher: Result) {
         val bundle = Bundle()
         bundle.putString("voucher_id", voucher.voucher_id)
+        bundle.putString("message", "WAITING")
         findNavController().navigate(R.id.action_fragmentVoucher_to_fragmentViewVoucher, bundle)
     }
 
     override fun onLongClick(groups: Result) {
-        TODO("Not yet implemented")
+        return
     }
 }

@@ -3,6 +3,7 @@ package com.example.do_an_app.response
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import okhttp3.OkHttpClient
 
 class ApiRetrofit {
     companion object{

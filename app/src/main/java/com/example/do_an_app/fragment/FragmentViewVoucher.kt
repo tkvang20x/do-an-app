@@ -1,5 +1,8 @@
 package com.example.do_an_app.fragment
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,8 +27,10 @@ class FragmentViewVoucher: Fragment(), CallBackItemBook {
     private lateinit var binding: FragmentViewVoucherBinding
     private lateinit var voucherViewModel: VoucherViewModel
     private var voucher_id = ""
+    private var message = ""
     private val list = arrayListOf<BooksBorrowed>()
     private lateinit var adapter :ItemBookAdapter
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,6 +46,11 @@ class FragmentViewVoucher: Fragment(), CallBackItemBook {
         }
 
         voucher_id = arguments?.getString("voucher_id").toString()
+        message = arguments?.getString("message").toString()
+
+        if(message == "WAITING"){
+            binding.btnCancelVoucher.visibility = View.VISIBLE
+        }
 
         adapter = ItemBookAdapter(list,this)
         binding.rvListBook.adapter = adapter
@@ -52,22 +62,46 @@ class FragmentViewVoucher: Fragment(), CallBackItemBook {
         voucherViewModel.dataDetailVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.voucher = it.data
-
+                Log.d("abccccccccc", it.data.toString())
                 list.clear()
                 list.addAll(it.data.books_borrowed)
-                adapter.notifyDataSetChanged()
+
+                binding.root.post {
+                    adapter.notifyDataSetChanged()
+                }
             }
             // Ẩn progressBar khi kết thúc load dữ liệu
             binding.loading.visibility = View.GONE
         }
 
 
+        binding.btnCancelVoucher.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Hủy phiếu mượn")
+            builder.setMessage("Bạn có muốn xác nhận hủy phiếu mượn?")
+            builder.setNegativeButton(("No"), { dialogInterface: DialogInterface, i: Int -> dialogInterface.dismiss() })
+            builder.setPositiveButton(("Yes")) { dialogInterface: DialogInterface, i: Int ->
+                voucherViewModel.updateStatusVoucher(voucher_id, "CANCELLED")
+
+                dialogInterface.dismiss()
+
+                findNavController().navigate(R.id.action_fragmentViewVoucher_to_fragmentVoucher)
+                val builder2 = AlertDialog.Builder(requireContext())
+                builder2.setMessage("Hủy phiếu mượn thành công!!!")
+                builder2.show()
+            }
+            builder.show()
+        }
+
 
         return binding.root
     }
 
     override fun onClick(books: BooksBorrowed) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putString("code_id", books.code_id)
+        bundle.putString("message", "view_voucher")
+        findNavController().navigate(R.id.action_fragmentViewVoucher_to_fragmentDetailBook, bundle)
     }
 
     override fun onLongClick(job: BooksBorrowed) {

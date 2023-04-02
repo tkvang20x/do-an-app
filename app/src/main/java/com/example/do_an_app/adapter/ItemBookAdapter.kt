@@ -43,7 +43,4 @@ class ItemBookAdapter (private val list: ArrayList<BooksBorrowed>, private val c
         holder.setIsRecyclable(false)
         super.onViewDetachedFromWindow(holder)
     }
-    override fun getItemViewType(position: Int): Int {
-        return if (list.get(position) == null) VIEW_TYPE_LOADING else VIEW_TYPE_ITEM
-    }
 }

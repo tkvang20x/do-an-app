@@ -1,6 +1,7 @@
 package com.example.do_an_app.response
 
 import com.example.do_an_app.model.avatar.DataAvatar
+import com.example.do_an_app.model.book.DataBook
 import com.example.do_an_app.model.books.BooksDataList
 import com.example.do_an_app.model.books.DetailBooks
 import com.example.do_an_app.model.group.GroupsData
@@ -11,7 +12,9 @@ import com.example.do_an_app.model.register.RegisterUser
 import com.example.do_an_app.model.users.DataUpdate
 import com.example.do_an_app.model.users.UserData
 import com.example.do_an_app.model.voucher.DataDetailVoucher
+import com.example.do_an_app.model.voucher.DataListIdBook
 import com.example.do_an_app.model.voucher.DataVoucher
+import com.example.do_an_app.model.voucher.DataVoucherCreate
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -53,4 +56,16 @@ interface Api {
     @GET("/do-an/v1/voucher/{voucher_id}")
     fun getDetailVoucher(@Header("Authorization") token: String?, @Path("voucher_id") voucher_id :String) : Call<DataDetailVoucher>
 
+    @GET("/do-an/v1/book/listid/{code_books}")
+    fun getListIdBook(@Header("Authorization") token: String?, @Path("code_books") code_books :String,@Query("size") size:Int, @Query("status_borrow") status_borrow:String ) : Call<DataListIdBook>
+
+
+    @GET("/do-an/v1/book/{code_id}")
+    fun getDetailBook(@Header("Authorization") token: String?, @Path("code_id") code: String) : Call<DataBook>
+
+    @POST("/do-an/v1/voucher")
+    fun postVoucher(@Header("Authorization") token: String?,@Body voucherCreate: DataVoucherCreate) : Call<DataDetailVoucher>
+
+    @PUT("/do-an/v1/voucher/{voucher_id}/status")
+    fun updateStatusVoucher(@Header("Authorization") token: String?, @Path("voucher_id") voucher_id :String, @Query("status_update") status_update : String) : Call<DataDetailVoucher>
 }

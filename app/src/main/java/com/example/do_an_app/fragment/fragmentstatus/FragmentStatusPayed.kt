@@ -37,6 +37,7 @@ class FragmentStatusPayed: Fragment(), CallbackVoucher {
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "PAYED")
         voucherViewModel.dataVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
+                Log.d("payeddddddddddddddddddddd", it.toString())
                 list2.addAll(it.data.result)
                 adapter.notifyDataSetChanged()
             }
@@ -44,24 +45,26 @@ class FragmentStatusPayed: Fragment(), CallbackVoucher {
             binding.loading.visibility = View.GONE
         }
 
+        adapter = VoucherAdapter(list2, this)
+        binding.rvList4.adapter = adapter
+        binding.rvList4.layoutManager =
+            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = VoucherAdapter(list2, this)
-        binding.rvList4.adapter = adapter
-        binding.rvList4.layoutManager =
-            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
+
     }
 
     override fun onClick(voucher: Result) {
         val bundle = Bundle()
         bundle.putString("voucher_id", voucher.voucher_id)
-        findNavController().navigate(R.id.action_fragmentStatusPayed_to_fragmentViewVoucher, bundle)
+        findNavController().navigate(R.id.action_fragmentVoucher_to_fragmentViewVoucher, bundle)
     }
 
     override fun onLongClick(groups: Result) {
-        TODO("Not yet implemented")
+        return
     }
 }

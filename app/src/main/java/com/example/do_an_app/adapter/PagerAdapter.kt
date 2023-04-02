@@ -22,6 +22,8 @@ class PagerAdapter(fragmentMng: FragmentManager, lifeCycle: Lifecycle): Fragment
             else -> FragmentStatusCancel()
         }
     }
-
+    fun refreshFragment(position: Int) {
+        notifyItemChanged(position)
+    }
 
 }

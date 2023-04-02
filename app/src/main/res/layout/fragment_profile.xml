@@ -282,31 +282,16 @@
                 android:textColor="@color/white"
                 android:text="CT3"
                 setText="@{user.course}"/>
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvSkillTitle"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/tvFavoriteValue"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="30dp"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:text="Kĩ năng: " />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvSkillValue"-->
-<!--                app:layout_constraintStart_toEndOf="@id/tvSkillTitle"-->
-<!--                app:layout_constraintTop_toTopOf="@id/tvSkillTitle"-->
-<!--                app:layout_constraintBottom_toBottomOf="@id/tvSkillTitle"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="10dp"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textColor="@color/white"-->
-<!--                setText="@{user.skill}"-->
-<!--                android:text="Lắng nghe, hoàn thành công việc" />-->
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_gravity="center"
+                android:visibility="invisible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

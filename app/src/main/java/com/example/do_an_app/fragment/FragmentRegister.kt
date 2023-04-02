@@ -86,7 +86,7 @@ class FragmentRegister: Fragment() {
     }
 
     private fun updateLabel() {
-        val myFormat = "MM/dd/yyyy" // định dạng ngày
+        val myFormat = "yyyy/MM/dd" // định dạng ngày
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         binding.txtBirthDay.setText(sdf.format(myCalendar.time))
     }

@@ -77,6 +77,12 @@
         <action
             android:id="@+id/action_fragmentCreateVoucher_to_fragmentVoucher"
             app:destination="@id/fragmentVoucher" />
+        <action
+            android:id="@+id/action_fragmentCreateVoucher_to_fragmentDetailBook"
+            app:destination="@id/fragmentDetailBook" />
+        <action
+            android:id="@+id/action_fragmentCreateVoucher_to_fragmentQrCode"
+            app:destination="@id/fragmentQrCode" />
     </fragment>
     <fragment
         android:id="@+id/fragmentViewVoucher"
@@ -85,6 +91,9 @@
         <action
             android:id="@+id/action_fragmentViewVoucher_to_fragmentVoucher"
             app:destination="@id/fragmentVoucher" />
+        <action
+            android:id="@+id/action_fragmentViewVoucher_to_fragmentDetailBook"
+            app:destination="@id/fragmentDetailBook" />
     </fragment>
     <fragment
         android:id="@+id/fragmentStatusCancel"
@@ -93,6 +102,9 @@
         <action
             android:id="@+id/action_fragmentStatusCancel_to_fragmentViewVoucher"
             app:destination="@id/fragmentViewVoucher" />
+        <action
+            android:id="@+id/action_fragmentStatusCancel_to_fragmentDetailBook"
+            app:destination="@id/fragmentDetailBook" />
     </fragment>
     <fragment
         android:id="@+id/fragmentStatusConfirm"
@@ -100,7 +112,9 @@
         android:label="FragmentStatusConfirm" >
         <action
             android:id="@+id/action_fragmentStatusConfirm_to_fragmentViewVoucher"
-            app:destination="@id/fragmentViewVoucher" />
+            app:destination="@id/fragmentViewVoucher"
+            />
+
     </fragment>
     <fragment
         android:id="@+id/fragmentStatusExpired"
@@ -125,5 +139,21 @@
         <action
             android:id="@+id/action_fragmentStatusWaiting_to_fragmentViewVoucher"
             app:destination="@id/fragmentViewVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetailBook"
+        android:name="com.example.do_an_app.fragment.FragmentDetailBook"
+        android:label="FragmentDetailBook" >
+        <action
+            android:id="@+id/action_fragmentDetailBook_to_fragmentCreateVoucher"
+            app:destination="@id/fragmentCreateVoucher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentQrCode"
+        android:name="com.example.do_an_app.fragment.FragmentQrCode"
+        android:label="FragmentQrCode" >
+        <action
+            android:id="@+id/action_fragmentQrCode_to_fragmentDetailBook"
+            app:destination="@id/fragmentDetailBook" />
     </fragment>
 </navigation>

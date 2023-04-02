@@ -1,28 +1,38 @@
 package com.example.do_an_app.fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.do_an_app.R
 import com.example.do_an_app.adapter.ItemListBooksAdapter
 import com.example.do_an_app.callback.CallBack
 import com.example.do_an_app.databinding.FragmentListBooksBinding
 import com.example.do_an_app.model.books.Result
 import com.example.do_an_app.viewmodel.BooksViewModel
+import kotlinx.coroutines.launch
 
-class FragmentListBooks: Fragment(), CallBack {
+class FragmentListBooks : Fragment(), CallBack {
 
     private lateinit var binding: FragmentListBooksBinding
     private lateinit var adapter: ItemListBooksAdapter
     private lateinit var booksViewModel: BooksViewModel
-    private var name =""
+    private var name = ""
     private var author = ""
     private val list = arrayListOf<Result>()
+    private var isLoading = false
+    private var page = 1
+    private var isLastPage = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,22 +42,24 @@ class FragmentListBooks: Fragment(), CallBack {
         binding = FragmentListBooksBinding.inflate(inflater, container, false)
         binding.loading.visibility = View.VISIBLE
 
-
+        binding.imgBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
         adapter = ItemListBooksAdapter(list, this)
         binding.rvListBooks.adapter = adapter
         binding.rvListBooks.layoutManager =
-            GridLayoutManager(FragmentListBooks().context, 2 )
+            GridLayoutManager(FragmentListBooks().context, 2)
 
-        if(arguments != null) {
+        if (arguments != null) {
             name = arguments?.getString("name").toString()
             binding.txtSearchName.setText(name)
 
-        }else{
+        } else {
             name = ""
         }
 
-        if (name == ""){
+        if (name == "") {
             booksViewModel = ViewModelProvider(requireActivity()).get(BooksViewModel::class.java)
             booksViewModel.getBooks(1, 10, "", "", "")
             booksViewModel.dataBooks.observe(viewLifecycleOwner) {
@@ -60,7 +72,7 @@ class FragmentListBooks: Fragment(), CallBack {
                 // Ẩn progressBar khi kết thúc load dữ liệu
                 binding.loading.visibility = View.GONE
             }
-        }else{
+        } else {
             booksViewModel = ViewModelProvider(requireActivity()).get(BooksViewModel::class.java)
             booksViewModel.getBooks(1, 10, name, "", "")
             booksViewModel.dataBooks.observe(viewLifecycleOwner) {
@@ -78,7 +90,13 @@ class FragmentListBooks: Fragment(), CallBack {
         binding.btnSearch.setOnClickListener {
             binding.loading.visibility = View.VISIBLE
             booksViewModel = ViewModelProvider(requireActivity()).get(BooksViewModel::class.java)
-            booksViewModel.getBooks(1, 10, binding.txtSearchName.text.toString(), binding.txtSearchAuthor.text.toString(), "")
+            booksViewModel.getBooks(
+                1,
+                10,
+                binding.txtSearchName.text.toString(),
+                binding.txtSearchAuthor.text.toString(),
+                ""
+            )
             booksViewModel.dataBooks.observe(viewLifecycleOwner) {
                 if (it != null) {
                     list.clear()
@@ -92,8 +110,83 @@ class FragmentListBooks: Fragment(), CallBack {
         }
 
 
+        binding.rvListBooks.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                // Kiểm tra xem RecyclerView đã cuộn đến vị trí cuối cùng hay chưa
+                val lastVisibleItem =
+                    (binding.rvListBooks.layoutManager as GridLayoutManager).findLastVisibleItemPosition()
+                val totalItemCount = adapter.itemCount
+                if (isLastPage == true){
+                    return
+                }else{
+                    if (!isLoading && totalItemCount <= (lastVisibleItem + 1)) {
+                        // Nếu RecyclerView đã cuộn đến vị trí cuối cùng và chưa ở trạng thái tải thì tải thêm dữ liệu
+                        isLoading = true
+                        page += 1
+                        loadMoreData()
+                    }
+                }
+            }
+        })
+
+//        val visibleItemCount = intArrayOf(0)
+//        val totalItemCount = intArrayOf(0)
+//        val pastVisiblesItems = intArrayOf(0)
+//        binding.rvListBooks.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                if (dy > 0) {
+//                    visibleItemCount[0] = binding.rvListBooks.childCount
+//                    totalItemCount[0] = binding.rvListBooks.layoutManager!!.itemCount
+//                    pastVisiblesItems[0] =
+//                        (binding.rvListBooks.layoutManager as GridLayoutManager?)!!.findFirstVisibleItemPosition()
+//                    if (isLastPage) {
+//                        return
+//                    } else {
+//                        if (visibleItemCount[0] + pastVisiblesItems[0] >= totalItemCount[0]) {
+//                            loadMoreData()
+//                            Log.d("loadmore","load")
+//                        }
+//                    }
+//                }
+//            }
+//        })
 
         return binding.root
+    }
+
+    private fun loadMoreData() {
+        // Hiển thị ProgressBar để hiển thị dữ liệu đang được tải
+        binding.loading.visibility = View.VISIBLE
+        // Giả lập thời gian tải dữ liệu
+        lifecycleScope.launch {
+            booksViewModel.getBooks(page, 10, binding.txtSearchName.text.toString(), binding.txtSearchAuthor.text.toString(), "")
+            booksViewModel.dataBooks.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    if (it.data.result.size == 0) {
+                        Log.d("vaodayyyyyyyyyyyyyyyyyy", list.toString())
+                        isLastPage = true
+                    } else {
+//                        for(item in it.data.result){
+//                            list.add(item)
+//                        }
+//                        adapter.notifyItemInserted(startPosition - 1)
+
+                        adapter.addItems(it.data.result)
+
+                        isLastPage = false
+                    }
+                }else{
+                    return@observe
+                }
+            }
+
+            // Ẩn ProgressBar và cập nhật trạng thái tải
+            binding.loading.visibility = View.GONE
+            isLoading = false
+        }
     }
 
     override fun onClick(books: Result) {

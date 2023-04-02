@@ -18,8 +18,8 @@
 
             <ImageView
                 android:id="@+id/imgBack"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="10dp"
@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 android:text="Danh mục sách"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
@@ -49,7 +49,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/txtSearchName"
                 android:text="Tên sách:"
                 android:layout_marginStart="10dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textColor="@color/white"
                 android:textStyle="normal" />
 
@@ -63,7 +63,8 @@
                 android:padding="4dp"
                 android:background="@drawable/boder_radius"
                 android:textColorHint="@color/white"
-                android:textSize="16sp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
                 app:endIconMode="clear_text"
                 android:hint="Tìm kiếm tên sách"
                 android:textAlignment="textStart"
@@ -80,7 +81,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/txtSearchAuthor"
                 android:text="Tác giả:"
                 android:layout_marginStart="10dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textColor="@color/white"
                 android:textStyle="normal" />
 
@@ -92,9 +93,10 @@
                 android:background="@drawable/boder_radius"
                 android:hint="Tìm kiếm tác giả"
                 android:padding="4dp"
+                android:textColor="@color/black"
                 android:textAlignment="textStart"
                 android:textColorHint="@color/white"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 app:endIconMode="clear_text"
                 app:layout_constraintStart_toEndOf="@id/tvSearchAuthor"
                 app:layout_constraintStart_toStartOf="@id/txtSearchName"
@@ -103,17 +105,19 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSearch"
-                android:layout_width="120dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="20dp"
+                android:text="Tìm kiếm"
+                android:textColor="@color/white"
+                android:textSize="12sp"
                 android:background="@drawable/background_button"
                 android:drawableStart="@drawable/ic_baseline_search_24"
                 app:layout_constraintBottom_toBottomOf="@id/txtSearchAuthor"
                 app:layout_constraintStart_toEndOf="@id/txtSearchAuthor"
                 app:layout_constraintTop_toTopOf="@id/txtSearchAuthor"
                 app:layout_constraintEnd_toEndOf="@id/txtSearchName"
-                android:text="Tìm kiếm"
-                android:textColor="@color/white" />
+                />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -137,6 +141,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="visible" />
+            android:visibility="invisible" />
     </FrameLayout>
 </layout>

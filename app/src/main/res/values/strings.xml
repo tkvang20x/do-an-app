@@ -2,6 +2,6 @@
     <string name="app_name">do_an_app</string>
     <string name="dang_nhap">Đăng nhập</string>
     <string name="dang_ky">Đăng ký</string>
-    <string name="text1">Khi bạn đăng nhập , mặc định bạn đồng ý với Điều khoản dịch vụ và CHính sách bảo mật của TopCV</string>
+    <string name="text1">Khi bạn đăng nhập , mặc định bạn đồng ý với Điều khoản dịch vụ và chính sách bảo mật của thư viện</string>
     <string name="mat_khau">Mật khẩu</string>
 </resources>

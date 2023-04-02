@@ -16,19 +16,23 @@
 
         <ImageView
             android:id="@+id/imgImage"
-            android:layout_width="160dp"
-            android:layout_height="240dp"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
             android:background="@drawable/boder_text"
             android:scaleType="centerCrop"
             android:src="@drawable/anh_sach"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="10dp"/>
 
         <TextView
             android:id="@+id/idRectangle"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/boder_text"
             android:backgroundTint="#8DEBF3FF"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,12 +45,13 @@
             android:layout_height="wrap_content"
             android:text="Truyện tranh"
             android:textColor="#141ED2"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/idRectangle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/idRectangle"
+            android:layout_marginEnd="10dp"
             setText="@{groups.group_name}"/>
 
 
