@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient">
+        android:background="@color/white">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/tvLogo"
@@ -20,8 +20,7 @@
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/logo_kma"
-            android:textColor="@color/white" />
+            android:src="@drawable/logo_kma"/>
         <TextView
             android:id="@+id/tvTitle"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,9 +30,10 @@
             app:layout_constraintTop_toBottomOf="@id/tvLogo"
             android:layout_marginTop="20dp"
             android:text="Chào mừng đến với thư viện KMA"
-            android:textColor="#ffffff"
+            android:textColor="@color/black"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/sf_pro_semibold"
+            />
 
         <TextView
             android:id="@+id/tvLogin"
@@ -46,7 +46,8 @@
             android:textColor="#11FF00"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/sf_pro_semibold"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvUsername"
@@ -57,14 +58,14 @@
             android:layout_height="50dp"
             android:layout_margin="20dp"
             android:textSize="14sp"
-            android:textColorHint="@color/white"
-            android:textFontWeight="100"
+            android:textColorHint="#787878"
             android:hint="Tài khoản"
-            app:startIconDrawable="@drawable/account"
+            app:startIconDrawable="@drawable/ic_baseline_account_circle_24"
             app:endIconMode="clear_text"
             app:counterMaxLength="20"
             app:counterEnabled="true"
-            app:errorEnabled="true">
+            app:errorEnabled="true"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtUserName"
@@ -73,9 +74,8 @@
                 android:inputType="text"
                 android:background="@android:color/transparent"
                 android:textSize="14sp"
-                android:textColor="@color/white"
-                android:textStyle="normal"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/sf_pro_medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,9 +89,9 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:textSize="16sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="normal"
-            android:textColorHint="@color/white"
+            android:textColorHint="#787878"
             android:textFontWeight="100"
             android:hint="@string/mat_khau"
             app:startIconDrawable="@drawable/ic_baseline_lock_24"
@@ -107,8 +107,8 @@
                 android:inputType="textPassword"
                 android:background="@android:color/transparent"
                 android:textSize="14sp"
-                android:textColor="@color/white"
-                android:textStyle="normal" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/sf_pro_medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -122,7 +122,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPassword"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sf_pro_medium"
+            />
+
+        <TextView
+            android:id="@+id/tvForget"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            android:layout_marginTop="20dp"
+            android:text="Quên mật khẩu?"
+            android:textColor="#141ED2"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <TextView
             android:id="@+id/tvRegister"
@@ -132,9 +150,10 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             android:layout_marginTop="20dp"
             android:text="@string/dang_ky"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
-            android:layout_marginEnd="20dp" />
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <TextView
             android:id="@+id/tvText"
@@ -142,10 +161,10 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:layout_constraintTop_toBottomOf="@id/tvForget"
             android:layout_marginTop="20dp"
             android:text="@string/text1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:textAlignment="center"
             android:paddingLeft="50dp"

@@ -19,6 +19,7 @@ import com.example.do_an_app.callback.CallBackItemBook
 import com.example.do_an_app.databinding.FragmentViewVoucherBinding
 import com.example.do_an_app.model.books.Result
 import com.example.do_an_app.model.voucher.BooksBorrowed
+import com.example.do_an_app.model.voucher.StatusVoucher
 import com.example.do_an_app.viewmodel.UserViewModel
 import com.example.do_an_app.viewmodel.VoucherViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,7 +38,7 @@ class FragmentViewVoucher: Fragment(), CallBackItemBook {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentViewVoucherBinding.inflate(inflater, container, false)
-        binding.loading.visibility = View.VISIBLE
+//        binding.loading.visibility = View.VISIBLE
 
         val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
         view.visibility = View.GONE
@@ -81,7 +82,7 @@ class FragmentViewVoucher: Fragment(), CallBackItemBook {
             builder.setMessage("Bạn có muốn xác nhận hủy phiếu mượn?")
             builder.setNegativeButton(("No"), { dialogInterface: DialogInterface, i: Int -> dialogInterface.dismiss() })
             builder.setPositiveButton(("Yes")) { dialogInterface: DialogInterface, i: Int ->
-                voucherViewModel.updateStatusVoucher(voucher_id, "CANCELLED")
+                voucherViewModel.updateStatusVoucher(voucher_id, StatusVoucher("CANCELLED"))
 
                 dialogInterface.dismiss()
 

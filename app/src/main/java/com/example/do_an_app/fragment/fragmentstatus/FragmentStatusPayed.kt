@@ -31,7 +31,7 @@ class FragmentStatusPayed: Fragment(), CallbackVoucher {
     ): View? {
         binding = FragmentStatusPayedBinding.inflate(inflater, container, false)
         list2.clear()
-        binding.loading.visibility = View.VISIBLE
+//        binding.loading.visibility = View.VISIBLE
 
         voucherViewModel = VoucherViewModel()
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "PAYED")

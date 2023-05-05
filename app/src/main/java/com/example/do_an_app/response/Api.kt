@@ -11,10 +11,7 @@ import com.example.do_an_app.model.register.DataRegister
 import com.example.do_an_app.model.register.RegisterUser
 import com.example.do_an_app.model.users.DataUpdate
 import com.example.do_an_app.model.users.UserData
-import com.example.do_an_app.model.voucher.DataDetailVoucher
-import com.example.do_an_app.model.voucher.DataListIdBook
-import com.example.do_an_app.model.voucher.DataVoucher
-import com.example.do_an_app.model.voucher.DataVoucherCreate
+import com.example.do_an_app.model.voucher.*
 import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -67,5 +64,5 @@ interface Api {
     fun postVoucher(@Header("Authorization") token: String?,@Body voucherCreate: DataVoucherCreate) : Call<DataDetailVoucher>
 
     @PUT("/do-an/v1/voucher/{voucher_id}/status")
-    fun updateStatusVoucher(@Header("Authorization") token: String?, @Path("voucher_id") voucher_id :String, @Query("status_update") status_update : String) : Call<DataDetailVoucher>
+    fun updateStatusVoucher(@Header("Authorization") token: String?, @Path("voucher_id") voucher_id :String, @Body status_update : StatusVoucher) : Call<DataDetailVoucher>
 }

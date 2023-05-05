@@ -31,7 +31,7 @@ class FragmentStatusCancel: Fragment(), CallbackVoucher {
     ): View? {
         binding = FragmentStatusCancelBinding.inflate(inflater, container, false)
         list5.clear()
-        binding.loading.visibility = View.VISIBLE
+//        binding.loading.visibility = View.VISIBLE
 
         voucherViewModel = VoucherViewModel()
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "CANCELLED")

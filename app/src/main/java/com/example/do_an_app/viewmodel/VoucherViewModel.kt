@@ -8,6 +8,7 @@ import com.example.do_an_app.model.users.UserData
 import com.example.do_an_app.model.voucher.DataDetailVoucher
 import com.example.do_an_app.model.voucher.DataVoucher
 import com.example.do_an_app.model.voucher.DataVoucherCreate
+import com.example.do_an_app.model.voucher.StatusVoucher
 import com.example.do_an_app.response.Api
 import com.example.do_an_app.response.ApiRetrofit
 import retrofit2.Call
@@ -62,7 +63,7 @@ class VoucherViewModel: ViewModel() {
         })
     }
 
-    fun updateStatusVoucher(voucher_id : String, status_update: String) {
+    fun updateStatusVoucher(voucher_id : String, status_update: StatusVoucher) {
         api.updateStatusVoucher("Bearer $token", voucher_id, status_update).enqueue(object :
             Callback<DataDetailVoucher> {
             override fun onResponse(call: Call<DataDetailVoucher>, response: Response<DataDetailVoucher>) {

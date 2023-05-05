@@ -32,7 +32,7 @@ class FragmentStatusConfirm: Fragment(), CallbackVoucher {
     ): View? {
         binding = FragmentStatusConfirmBinding.inflate(inflater, container, false)
         list4.clear()
-        binding.loading.visibility = View.VISIBLE
+//        binding.loading.visibility = View.VISIBLE
 
         voucherViewModel = VoucherViewModel()
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "CONFIRMED")

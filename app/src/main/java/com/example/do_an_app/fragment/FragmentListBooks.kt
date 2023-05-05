@@ -49,7 +49,7 @@ class FragmentListBooks : Fragment(), CallBack {
         adapter = ItemListBooksAdapter(list, this)
         binding.rvListBooks.adapter = adapter
         binding.rvListBooks.layoutManager =
-            GridLayoutManager(FragmentListBooks().context, 2)
+            GridLayoutManager(FragmentListBooks().context, 3)
 
         if (arguments != null) {
             name = arguments?.getString("name").toString()

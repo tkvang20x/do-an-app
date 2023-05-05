@@ -11,7 +11,20 @@
 
         <action
             android:id="@+id/action_fragmentLogin_to_fragmentRegister"
-            app:destination="@id/fragmentRegister" />
+            app:destination="@id/fragmentRegister"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentForgetPassword"
+            app:destination="@id/fragmentForgetPassword"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/fragmentRegister"
@@ -20,6 +33,22 @@
 
         <action
             android:id="@+id/action_fragmentRegister_to_fragmentLogin"
-            app:destination="@id/fragmentLogin" />
+            app:destination="@id/fragmentLogin"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentForgetPassword"
+        android:name="com.example.do_an_app.fragment.FragmentForgetPassword"
+        android:label="FragmentForgetPassword" >
+        <action
+            android:id="@+id/action_fragmentForgetPassword_to_fragmentLogin"
+            app:destination="@id/fragmentLogin"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 </navigation>

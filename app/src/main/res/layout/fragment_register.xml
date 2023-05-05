@@ -6,14 +6,12 @@
     android:id="@+id/nestScroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
     android:fillViewport="true"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient">
+    android:layout_height="match_parent">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/tvLogo"
@@ -29,15 +27,16 @@
 
     <TextView
         android:id="@+id/tvLogin"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvLogo"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/sf_pro_medium"
         android:text="Đăng nhập"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="14sp"
-        android:layout_marginStart="20dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogo" />
     <TextView
         android:id="@+id/tvRegister"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Họ và Tên"
@@ -89,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Tài khoản"
@@ -120,7 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Mật khẩu"
@@ -151,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Nhập lại mật khẩu"
@@ -184,7 +183,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Email"
@@ -216,7 +215,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Số điện thoại"
@@ -248,7 +247,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Khóa"
@@ -256,6 +255,7 @@
         app:counterMaxLength="20"
         app:counterEnabled="true"
         app:errorEnabled="true"
+        app:startIconDrawable="@drawable/baseline_stars_24"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtCourse"
@@ -271,7 +271,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvBirthDay"
         app:layout_constraintStart_toStartOf="parent"
@@ -281,14 +280,12 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Ngày sinh"
         app:endIconMode="clear_text"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
+        app:startIconDrawable="@drawable/baseline_calendar_month_24"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtBirthDay"
@@ -313,14 +310,13 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Giới tính"
         app:endIconMode="clear_text"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
+        android:layout_marginTop="10dp"
+        app:startIconDrawable="@drawable/baseline_male_24"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtGender"
@@ -344,7 +340,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColorHint="@color/white"
         android:textFontWeight="100"
         android:hint="Đại học"
@@ -352,6 +348,8 @@
         app:counterMaxLength="20"
         app:counterEnabled="true"
         app:errorEnabled="true"
+        android:layout_marginTop="10dp"
+        app:startIconDrawable="@drawable/baseline_school_24"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtUniversity"
@@ -371,13 +369,16 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Đăng ký"
         android:background="@drawable/boder_radius"
         android:padding="4dp"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvUniversity"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
     <ProgressBar

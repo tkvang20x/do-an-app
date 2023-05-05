@@ -30,7 +30,7 @@ class FragmentStatusWaiting: Fragment(), CallbackVoucher {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentStatusWaitingBinding.inflate(inflater, container, false)
-        binding.loading.visibility = View.VISIBLE
+//        binding.loading.visibility = View.VISIBLE
         list1.clear()
 
         voucherViewModel = VoucherViewModel()

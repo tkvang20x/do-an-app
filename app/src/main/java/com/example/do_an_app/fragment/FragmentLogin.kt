@@ -42,10 +42,11 @@ class FragmentLogin : Fragment() {
 
                 model.postLogin(login)
                 model.dataLogin.observe(viewLifecycleOwner) {
-                    if (it?.status == 404) {
+                    Log.d("loginnnnnnnnnnnnnnnnn", it.toString())
+                    if (it?.error == "LOGIN FAIL- User name not exist!") {
                         Toast.makeText(this.context, "Tài khoản không tồn tại!", Toast.LENGTH_LONG)
                             .show()
-                    } else if (it?.status == 400) {
+                    } else if (it?.error == "LOGIN FAIL- PASSWORD INCORRECT !!!!") {
                         Toast.makeText(this.context, "Mật khẩu không chính xác!", Toast.LENGTH_LONG)
                             .show()
                     } else {
@@ -65,6 +66,13 @@ class FragmentLogin : Fragment() {
                 Log.d("zz", "xx${login}")
             }
         }
+
+        binding.tvForget.setOnClickListener {
+            val action = FragmentLoginDirections.actionFragmentLoginToFragmentForgetPassword()
+            findNavController().navigate(action)
+        }
+
+
         return binding.root
     }
 }

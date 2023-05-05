@@ -1,9 +1,11 @@
 package com.example.do_an_app.viewmodel
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.do_an_app.Const
+import com.example.do_an_app.fragment.FragmentLogin
 import com.example.do_an_app.model.login.DataLogin
 import com.example.do_an_app.model.login.Login
 import com.example.do_an_app.response.Api
@@ -22,7 +24,7 @@ class LoginViewModel : ViewModel() {
     fun postLogin(login : DataLogin){
         api.postLogin(login).enqueue(object : Callback<Login> {
             override fun onResponse(call: Call<Login>, response: Response<Login>) {
-                Log.d("loginnnnnnnnnnnnnnnnn", response.body().toString())
+                Log.d("kkk", "onFailure: ${response.toString()}")
 
                 dataLogin.postValue(response.body())
             }

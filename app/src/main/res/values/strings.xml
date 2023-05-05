@@ -4,4 +4,5 @@
     <string name="dang_ky">Đăng ký</string>
     <string name="text1">Khi bạn đăng nhập , mặc định bạn đồng ý với Điều khoản dịch vụ và chính sách bảo mật của thư viện</string>
     <string name="mat_khau">Mật khẩu</string>
+    <string name="quen_mat_khau">Quên mật khẩu</string>
 </resources>
