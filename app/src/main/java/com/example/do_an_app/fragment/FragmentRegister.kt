@@ -6,10 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBindings
+import com.example.do_an_app.R
 import com.example.do_an_app.databinding.FragmentRegisterBinding
 import com.example.do_an_app.model.register.DataRegister
 import com.example.do_an_app.viewmodel.RegisterViewModel
@@ -30,6 +33,7 @@ class FragmentRegister: Fragment() {
         binding = FragmentRegisterBinding.inflate(inflater, container,false )
         model = ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
 
+        val loading = ViewBindings.findChildViewById<FrameLayout>(binding.root, R.id.progress_overlay)
 
 
         val date =
@@ -49,7 +53,10 @@ class FragmentRegister: Fragment() {
         }
 
 
+
         binding.btnRegister.setOnClickListener {
+            loading?.visibility = View.VISIBLE
+
             val mDataRegister = DataRegister(
                 "",
                 binding.txtCourse.text.toString(),
@@ -67,13 +74,17 @@ class FragmentRegister: Fragment() {
 
             model.postRegister(mDataRegister)
             model.dataRegister.observe(viewLifecycleOwner) {
-//                Log.d("xxxxxxxxxxxxxxxxxxxx", it.toString())
                 if (it?.status == 201) {
                     Toast.makeText(this.context, "Đăng ký thành công !!!", Toast.LENGTH_SHORT)
                         .show()
+                    loading?.visibility = View.GONE
                     findNavController().popBackStack()
                 }
+                else{
+                    loading?.visibility = View.GONE
+                }
             }
+
         }
 
 

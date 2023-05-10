@@ -1,396 +1,413 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nestScroll"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/tvLogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/logo_kma"
-        android:textColor="@color/white" />
+    <data>
 
-    <TextView
-        android:id="@+id/tvLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/sf_pro_medium"
-        android:text="Đăng nhập"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLogo" />
-    <TextView
-        android:id="@+id/tvRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvLogo"
-        android:layout_marginTop="20dp"
-        android:text="Đăng ký"
-        android:textColor="#11FF00"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        android:layout_marginEnd="20dp"/>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvFullName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLogin"
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestScroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Họ và Tên"
-        app:startIconDrawable="@drawable/ic_baseline_account_circle_24"
-        app:endIconMode="clear_text"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtFullName"
-            android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:inputType="text"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvUserName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFullName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Tài khoản"
-        app:startIconDrawable="@drawable/account"
-        app:endIconMode="clear_text"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtUserName"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUserName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Mật khẩu"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:endIconMode="password_toggle"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtPassword"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvPasswordAgain"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Nhập lại mật khẩu"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:endIconMode="password_toggle"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtPasswordAgain"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="textPassword"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/tvLogo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:src="@drawable/logo_kma"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/sf_pro_semibold"
+                android:text="Đăng nhập"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLogo" />
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/sf_pro_semibold"
+                android:text="Đăng ký"
+                android:textColor="#11FF00"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLogo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:hint="Họ và Tên"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLogin"
+                app:startIconDrawable="@drawable/ic_baseline_account_circle_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtFullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Tài khoản"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvFullName"
+                app:startIconDrawable="@drawable/ic_baseline_account_circle_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Mật khẩu"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUserName"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvPasswordAgain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Nhập lại mật khẩu"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPassword"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPasswordAgain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPasswordAgain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Email"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
-        app:endIconMode="clear_text"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtEmail"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="textEmailAddress"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Email"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPasswordAgain"
+                app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvPhone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Số điện thoại"
-        app:startIconDrawable="@drawable/ic_baseline_phone_24"
-        app:endIconMode="clear_text"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtPhone"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvCourse"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Khóa"
-        app:endIconMode="clear_text"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
-        app:startIconDrawable="@drawable/baseline_stars_24"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtCourse"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Số điện thoại"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEmail"
+                app:startIconDrawable="@drawable/ic_baseline_phone_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvCourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Khóa"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPhone"
+                app:startIconDrawable="@drawable/baseline_stars_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtCourse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvBirthDay"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCourse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Ngày sinh"
-        app:endIconMode="clear_text"
-        app:startIconDrawable="@drawable/baseline_calendar_month_24"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtBirthDay"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="none"
-            android:focusable="false"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvBirthDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Ngày sinh"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCourse"
+                app:startIconDrawable="@drawable/baseline_calendar_month_24">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvGender"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvBirthDay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Giới tính"
-        app:endIconMode="clear_text"
-        android:layout_marginTop="10dp"
-        app:startIconDrawable="@drawable/baseline_male_24"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtGender"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtBirthDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:focusable="false"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvUniversity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvGender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColorHint="@color/white"
-        android:textFontWeight="100"
-        android:hint="Đại học"
-        app:endIconMode="clear_text"
-        app:counterMaxLength="20"
-        app:counterEnabled="true"
-        app:errorEnabled="true"
-        android:layout_marginTop="10dp"
-        app:startIconDrawable="@drawable/baseline_school_24"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtUniversity"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:background="@android:color/transparent"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:textStyle="normal"
-            android:textColorHint="@color/white"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:hint="Giới tính"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBirthDay"
+                app:startIconDrawable="@drawable/baseline_male_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvUniversity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:hint="Đại học"
+                android:textColorHint="#787878"
+                android:textFontWeight="100"
+                android:textSize="14sp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvGender"
+                app:startIconDrawable="@drawable/baseline_school_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtUniversity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegister"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/boder_radius"
+                android:padding="4dp"
+                android:text="Đăng ký"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvUniversity" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRegister"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:text="Đăng ký"
-        android:background="@drawable/boder_radius"
-        android:padding="4dp"
-        android:textSize="14sp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvUniversity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+            <!--    <ProgressBar-->
+            <!--        android:id="@+id/loading"-->
+            <!--        android:layout_width="wrap_content"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        app:layout_constraintStart_toStartOf="parent"-->
+            <!--        app:layout_constraintTop_toTopOf="parent"-->
+            <!--        app:layout_constraintEnd_toEndOf="parent"-->
+            <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--        android:layout_gravity="center"-->
+            <!--        android:visibility="invisible" />-->
+            <include
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                layout="@layout/include_progress_overlay" />
 
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_gravity="center"
-        android:visibility="invisible" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
+

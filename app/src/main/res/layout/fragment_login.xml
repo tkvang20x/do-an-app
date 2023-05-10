@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@drawable/gradient">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/tvLogo"
@@ -30,7 +30,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvLogo"
             android:layout_marginTop="20dp"
             android:text="Chào mừng đến với thư viện KMA"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:fontFamily="@font/sf_pro_semibold"
             />
@@ -44,7 +44,7 @@
             android:layout_marginTop="20dp"
             android:text="Đăng nhập"
             android:textColor="#11FF00"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/sf_pro_semibold"/>
@@ -58,7 +58,7 @@
             android:layout_height="50dp"
             android:layout_margin="20dp"
             android:textSize="14sp"
-            android:textColorHint="#787878"
+            android:textColorHint="@color/white"
             android:hint="Tài khoản"
             app:startIconDrawable="@drawable/ic_baseline_account_circle_24"
             app:endIconMode="clear_text"
@@ -74,7 +74,7 @@
                 android:inputType="text"
                 android:background="@android:color/transparent"
                 android:textSize="14sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:fontFamily="@font/sf_pro_medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +91,7 @@
             android:textSize="16sp"
             android:textColor="@color/black"
             android:textStyle="normal"
-            android:textColorHint="#787878"
+            android:textColorHint="@color/white"
             android:textFontWeight="100"
             android:hint="@string/mat_khau"
             app:startIconDrawable="@drawable/ic_baseline_lock_24"
@@ -107,7 +107,7 @@
                 android:inputType="textPassword"
                 android:background="@android:color/transparent"
                 android:textSize="14sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:fontFamily="@font/sf_pro_medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
