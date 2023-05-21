@@ -42,13 +42,11 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCreateVoucherBinding.inflate(inflater, container, false)
-        val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
-        view.visibility = View.VISIBLE
+//        val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
+//        view.visibility = View.VISIBLE
         binding.tvViewVoucher.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentCreateVoucher_to_fragmentVoucher)
         }
-
-        Log.d("lisssssssssssssssssssssss", list_book.toString())
 
         val date =
             DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->

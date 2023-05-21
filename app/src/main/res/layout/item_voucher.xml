@@ -27,24 +27,15 @@
             android:elevation="2dp"
             android:id="@+id/cdVoucher">
 
-            <ImageView
-                android:id="@+id/imgAvt"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@mipmap/ic_launcher"/>
-
             <TextView
                 android:id="@+id/tvVoucherId"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Mã voucher"
-                app:layout_constraintStart_toEndOf="@id/imgAvt"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginLeft="20dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:ellipsize="end"
@@ -56,7 +47,7 @@
                 android:id="@+id/txtDescription"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Đây là mô tả cho phiếu mượn "
+                android:text="Số lượng sách: 2"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
@@ -66,7 +57,6 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="1"
-                setText="@{voucher.description}"
                 />
 
             <TextView

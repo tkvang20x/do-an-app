@@ -65,7 +65,7 @@ class FragmentListGroupsBooks: Fragment(), CallBack {
         adapter = ItemListBooksAdapter(list, this)
         binding.rvListBooks.adapter = adapter
         binding.rvListBooks.layoutManager =
-            GridLayoutManager(FragmentListGroupsBooks().context, 2 )
+            GridLayoutManager(FragmentListGroupsBooks().context, 3 )
 
 
         binding.btnSearch.setOnClickListener {

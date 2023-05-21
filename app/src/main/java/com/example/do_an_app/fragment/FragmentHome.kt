@@ -108,7 +108,7 @@ class FragmentHome : Fragment(), CallBack {
         binding.rvList2.layoutManager =
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
         books2ViewModel = BooksViewModel()
-        books2ViewModel.getBooks(2, 10, "", "", "")
+        books2ViewModel.getBooks(1, 10, "", "", "")
         books2ViewModel.dataBooks.observe(viewLifecycleOwner) {
             if (it != null) {
                 list2.clear()

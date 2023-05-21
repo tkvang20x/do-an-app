@@ -17,8 +17,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgAvtUser"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/anh_sach"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,20 +49,20 @@
             <TextView
                 android:id="@+id/tvDescriptionUser"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="100dp"
                 android:layout_marginEnd="100dp"
                 android:layout_marginTop="16dp"
-                android:text="Đây là mô tả của bản thân "
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imgAvtUser"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:maxLines="2" />
+                android:maxLines="2"
+                android:visibility="invisible"/>
 
             <View
                 android:id="@+id/line"
@@ -85,20 +85,20 @@
                 android:text="Chỉnh sửa"
                 android:textAlignment="center"
                 android:textColor="#19FF00"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/tvInforGeneral"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/boder_text"
                 android:text="Thông tin cá nhân"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line" />
 
@@ -110,7 +110,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Họ và tên: "
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvInforGeneral" />
 
@@ -122,7 +122,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Lê Trung Kiên "
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@id/tvNameTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvInforGeneral"
                 setText="@{user.name}"/>
@@ -135,7 +135,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Ngày sinh: "
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvNameValue" />
 
@@ -146,7 +146,7 @@
                 android:layout_marginStart="10dp"
                 android:text="20/07/2000 "
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/tvBirthdayTitle"
                 app:layout_constraintStart_toEndOf="@id/tvBirthdayTitle"
                 app:layout_constraintTop_toTopOf="@id/tvBirthdayTitle"
@@ -160,7 +160,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Giới tính: "
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvBirthdayValue" />
 
@@ -171,7 +171,7 @@
                 android:layout_marginStart="10dp"
                 android:text="Nam"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/tvGenderTitle"
                 app:layout_constraintStart_toEndOf="@id/tvGenderTitle"
                 app:layout_constraintTop_toTopOf="@id/tvGenderTitle"
@@ -186,7 +186,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Email: "
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvGenderValue" />
 
@@ -197,7 +197,7 @@
                 android:layout_marginStart="10dp"
                 android:text="letrungkien2007@gmail.com"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/tvEmailTitle"
                 app:layout_constraintStart_toEndOf="@id/tvEmailTitle"
                 app:layout_constraintTop_toTopOf="@id/tvEmailTitle"
@@ -212,7 +212,7 @@
                 android:layout_marginTop="16dp"
                 android:text="SDT: "
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvEmailValue" />
 
@@ -223,7 +223,7 @@
                 android:layout_marginStart="10dp"
                 android:text="0962983318"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/tvPhoneTitle"
                 app:layout_constraintStart_toEndOf="@id/tvPhoneTitle"
                 app:layout_constraintTop_toTopOf="@id/tvPhoneTitle"
@@ -238,7 +238,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Đại học: "
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPhoneValue" />
 
@@ -249,7 +249,7 @@
                 android:layout_marginStart="10dp"
                 android:text="Học viện KTMM"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tvAddressTitle"
                 app:layout_constraintTop_toTopOf="@id/tvAddressTitle"
@@ -259,29 +259,81 @@
                 setText="@{user.university}"/>
 
             <TextView
-                android:id="@+id/tvFavoriteTitle"
+                android:id="@+id/tvCourse"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvAddressValue"
                 android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 android:textColor="@color/white"
                 android:text="Khóa: " />
 
             <TextView
-                android:id="@+id/tvFavoriteValue"
-                app:layout_constraintStart_toEndOf="@id/tvFavoriteTitle"
-                app:layout_constraintTop_toTopOf="@id/tvFavoriteTitle"
-                app:layout_constraintBottom_toBottomOf="@id/tvFavoriteTitle"
+                android:id="@+id/txtCourse"
+                app:layout_constraintStart_toEndOf="@id/tvCourse"
+                app:layout_constraintTop_toTopOf="@id/tvCourse"
+                app:layout_constraintBottom_toBottomOf="@id/tvCourse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:textSize="18sp"
+                android:textSize="12sp"
                 android:textColor="@color/white"
                 android:text="CT3"
                 setText="@{user.course}"/>
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvDepartment"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvCourse"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:text="Phòng ban: " />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtDepartment"-->
+<!--                app:layout_constraintStart_toEndOf="@id/tvDepartment"-->
+<!--                app:layout_constraintTop_toTopOf="@id/tvDepartment"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/tvDepartment"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:text="Phòng Công nghệ thông tin"-->
+<!--                setText="@{user.course}"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvSpecialized"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvDepartment"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:text="Chuyên ngành: " />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/txtSpecialized"-->
+<!--                app:layout_constraintStart_toEndOf="@id/tvSpecialized"-->
+<!--                app:layout_constraintTop_toTopOf="@id/tvSpecialized"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/tvSpecialized"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:text="Phòng Công nghệ thông tin"-->
+<!--                setText="@{user.course}"/>-->
+
+
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="wrap_content"

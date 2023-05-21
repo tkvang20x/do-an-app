@@ -22,30 +22,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:text="Phiếu mượn cá nhân"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:textColor="@color/white"/>
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/tvViewVoucher"
-            android:drawableLeft="@drawable/ic_baseline_keyboard_double_arrow_right_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Xem phiếu mượn cá nhân"
             android:textStyle="bold"
             android:textColor="#00ED27"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitleFragment"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            app:drawableLeftCompat="@drawable/ic_baseline_keyboard_double_arrow_right_24" />
         <ImageView
             android:id="@+id/imgCalendar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvDueDate"
             app:layout_constraintBottom_toBottomOf="@id/tvDueDate"
@@ -66,19 +67,19 @@
             app:endIconMode="clear_text"
             app:layout_constraintStart_toEndOf="@id/imgCalendar"
             >
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtBirthDay"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:inputType="none"
-                android:focusable="false"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:textSize="12sp"
+                android:focusable="false"
+                android:hint="Ngày hẹn trả"
+                android:inputType="none"
                 android:textColor="@color/white"
-                android:textStyle="normal"
                 android:textColorHint="@color/white"
-                android:hint="Hẹn ngày trả"
-                />
+                android:textSize="12sp"
+                android:textStyle="normal" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
@@ -102,7 +103,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line"
             android:text="Danh sách sách đã thêm vào phiếu"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             android:layout_weight="1"
             android:ellipsize="end"
@@ -116,8 +117,8 @@
             app:layout_constraintBottom_toTopOf="@id/rvList"
             android:layout_marginEnd="10dp"
             android:background="@drawable/baseline_qr_code_scanner_24"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvList"
@@ -142,6 +143,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="10dp"
             />
 
         <ProgressBar
@@ -153,7 +155,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_gravity="center"
-            android:visibility="visible" />
+            android:visibility="gone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -40,6 +40,7 @@ class FragmentDetailBook: Fragment() {
         index = arguments?.getInt("index")!!
         message = arguments?.getString("message").toString()
 
+        Log.d("messagesaaaaaaaaaaaaaaa", message.toString())
 
         if (message == "view_voucher"){
             binding.btnRemoveBook.visibility = View.GONE

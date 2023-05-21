@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +17,9 @@ import com.example.do_an_app.MainActivity
 import com.example.do_an_app.databinding.FragmentLoginBinding
 import com.example.do_an_app.model.login.DataLogin
 import com.example.do_an_app.viewmodel.LoginViewModel
+import com.github.ybq.android.spinkit.sprite.Sprite
+import com.github.ybq.android.spinkit.style.DoubleBounce
+
 
 class FragmentLogin : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -29,20 +33,24 @@ class FragmentLogin : Fragment() {
 
         model = ViewModelProvider(this)[LoginViewModel::class.java]
 //
-        binding.tvRegister.setOnClickListener {
-            val action = FragmentLoginDirections.actionFragmentLoginToFragmentRegister()
-            findNavController().navigate(action)
-        }
-
+//        binding.tvRegister.setOnClickListener {
+//            val action = FragmentLoginDirections.actionFragmentLoginToFragmentRegister()
+//            findNavController().navigate(action)
+//        }
 
         binding.btnLogin.setOnClickListener {
+            val progressBar = binding.spinKit as ProgressBar
+            val doubleBounce: Sprite = DoubleBounce()
+            progressBar.indeterminateDrawable = doubleBounce
+            binding.csLoading.visibility = View.VISIBLE
+
+
             val login =
                 DataLogin(binding.txtUserName.text.toString(), binding.txtPassword.text.toString())
             if (binding.txtUserName.text.toString() != "" && binding.txtPassword.text.toString() != "") {
 
                 model.postLogin(login)
                 model.dataLogin.observe(viewLifecycleOwner) {
-                    Log.d("loginnnnnnnnnnnnnnnnn", it.toString())
                     if (it?.error == "LOGIN FAIL- User name not exist!") {
                         Toast.makeText(this.context, "Tài khoản không tồn tại!", Toast.LENGTH_LONG)
                             .show()

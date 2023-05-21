@@ -9,7 +9,7 @@
         android:id="@+id/nestScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_app"
+        android:background="@drawable/gradient"
         android:fillViewport="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,8 +20,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgAvtUser"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="20dp"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="Chào mừng bạn đến với thư viện KMA"
                 android:textColor="@color/white"
@@ -40,7 +40,9 @@
                 android:textStyle="normal"
                 app:layout_constraintStart_toEndOf="@id/imgAvtUser"
                 app:layout_constraintBottom_toTopOf="@id/txtSearch"
-                app:layout_constraintTop_toTopOf="@id/imgAvtUser" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp"
+                />
 
 
             <EditText
@@ -48,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/boder_radius"
                 android:drawableStart="@drawable/ic_baseline_search_24"
@@ -58,15 +60,17 @@
                 app:endIconMode="clear_text"
                 app:layout_constraintBottom_toBottomOf="@id/imgAvtUser"
                 app:layout_constraintEnd_toStartOf="@id/btnSearch"
-                app:layout_constraintStart_toEndOf="@id/imgAvtUser" />
+                app:layout_constraintStart_toEndOf="@id/imgAvtUser"
+                />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSearch"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/ic_baseline_search_24"
                 android:padding="10dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintBottom_toBottomOf="@id/txtSearch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/txtSearch" />
@@ -79,7 +83,7 @@
                 android:layout_marginTop="18dp"
                 android:drawableLeft="@drawable/ic_baseline_checklist_24"
                 android:text=" Sách mới nhất"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imgAvtUser" />
@@ -92,7 +96,7 @@
                 android:layout_marginRight="20dp"
                 android:text=" Xem tất cả"
                 android:textColor="#00FF22"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="@id/tvTitle1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -137,27 +141,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:drawableLeft="@drawable/ic_baseline_checklist_24"
-                android:text=" Sách phổ biến nhất"
+                android:text=" Mượn nhiều nhất trong tháng"
                 android:layout_marginTop="10dp"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/slider" />
 
-            <TextView
-                android:id="@+id/tvViewAll2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
-                android:text=" Xem tất cả"
-                android:textColor="#00FF22"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@id/tvTitle2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/slider" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvViewAll2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:text=" Xem tất cả"-->
+<!--                android:textColor="#00FF22"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/tvTitle2"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/slider" />-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvList2"
