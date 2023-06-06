@@ -2,11 +2,16 @@ package com.example.do_an_app.response
 
 import com.example.do_an_app.model.avatar.DataAvatar
 import com.example.do_an_app.model.book.DataBook
+import com.example.do_an_app.model.book.UpdateBook
 import com.example.do_an_app.model.books.BooksDataList
 import com.example.do_an_app.model.books.DetailBooks
+import com.example.do_an_app.model.chart.ChartData
 import com.example.do_an_app.model.group.GroupsData
+import com.example.do_an_app.model.login.ChangePassWord
 import com.example.do_an_app.model.login.DataLogin
+import com.example.do_an_app.model.login.DataPassword
 import com.example.do_an_app.model.login.Login
+import com.example.do_an_app.model.password.ForgotPassword
 import com.example.do_an_app.model.register.DataRegister
 import com.example.do_an_app.model.register.RegisterUser
 import com.example.do_an_app.model.users.DataUpdate
@@ -60,9 +65,21 @@ interface Api {
     @GET("/do-an/v1/book/{code_id}")
     fun getDetailBook(@Header("Authorization") token: String?, @Path("code_id") code: String) : Call<DataBook>
 
+    @PUT("/do-an/v1/book/{code_id}")
+    fun updateBook(@Header("Authorization") token: String?, @Path("code_id") code: String, @Body status_update : UpdateBook) : Call<DataBook>
+
     @POST("/do-an/v1/voucher")
     fun postVoucher(@Header("Authorization") token: String?,@Body voucherCreate: DataVoucherCreate) : Call<DataDetailVoucher>
 
     @PUT("/do-an/v1/voucher/{voucher_id}/status")
     fun updateStatusVoucher(@Header("Authorization") token: String?, @Path("voucher_id") voucher_id :String, @Body status_update : StatusVoucher) : Call<DataDetailVoucher>
+
+    @PUT("/do-an/v1/password")
+    fun updatePass(@Header("Authorization") token: String?,  @Body new_pass : DataPassword) : Call<ChangePassWord>
+
+    @PUT("/do-an/v1/forgot/{role}")
+    fun forgotPassword(@Header("Authorization") token: String?,  @Path("role") role: String, @Body email: String) : Call<ForgotPassword>
+
+    @GET("/do-an/v1/chart")
+    fun getChart(@Header("Authorization") token: String?,@Query("month") month: String, @Query("year") year: String,) : Call<ChartData>
 }

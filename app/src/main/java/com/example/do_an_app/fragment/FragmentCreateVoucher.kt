@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.do_an_app.R
@@ -24,6 +25,8 @@ import com.example.do_an_app.viewmodel.VoucherViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 import com.example.do_an_app.fragment.FragmentHome.Companion.code_user
+import com.example.do_an_app.model.book.UpdateBook
+import com.example.do_an_app.viewmodel.BookViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
@@ -35,6 +38,7 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
     private lateinit var binding: FragmentCreateVoucherBinding
     private lateinit var adapter: ItemBookVoucherCreateAdapter
     private lateinit var voucherViewModel: VoucherViewModel
+    private lateinit var bookViewModel: BookViewModel
     private val myCalendar = Calendar.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,8 +46,8 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCreateVoucherBinding.inflate(inflater, container, false)
-//        val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
-//        view.visibility = View.VISIBLE
+        val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
+        view.visibility = View.VISIBLE
         binding.tvViewVoucher.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentCreateVoucher_to_fragmentVoucher)
         }
@@ -74,7 +78,11 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
             if(list_book.size == 0){
                 Toast.makeText(requireContext(), "Danh sách phiếu mượn không được trống!", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
-            }else{
+            }else if (binding.txtBirthDay.text.toString().trim().length == 0){
+                Toast.makeText(requireContext(), "Ngày hẹn trả không được trống!", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            else{
                 voucherViewModel = VoucherViewModel()
                 voucherViewModel.postVoucher(
                     DataVoucherCreate(list_book, binding.txtBirthDay.text.toString(),code_user, "")
@@ -117,6 +125,10 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
             list_book.removeAt(index)
             adapter.notifyDataSetChanged()
             dialogInterface.dismiss()
+
+            bookViewModel = BookViewModel()
+            bookViewModel.updateBook(groups.code_id, UpdateBook("NEW", "READY", ""))
+
 
             val builder2 = AlertDialog.Builder(requireContext())
             builder2.setMessage("Xóa thành công!!!")

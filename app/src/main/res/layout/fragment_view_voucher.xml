@@ -41,12 +41,26 @@
             android:layout_marginTop="10dp"
             android:textSize="16sp"
             android:textColor="@color/white"/>
+        
+        <TextView
+            android:id="@+id/tvCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/txtCodeVoucher"
+            app:layout_constraintTop_toTopOf="@id/txtCodeVoucher"
+            app:layout_constraintBottom_toBottomOf="@id/txtCodeVoucher"
+            android:layout_marginStart="10dp"
+            android:text="Mã phiếu:"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            />
 
         <TextView
             android:id="@+id/txtCodeVoucher"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvCode"
             app:layout_constraintTop_toBottomOf="@id/tvTitleFragment"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="10dp"
@@ -61,10 +75,23 @@
             setText="@{voucher.voucher_id}"/>
 
         <TextView
+            android:id="@+id/tvCodeUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCode"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Mã sinh viên:"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            />
+
+        <TextView
             android:id="@+id/txtCodeUser"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvCodeUser"
             app:layout_constraintTop_toBottomOf="@id/txtCodeVoucher"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,6 +135,8 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingBottom="8dp"
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
             setText="@{voucher.start_date}"/>
 
         <TextView
@@ -140,7 +169,9 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:paddingBottom="8dp"
-            setText="@{voucher.start_date}"/>
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
+            setText="@{voucher.due_date}"/>
 
         <View
             android:id="@+id/line"
@@ -194,6 +225,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="gone"
+            android:layout_marginBottom="8dp"
             />
         <ProgressBar
             android:id="@+id/loading"

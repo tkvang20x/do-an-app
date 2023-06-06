@@ -72,6 +72,21 @@ object Utils {
     }
 
     @JvmStatic
+    @BindingAdapter("setGender")
+    fun setGender(tv: TextView, string: String?) {
+        if (string == null) {
+            tv.text = ""
+        } else {
+            if(string == "FEMALE"){
+                tv.text = "Nữ"
+            }
+            else{
+                tv.text = "Nam"
+            }
+        }
+    }
+
+    @JvmStatic
     @BindingAdapter("setInt")
     fun setInt(tv: TextView, int: Int?) {
         if (int == null) {

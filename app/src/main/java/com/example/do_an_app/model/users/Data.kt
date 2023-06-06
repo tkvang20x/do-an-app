@@ -19,5 +19,7 @@ data class Data(
     val phone: String,
     val role: String,
     val university: String,
-    val user_name: String
+    val user_name: String,
+    val department: String,
+    val specialized : String
 )

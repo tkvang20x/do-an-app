@@ -38,10 +38,10 @@ class FragmentStatusConfirm: Fragment(), CallbackVoucher {
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "CONFIRMED")
         voucherViewModel.dataVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
-                Log.d("confirmmmmmmmmmmmmmmmmmmmmmm", it.toString())
                 list4.clear()
                 list4.addAll(it.data.result)
                 adapter.notifyDataSetChanged()
+                binding.txtNullData.visibility = View.GONE
             }
             // Ẩn progressBar khi kết thúc load dữ liệu
             binding.loading.visibility = View.GONE
@@ -51,6 +51,7 @@ class FragmentStatusConfirm: Fragment(), CallbackVoucher {
         binding.rvList2.adapter = adapter
         binding.rvList2.layoutManager =
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
+
 
         return binding.root
     }

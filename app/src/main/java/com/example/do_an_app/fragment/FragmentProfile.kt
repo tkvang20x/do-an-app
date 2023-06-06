@@ -3,18 +3,23 @@ package com.example.do_an_app.fragment
 import android.Manifest
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.do_an_app.LoginActivity
+import com.example.do_an_app.MainActivity
 import com.example.do_an_app.R
 import com.example.do_an_app.databinding.FragmentProfileBinding
 import com.example.do_an_app.fragment.FragmentHome.Companion.data_user
@@ -45,14 +50,43 @@ class FragmentProfile: Fragment() {
 
         userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
         userViewModel.getUser()
-        userViewModel.dataUser.observe(viewLifecycleOwner, {
+        userViewModel.dataUser.observe(viewLifecycleOwner) {
             if (it != null) {
-                data_user =it.data
+                data_user = it.data
                 binding.user = it.data
-            }
-        })
 
-//        binding.user = data_user
+                if (it.data.role === "STUDENT"){
+                    binding.tvCourse.visibility = View.VISIBLE
+                    binding.txtCourse.visibility = View.VISIBLE
+                    binding.imgCourse.visibility = View.VISIBLE
+                }else{
+                    binding.tvSpecialized.visibility = View.VISIBLE
+                    binding.txtSpecialized.visibility = View.VISIBLE
+                    binding.imgSpecialize.visibility = View.VISIBLE
+                    binding.txtDepartment.visibility = View.VISIBLE
+                    binding.tvDepartment.visibility = View.VISIBLE
+                    binding.imgDepartment.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        binding.imgSetting.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Đăng xuất")
+            builder.setMessage("Bạn Có Muốn Đăng ?")
+            builder.setNegativeButton(
+                "No"
+            ) { dialogInterface: DialogInterface, i: Int -> dialogInterface.dismiss() }
+            builder.setPositiveButton(
+                "Yes"
+            ) { dialogInterface: DialogInterface?, i: Int ->
+                val intent = Intent()
+                intent.setClass(requireActivity(), LoginActivity::class.java)
+                startActivity(intent)
+            }
+
+            builder.show()
+        }
 
         binding.imgChangeAvt.setOnClickListener {
             checkPermission()
@@ -60,6 +94,10 @@ class FragmentProfile: Fragment() {
 
         binding.tvUpdate.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentProfile_to_fragmentUpdateProfile)
+        }
+
+        binding.imgSetting.setOnClickListener {
+            showPopupMenu(it)
         }
 
         return binding.root
@@ -119,5 +157,26 @@ class FragmentProfile: Fragment() {
         val file = File(uri.path)
         val reqFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
         return MultipartBody.Part.createFormData("avatar", file.name, reqFile)
+    }
+
+    private fun showPopupMenu(view: View) {
+        val popupMenu = PopupMenu(requireContext(), view)
+        popupMenu.inflate(R.menu.menu_setting)
+        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
+            when (menuItem.itemId) {
+                R.id.setting -> {
+                    findNavController().navigate(R.id.action_fragmentProfile_to_fragmentChangePass)
+                    true
+                }
+                R.id.logout -> {
+                    val intent = Intent()
+                    intent.setClass(requireActivity(), LoginActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+        popupMenu.show()
     }
 }

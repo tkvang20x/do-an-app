@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.do_an_app.Const
 import com.example.do_an_app.model.avatar.DataAvatar
+import com.example.do_an_app.model.chart.ChartData
 import com.example.do_an_app.model.users.UserData
 import com.example.do_an_app.model.voucher.DataDetailVoucher
 import com.example.do_an_app.model.voucher.DataVoucher
@@ -21,10 +22,12 @@ class VoucherViewModel: ViewModel() {
     var dataVoucher: MutableLiveData<DataVoucher?>
     var dataDetailVoucher: MutableLiveData<DataDetailVoucher?>
     var token: String? = Const.TOKEN
+    var chart: MutableLiveData<ChartData?>
     init {
         api = ApiRetrofit.createRetrofit(Const.BASE_URL, Api ::class.java)
         dataVoucher = MutableLiveData<DataVoucher?>()
         dataDetailVoucher = MutableLiveData<DataDetailVoucher?>()
+        chart = MutableLiveData()
     }
 
     fun getVoucherUserId(page: Int, user_id: String, status_voucher: String) {
@@ -71,6 +74,18 @@ class VoucherViewModel: ViewModel() {
             }
             override fun onFailure(call: Call<DataDetailVoucher>, t: Throwable) {
                 dataDetailVoucher.postValue(null)
+            }
+        })
+    }
+
+    fun getChart(month: String, year: String) {
+        api.getChart("Bearer $token", month, year).enqueue(object :
+            Callback<ChartData> {
+            override fun onResponse(call: Call<ChartData>, response: Response<ChartData>) {
+                chart.postValue(response.body())
+            }
+            override fun onFailure(call: Call<ChartData>, t: Throwable) {
+                chart.postValue(null)
             }
         })
     }

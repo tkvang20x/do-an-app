@@ -19,25 +19,29 @@ import com.example.do_an_app.adapter.Books2Adapter
 import com.example.do_an_app.adapter.BooksAdapter
 import com.example.do_an_app.adapter.ImageSliderAdapter
 import com.example.do_an_app.callback.CallBack
+import com.example.do_an_app.callback.CallBack2
 import com.example.do_an_app.databinding.FragmentHomeBinding
 import com.example.do_an_app.model.Image
 import com.example.do_an_app.viewmodel.BooksViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.do_an_app.model.books.Result
+import com.example.do_an_app.model.chart.BooksCount
 import com.example.do_an_app.model.users.Data
 import com.example.do_an_app.viewmodel.UserViewModel
+import com.example.do_an_app.viewmodel.VoucherViewModel
 import com.smarteist.autoimageslider.SliderView
 
-class FragmentHome : Fragment(), CallBack {
+class FragmentHome : Fragment(), CallBack, CallBack2 {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: BooksAdapter
     private lateinit var adapter2: Books2Adapter
     private lateinit var booksViewModel: BooksViewModel
     private lateinit var books2ViewModel: BooksViewModel
+    private lateinit var chartViewModel: VoucherViewModel
     private lateinit var userViewModel: UserViewModel
     private val list = arrayListOf<Result>()
-    private val list2 = arrayListOf<Result>()
+    private val list2 = arrayListOf<BooksCount>()
     private lateinit var adapter_image: ImageSliderAdapter
 
     companion object {
@@ -60,6 +64,8 @@ class FragmentHome : Fragment(), CallBack {
                 "",
                 "",
                 "USER",
+                "",
+                "",
                 "",
                 ""
             )
@@ -85,10 +91,6 @@ class FragmentHome : Fragment(), CallBack {
         binding.slider.isAutoCycle = true
         binding.slider.startAutoCycle()
 
-        adapter = BooksAdapter(list, this)
-        binding.rvList.adapter = adapter
-        binding.rvList.layoutManager =
-            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
         booksViewModel = BooksViewModel()
         booksViewModel.getBooks(1, 10, "", "", "")
         booksViewModel.dataBooks.observe(viewLifecycleOwner) {
@@ -102,23 +104,60 @@ class FragmentHome : Fragment(), CallBack {
             binding.loading.visibility = View.GONE
         }
 
+        adapter = BooksAdapter(list, this)
+        binding.rvList.adapter = adapter
+        binding.rvList.layoutManager =
+            LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
+
+//        books2ViewModel = BooksViewModel()
+//        books2ViewModel.getBooks(1, 10, "", "", "")
+//        books2ViewModel.dataBooks.observe(viewLifecycleOwner) {
+//            if (it != null) {
+//                list2.clear()
+//                list2.addAll(it.data.result)
+//                adapter2.notifyDataSetChanged()
+//
+//            }
+//            // Ẩn progressBar khi kết thúc load dữ liệu
+//            binding.loading.visibility = View.GONE
+//        }
+
+        chartViewModel = VoucherViewModel()
+        chartViewModel.getChart("05", "2023")
+        chartViewModel.chart.observe(viewLifecycleOwner){
+            if (it != null) {
+                list2.clear()
+                if (it.data.list_books_count.size > 10){
+                    for (i in 0..9){
+                        val books = BooksCount(it.data.list_books_count[i].author,
+                                                it.data.list_books_count[i].code_books,
+                                                it.data.list_books_count[i].count,
+                            it.data.list_books_count[i].name,
+                            it.data.list_books_count[i].avatar
+                            )
+                        list2.add(books)
+                    }
+                }else if (it.data.list_books_count.size in 1..9){
+                    for (i in 0..it.data.list_books_count.size -1){
+                        val books = BooksCount(it.data.list_books_count[i].author,
+                            it.data.list_books_count[i].code_books,
+                            it.data.list_books_count[i].count,
+                            it.data.list_books_count[i].name,
+                            it.data.list_books_count[i].avatar
+                        )
+                        list2.add(books)
+                    }
+                }
+                adapter2.notifyDataSetChanged()
+            }
+            // Ẩn progressBar khi kết thúc load dữ liệu
+            binding.loading.visibility = View.GONE
+        }
 
         adapter2 = Books2Adapter(list2, this)
         binding.rvList2.adapter = adapter2
         binding.rvList2.layoutManager =
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
-        books2ViewModel = BooksViewModel()
-        books2ViewModel.getBooks(1, 10, "", "", "")
-        books2ViewModel.dataBooks.observe(viewLifecycleOwner) {
-            if (it != null) {
-                list2.clear()
-                list2.addAll(it.data.result)
-                adapter2.notifyDataSetChanged()
-
-            }
-            // Ẩn progressBar khi kết thúc load dữ liệu
-            binding.loading.visibility = View.GONE
-        }
 
 
         userViewModel = ViewModelProvider(requireActivity()).get(UserViewModel::class.java)
@@ -163,6 +202,14 @@ class FragmentHome : Fragment(), CallBack {
     }
 
     override fun onLongClick(job: Result) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClick(books: BooksCount) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onLongClick(job: BooksCount) {
         TODO("Not yet implemented")
     }
 

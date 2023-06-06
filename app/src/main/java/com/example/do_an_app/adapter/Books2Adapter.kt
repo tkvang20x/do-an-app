@@ -4,20 +4,23 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.do_an_app.callback.CallBack
+import com.example.do_an_app.callback.CallBack2
+import com.example.do_an_app.databinding.ItemBooks2Binding
 import com.example.do_an_app.databinding.ItemBooksBinding
 import com.example.do_an_app.model.books.Result
+import com.example.do_an_app.model.chart.BooksCount
 
-class Books2Adapter(private val list: ArrayList<Result>, private val callback: CallBack) : RecyclerView.Adapter<Books2Adapter.ViewHolder>() {
+class Books2Adapter(private val list: ArrayList<BooksCount>, private val callback: CallBack2) : RecyclerView.Adapter<Books2Adapter.ViewHolder>() {
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
-    class ViewHolder(val binding: ItemBooksBinding) :RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Result){
-            binding.books = item
+    class ViewHolder(val binding: ItemBooks2Binding) :RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: BooksCount){
+            binding.bookCount = item
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemBooksBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(ItemBooks2Binding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

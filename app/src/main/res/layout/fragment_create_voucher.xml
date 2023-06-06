@@ -34,7 +34,7 @@
             android:id="@+id/tvViewVoucher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Xem phiếu mượn cá nhân"
+            android:text="Phiếu mượn cá nhân"
             android:textStyle="bold"
             android:textColor="#00ED27"
             android:textSize="12sp"

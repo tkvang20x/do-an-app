@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient">
+        android:background="@color/white">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/tvLogo"
@@ -30,7 +30,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/sf_pro_semibold"
             android:text="Chào mừng đến với thư viện KMA"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
             android:layout_height="50dp"
             android:layout_margin="20dp"
             android:hint="Tài khoản"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/black"
             android:textSize="12sp"
             app:counterEnabled="true"
             app:counterMaxLength="20"
@@ -61,7 +61,7 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/sf_pro_medium"
                 android:inputType="text"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +74,7 @@
             android:layout_marginRight="20dp"
             android:hint="@string/mat_khau"
             android:textColor="@color/black"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/black"
             android:textFontWeight="100"
             android:textSize="12sp"
             android:textStyle="normal"
@@ -94,7 +94,7 @@
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/sf_pro_medium"
                 android:inputType="textPassword"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,12 +176,12 @@
 
             <com.github.ybq.android.spinkit.SpinKitView
                 android:id="@+id/spin_kit"
-                style="@style/SpinKitView.Small.RotatingCircle"
+                style="@style/SpinKitView.Large.Circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                app:SpinKit_Color="@color/black" />
+                app:SpinKit_Color="#0097D3" />
         </RelativeLayout>
 
 

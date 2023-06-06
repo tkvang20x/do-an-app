@@ -51,16 +51,22 @@ class FragmentLogin : Fragment() {
 
                 model.postLogin(login)
                 model.dataLogin.observe(viewLifecycleOwner) {
-                    if (it?.error == "LOGIN FAIL- User name not exist!") {
+                    Log.d("abcccccccccc", it.toString())
+                    if (it?.error == "USERNAME NOT EXIST") {
                         Toast.makeText(this.context, "Tài khoản không tồn tại!", Toast.LENGTH_LONG)
                             .show()
-                    } else if (it?.error == "LOGIN FAIL- PASSWORD INCORRECT !!!!") {
+                        binding.csLoading.visibility = View.GONE
+                    } else if (it?.error == "INVALID PASSWORD") {
                         Toast.makeText(this.context, "Mật khẩu không chính xác!", Toast.LENGTH_LONG)
                             .show()
+                        binding.csLoading.visibility = View.GONE
                     } else {
                         it?.data?.let { it1 -> MySharedPreference(requireActivity()).putToken(it1.token) }
 
                         Const.TOKEN = MySharedPreference(requireActivity()).getToken().toString()
+
+                        Toast.makeText(this.context, "Đăng nhập thành công!", Toast.LENGTH_LONG)
+                            .show()
 
                         val intent = Intent()
                         intent.setClass(requireActivity(), MainActivity::class.java)
@@ -72,6 +78,7 @@ class FragmentLogin : Fragment() {
                 Toast.makeText(this.context, "Điền thiếu thông tin", Toast.LENGTH_LONG)
                     .show()
                 Log.d("zz", "xx${login}")
+                binding.csLoading.visibility = View.GONE
             }
         }
 

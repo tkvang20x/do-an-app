@@ -7,5 +7,8 @@ data class DataUpdate(
     val gender: String,
     val name: String,
     val phone: String,
-    val university: String
+    val university: String,
+    val department: String,
+    val specialized: String,
+    val role: String
 )

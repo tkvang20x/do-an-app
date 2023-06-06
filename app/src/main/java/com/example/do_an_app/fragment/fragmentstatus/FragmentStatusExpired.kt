@@ -37,11 +37,10 @@ class FragmentStatusExpired: Fragment() , CallbackVoucher{
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "EXPIRED")
         voucherViewModel.dataVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
-                Log.d("expiredddddddddddđ", it.toString())
                 list3.clear()
                 list3.addAll(it.data.result)
                 adapter.notifyDataSetChanged()
-
+                binding.txtNullData.visibility = View.GONE
             }
             // Ẩn progressBar khi kết thúc load dữ liệu
             binding.loading.visibility = View.GONE

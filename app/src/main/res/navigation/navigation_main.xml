@@ -10,25 +10,42 @@
         android:label="FragmentHome" >
         <action
             android:id="@+id/action_fragmentHome_to_fragmentDetailBooks"
-            app:destination="@id/fragmentDetailBooks" />
+            app:destination="@id/fragmentDetailBooks"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"
+            />
         <action
             android:id="@+id/action_fragmentHome_to_fragmentListBooks"
-            app:destination="@id/fragmentListBooks" />
+            app:destination="@id/fragmentListBooks"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentDetailBooks"
         android:name="com.example.do_an_app.fragment.FragmentDetailBooks"
-        android:label="FragmentDetailBooks" />
+        android:label="FragmentDetailBooks"/>
     <fragment
         android:id="@+id/fragmentListBooks"
         android:name="com.example.do_an_app.fragment.FragmentListBooks"
         android:label="FragmentListBooks" >
         <action
             android:id="@+id/action_fragmentListBooks_to_fragmentDetailBooks"
-            app:destination="@id/fragmentDetailBooks" />
+            app:destination="@id/fragmentDetailBooks"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_fragmentListBooks_to_fragmentHome"
-            app:destination="@id/fragmentHome" />
+            app:destination="@id/fragmentHome"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/fragmentGroups"
@@ -36,7 +53,11 @@
         android:label="FragmentGroups" >
         <action
             android:id="@+id/action_fragmentGroups_to_fragmentListGroupsBooks"
-            app:destination="@id/fragmentListGroupsBooks" />
+            app:destination="@id/fragmentListGroupsBooks"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentListGroupsBooks"
@@ -44,7 +65,14 @@
         android:label="FragmentListGroupsBooks" >
         <action
             android:id="@+id/action_fragmentListGroupsBooks_to_fragmentDetailBooks"
-            app:destination="@id/fragmentDetailBooks" />
+            app:destination="@id/fragmentDetailBooks"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_fragmentListGroupsBooks_to_fragmentGroups"
+            app:destination="@id/fragmentGroups" />
     </fragment>
     <fragment
         android:id="@+id/fragmentProfile"
@@ -52,7 +80,18 @@
         android:label="FragmentProfile" >
         <action
             android:id="@+id/action_fragmentProfile_to_fragmentUpdateProfile"
-            app:destination="@id/fragmentUpdateProfile" />
+            app:destination="@id/fragmentUpdateProfile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentChangePass"
+            app:destination="@id/fragmentChangePass"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentUpdateProfile"
@@ -60,7 +99,11 @@
         android:label="FragmentUpdateProfile" >
         <action
             android:id="@+id/action_fragmentUpdateProfile_to_fragmentProfile"
-            app:destination="@id/fragmentProfile" />
+            app:destination="@id/fragmentProfile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentVoucher"
@@ -68,7 +111,11 @@
         android:label="FragmentVoucher" >
         <action
             android:id="@+id/action_fragmentVoucher_to_fragmentViewVoucher"
-            app:destination="@id/fragmentViewVoucher" />
+            app:destination="@id/fragmentViewVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentCreateVoucher"
@@ -76,13 +123,25 @@
         android:label="FragmentCreateVoucher" >
         <action
             android:id="@+id/action_fragmentCreateVoucher_to_fragmentVoucher"
-            app:destination="@id/fragmentVoucher" />
+            app:destination="@id/fragmentVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_fragmentCreateVoucher_to_fragmentDetailBook"
-            app:destination="@id/fragmentDetailBook" />
+            app:destination="@id/fragmentDetailBook"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_fragmentCreateVoucher_to_fragmentQrCode"
-            app:destination="@id/fragmentQrCode" />
+            app:destination="@id/fragmentQrCode"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentViewVoucher"
@@ -90,10 +149,18 @@
         android:label="FragmentViewVoucher" >
         <action
             android:id="@+id/action_fragmentViewVoucher_to_fragmentVoucher"
-            app:destination="@id/fragmentVoucher" />
+            app:destination="@id/fragmentVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_fragmentViewVoucher_to_fragmentDetailBook"
-            app:destination="@id/fragmentDetailBook" />
+            app:destination="@id/fragmentDetailBook"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentStatusCancel"
@@ -101,10 +168,18 @@
         android:label="FragmentStatusCancel" >
         <action
             android:id="@+id/action_fragmentStatusCancel_to_fragmentViewVoucher"
-            app:destination="@id/fragmentViewVoucher" />
+            app:destination="@id/fragmentViewVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_fragmentStatusCancel_to_fragmentDetailBook"
-            app:destination="@id/fragmentDetailBook" />
+            app:destination="@id/fragmentDetailBook"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentStatusConfirm"
@@ -113,6 +188,10 @@
         <action
             android:id="@+id/action_fragmentStatusConfirm_to_fragmentViewVoucher"
             app:destination="@id/fragmentViewVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"
             />
 
     </fragment>
@@ -122,7 +201,11 @@
         android:label="FragmentStatusExpired" >
         <action
             android:id="@+id/action_fragmentStatusExpired_to_fragmentViewVoucher"
-            app:destination="@id/fragmentViewVoucher" />
+            app:destination="@id/fragmentViewVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentStatusPayed"
@@ -130,7 +213,11 @@
         android:label="FragmentStatusPayed" >
         <action
             android:id="@+id/action_fragmentStatusPayed_to_fragmentViewVoucher"
-            app:destination="@id/fragmentViewVoucher" />
+            app:destination="@id/fragmentViewVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentStatusWaiting"
@@ -138,7 +225,11 @@
         android:label="FragmentStatusWaiting" >
         <action
             android:id="@+id/action_fragmentStatusWaiting_to_fragmentViewVoucher"
-            app:destination="@id/fragmentViewVoucher" />
+            app:destination="@id/fragmentViewVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentDetailBook"
@@ -146,7 +237,11 @@
         android:label="FragmentDetailBook" >
         <action
             android:id="@+id/action_fragmentDetailBook_to_fragmentCreateVoucher"
-            app:destination="@id/fragmentCreateVoucher" />
+            app:destination="@id/fragmentCreateVoucher"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentQrCode"
@@ -154,6 +249,22 @@
         android:label="FragmentQrCode" >
         <action
             android:id="@+id/action_fragmentQrCode_to_fragmentDetailBook"
-            app:destination="@id/fragmentDetailBook" />
+            app:destination="@id/fragmentDetailBook"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChangePass"
+        android:name="com.example.do_an_app.fragment.FragmentChangePass"
+        android:label="FragmentChangePass" >
+        <action
+            android:id="@+id/action_fragmentChangePass_to_fragmentProfile"
+            app:destination="@id/fragmentProfile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 </navigation>

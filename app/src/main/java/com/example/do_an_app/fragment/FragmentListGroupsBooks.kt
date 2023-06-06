@@ -35,7 +35,8 @@ class FragmentListGroupsBooks: Fragment(), CallBack {
         binding.loading.visibility = View.VISIBLE
 
         binding.imgBack.setOnClickListener {
-            findNavController().popBackStack()
+//            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_fragmentListGroupsBooks_to_fragmentGroups)
         }
 
         if(arguments != null) {
