@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient">
+        android:background="@color/white">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgAvtUser"
@@ -31,10 +31,10 @@
             android:id="@+id/imgChangeAvt"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="-30dp"
+            android:layout_marginStart="-25dp"
+            android:layout_marginBottom="-10dp"
             android:padding="2dp"
-            android:src="@drawable/ic_baseline_photo_camera_24"
-            app:civ_circle_background_color="#49DD09"
+            android:src="@drawable/camera"
             app:layout_constraintBottom_toBottomOf="@id/imgAvtUser"
             app:layout_constraintStart_toEndOf="@id/imgAvtUser" />
 
@@ -85,11 +85,13 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="20dp"
             android:text="Chỉnh sửa"
-            android:textAlignment="center"
-            android:textColor="#19FF00"
+            android:textColor="@color/teal_700"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line" />
+            app:layout_constraintTop_toBottomOf="@id/line"
+            android:fontFamily="@font/sf_pro_medium"
+            android:drawableStart="@drawable/pencil"
+            android:gravity="center_vertical"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/tvInforGeneral"
@@ -99,16 +101,17 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/boder_text"
             android:text="Thông tin cá nhân"
-            android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line" />
+            app:layout_constraintTop_toBottomOf="@id/line"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
+            android:layout_margin="10dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="20dp"
@@ -137,11 +140,11 @@
                     android:id="@+id/tvNameTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="Họ và tên: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toEndOf="@id/imgName"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginStart="10dp"
@@ -153,10 +156,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="Lê Trung Kiên "
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:fontFamily="@font/sf_pro_medium"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@id/tvNameTitle"
                     app:layout_constraintTop_toTopOf="parent"/>
 
@@ -177,7 +181,7 @@
                     android:text="Ngày sinh: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toEndOf="@id/imgBirthday"
                     app:layout_constraintTop_toBottomOf="@id/tvNameValue"
                     android:layout_marginStart="10dp"/>
@@ -190,7 +194,8 @@
                     android:layout_marginStart="10dp"
                     android:text="20/07/2000 "
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintBottom_toBottomOf="@id/tvBirthdayTitle"
                     app:layout_constraintStart_toEndOf="@id/tvBirthdayTitle"
                     app:layout_constraintTop_toTopOf="@id/tvBirthdayTitle" />
@@ -203,7 +208,9 @@
                     android:text="Giới tính: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:drawableStart="@drawable/gender"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvBirthdayValue" />
 
@@ -215,7 +222,8 @@
                     android:layout_marginStart="10dp"
                     android:text="Nam"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintBottom_toBottomOf="@id/tvGenderTitle"
                     app:layout_constraintStart_toEndOf="@id/tvGenderTitle"
                     app:layout_constraintTop_toTopOf="@id/tvGenderTitle" />
@@ -237,7 +245,7 @@
                     android:text="Email: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toEndOf="@id/imgEmail"
                     app:layout_constraintTop_toBottomOf="@id/tvGenderValue"
                     android:layout_marginStart="10dp"/>
@@ -250,7 +258,8 @@
                     android:layout_marginStart="10dp"
                     android:text="letrungkien2007@gmail.com"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintBottom_toBottomOf="@id/tvEmailTitle"
                     app:layout_constraintStart_toEndOf="@id/tvEmailTitle"
                     app:layout_constraintTop_toTopOf="@id/tvEmailTitle" />
@@ -272,7 +281,7 @@
                     android:text="SDT: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toEndOf="@id/imgPhone"
                     app:layout_constraintTop_toBottomOf="@id/tvEmailValue"
                     android:layout_marginStart="10dp"/>
@@ -285,7 +294,8 @@
                     android:layout_marginStart="10dp"
                     android:text="0962983318"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintBottom_toBottomOf="@id/tvPhoneTitle"
                     app:layout_constraintStart_toEndOf="@id/tvPhoneTitle"
                     app:layout_constraintTop_toTopOf="@id/tvPhoneTitle" />
@@ -307,7 +317,7 @@
                     android:text="Đại học: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toEndOf="@id/imgUniversity"
                     app:layout_constraintTop_toBottomOf="@id/tvPhoneValue"
                     android:layout_marginStart="10dp"/>
@@ -323,7 +333,8 @@
                     android:maxLines="2"
                     android:text="Học viện KTMM"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tvAddressTitle"
                     app:layout_constraintTop_toTopOf="@id/tvAddressTitle" />
@@ -347,7 +358,7 @@
                     android:text="Khóa: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_pro_medium"
                     android:visibility="gone"
                     app:layout_constraintStart_toEndOf="@+id/imgCourse"
                     app:layout_constraintTop_toBottomOf="@id/tvAddressValue"
@@ -361,8 +372,9 @@
                     android:layout_marginStart="10dp"
                     android:text="CT3"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:visibility="gone"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintBottom_toBottomOf="@id/tvCourse"
                     app:layout_constraintStart_toEndOf="@id/tvCourse"
                     app:layout_constraintTop_toTopOf="@id/tvCourse" />
@@ -386,7 +398,7 @@
                     android:text="Phòng ban: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_pro_medium"
                     android:visibility="gone"
                     app:layout_constraintStart_toEndOf="@+id/imgDepartment"
                     app:layout_constraintTop_toBottomOf="@id/tvAddressTitle"
@@ -400,8 +412,9 @@
                     android:layout_marginStart="10dp"
                     android:text="Phòng Công nghệ thông tin"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:visibility="gone"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintBottom_toBottomOf="@id/tvDepartment"
                     app:layout_constraintStart_toEndOf="@id/tvDepartment"
                     app:layout_constraintTop_toTopOf="@id/tvDepartment" />
@@ -425,7 +438,7 @@
                     android:text="Chuyên ngành: "
                     android:textColor="#646464"
                     android:textSize="12sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_pro_medium"
                     android:visibility="gone"
                     app:layout_constraintStart_toEndOf="@+id/imgSpecialize"
                     app:layout_constraintTop_toBottomOf="@id/tvDepartment" />
@@ -438,24 +451,33 @@
                     android:layout_marginStart="10dp"
                     android:text="Phòng Công nghệ thông tin"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:visibility="gone"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintBottom_toBottomOf="@id/tvSpecialized"
                     app:layout_constraintStart_toEndOf="@id/tvSpecialized"
                     app:layout_constraintTop_toTopOf="@id/tvSpecialized" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <ProgressBar
+        <RelativeLayout
             android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7E616161"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.CubeGrid"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                app:SpinKit_Color="#0097D3" />
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

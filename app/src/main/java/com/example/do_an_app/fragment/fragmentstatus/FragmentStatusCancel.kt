@@ -39,10 +39,7 @@ class FragmentStatusCancel: Fragment(), CallbackVoucher {
             if (it != null) {
                 list5.addAll(it.data.result)
                 adapter.notifyDataSetChanged()
-                binding.txtNullData.visibility = View.GONE
             }
-            // Ẩn progressBar khi kết thúc load dữ liệu
-            binding.loading.visibility = View.GONE
         }
         adapter = VoucherAdapter(list5, this)
         binding.rvList5.adapter = adapter

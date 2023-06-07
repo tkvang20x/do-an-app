@@ -18,7 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient">
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/imgBack"
@@ -40,7 +40,8 @@
             android:text="Phiếu mượn cá nhân"
             android:layout_marginTop="10dp"
             android:textSize="16sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"
+            android:fontFamily="@font/sf_pro_semibold"/>
         
         <TextView
             android:id="@+id/tvCode"
@@ -53,7 +54,8 @@
             android:layout_marginStart="10dp"
             android:text="Mã phiếu:"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
             />
 
         <TextView
@@ -66,12 +68,13 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Thám tử lừng danh CONAN"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/white"
+            android:textColor="@color/teal_700"
+            android:fontFamily="@font/sf_pro_medium"
             setText="@{voucher.voucher_id}"/>
 
         <TextView
@@ -84,7 +87,8 @@
             android:layout_marginStart="10dp"
             android:text="Mã sinh viên:"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
             />
 
         <TextView
@@ -97,12 +101,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="10dp"
             android:text="Gosho Aoyama"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sf_pro_medium"
             setText="@{voucher.users.code}"/>
         <TextView
             android:id="@+id/tvStartDate"
@@ -111,14 +116,15 @@
             android:text="Ngày mượn: "
             android:drawableLeft="@drawable/baseline_calendar_month_24"
             android:textSize="12sp"
-            android:textStyle="bold"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtCodeUser"
             android:layout_marginStart="10dp"
-            android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/sf_pro_medium"
             />
 
         <TextView
@@ -134,8 +140,8 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingBottom="8dp"
-            android:textColor="@color/white"
+            android:fontFamily="@font/sf_pro_medium"
+            android:textColor="@color/black"
             android:layout_marginStart="10dp"
             setText="@{voucher.start_date}"/>
 
@@ -150,9 +156,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvStartDate"
             android:layout_marginStart="10dp"
-            android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sf_pro_medium"
+            android:gravity="center_vertical"
             />
 
         <TextView
@@ -168,10 +176,10 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingBottom="8dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginStart="10dp"
-            setText="@{voucher.due_date}"/>
+            setText="@{voucher.due_date}"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <View
             android:id="@+id/line"
@@ -194,12 +202,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line"
             android:text="Danh sách sách đã mượn"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/white" />
+            android:textColor="@color/teal_700"
+            android:fontFamily="@font/sf_pro_semibold"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvListBook"
@@ -227,16 +236,26 @@
             android:visibility="gone"
             android:layout_marginBottom="8dp"
             />
-        <ProgressBar
+
+        <RelativeLayout
             android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_gravity="center"
-            android:visibility="invisible" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7E616161"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.CubeGrid"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                app:SpinKit_Color="#0097D3" />
+        </RelativeLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -13,11 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="20dp"
+        android:background="@drawable/down_shadow"
         app:cardPreventCornerOverlap="false"
         app:contentPadding="0dp"
         android:id="@+id/csItemBook"
-        android:background="@color/white">
+        app:cardElevation="4dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
             android:background="@color/white"
             >
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgAvt"
                 android:layout_width="45dp"
                 android:layout_height="60dp"
@@ -37,7 +37,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@mipmap/ic_launcher"
-                setAvt="@{book.books.avatar}"/>
+                setAvt="@{book.books.avatar}"
+                app:shapeAppearanceOverlay="@style/roundedImage4"/>
 
             <TextView
                 android:id="@+id/tvVoucherId"
@@ -48,12 +49,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="20dp"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:textSize="12sp"
+                android:fontFamily="@font/sf_pro_semibold"
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:textColor="@color/black"
+                android:textColor="@color/teal_700"
                 setText="@{book.code_id}"/>
 
             <TextView
@@ -61,8 +62,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Đây là tên sachs "
-                android:textSize="14sp"
-                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tvVoucherId"
                 app:layout_constraintTop_toBottomOf="@id/tvVoucherId"
@@ -70,6 +71,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/black"
+                android:fontFamily="@font/sf_pro_medium"
                 setText="@{book.books.name}"
                 />
 
@@ -79,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:text="Tác giả: "
                 android:textSize="12sp"
+                android:fontFamily="@font/sf_pro_medium"
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/tvVoucherId"
@@ -87,7 +90,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 setText="@{book.books.author}"
-                android:textColor="@color/black"
+                android:textColor="#686868"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>

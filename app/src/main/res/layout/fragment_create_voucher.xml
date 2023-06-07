@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient">
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/tvTitleFragment"
@@ -27,7 +27,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:textSize="14sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sf_pro_semibold"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
@@ -36,12 +37,13 @@
             android:layout_height="wrap_content"
             android:text="Phiếu mượn cá nhân"
             android:textStyle="bold"
-            android:textColor="#00ED27"
+            android:textColor="@color/teal_700"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitleFragment"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
             app:drawableLeftCompat="@drawable/ic_baseline_keyboard_double_arrow_right_24" />
         <ImageView
             android:id="@+id/imgCalendar"
@@ -55,14 +57,15 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tvDueDate"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvViewVoucher"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:layout_marginStart="10dp"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/black"
             android:textFontWeight="100"
             app:endIconMode="clear_text"
             app:layout_constraintStart_toEndOf="@id/imgCalendar"
@@ -72,14 +75,13 @@
                 android:id="@+id/txtBirthDay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
                 android:focusable="false"
                 android:hint="Ngày hẹn trả"
                 android:inputType="none"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="#686868"
                 android:textSize="12sp"
-                android:textStyle="normal" />
+                android:fontFamily="@font/sf_pro_medium" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
@@ -89,7 +91,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDueDate"
-            android:background="#646464"
+            android:background="@color/teal_700"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp" />
@@ -108,7 +110,8 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/white" />
+            android:textColor="@color/teal_700"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <ImageView
             android:id="@+id/imgScanQR"
@@ -131,6 +134,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvIntroduce"
             app:layout_constraintBottom_toTopOf="@id/btnAddVoucher"
             tools:listitem="@layout/item_book_in_create_voucher"
+            android:background="@color/white"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -146,16 +150,24 @@
             android:layout_marginBottom="10dp"
             />
 
-        <ProgressBar
+        <RelativeLayout
             android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_gravity="center"
-            android:visibility="gone" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7E616161"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.CubeGrid"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/teal_700" />
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

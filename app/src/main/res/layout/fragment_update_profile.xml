@@ -19,7 +19,7 @@
             android:id="@+id/nestScroll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@drawable/gradient"
+            android:background="@color/white"
             android:fillViewport="true"
             app:layout_constraintBottom_toTopOf="@id/csButton"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +32,8 @@
 
                 <ImageView
                     android:id="@+id/imgBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/ic_baseline_arrow_back_ios_24"
@@ -62,7 +62,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/boder_text"
                     android:text="Cập nhật thông tin"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toEndOf="@id/imgBack"
                     app:layout_constraintTop_toTopOf="parent"
@@ -74,10 +74,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="32dp"
                     android:text="Họ và tên: "
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvInforGeneral" />
 
@@ -87,7 +88,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="20dp"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="#A1000000"
+                    android:hint="Họ và tên"
                     android:textFontWeight="100"
                     android:textSize="14sp"
                     app:counterEnabled="true"
@@ -106,10 +108,10 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="normal" />
+                        android:fontFamily="@font/sf_pro_medium" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -118,7 +120,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="#A1000000"
+                    android:hint="Ngày sinh"
                     android:textFontWeight="100"
                     android:textSize="14sp"
                     app:endIconMode="clear_text"
@@ -137,10 +140,10 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="normal" />
+                        android:fontFamily="@font/sf_pro_medium" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -150,8 +153,9 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:text="Ngày sinh: "
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvFullname" />
 
@@ -162,8 +166,9 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:text="Giới tính: "
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:fontFamily="@font/sf_pro_medium"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvBirthday" />
 
@@ -219,7 +224,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:text="Email: "
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/sf_pro_medium"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/spnGender" />
@@ -229,7 +235,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="#A1000000"
+                    android:hint="Email"
                     android:textFontWeight="100"
                     android:textSize="14sp"
                     app:counterEnabled="true"
@@ -249,10 +256,10 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="normal" />
+                        android:fontFamily="@font/sf_pro_medium" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -263,7 +270,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:text="SDT: "
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/sf_pro_medium"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvEmail" />
@@ -273,7 +281,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="#A1000000"
+                    android:hint="Số điện thoại"
                     android:textFontWeight="100"
                     android:textSize="14sp"
                     app:counterEnabled="true"
@@ -293,10 +302,10 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:inputType="number"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="normal" />
+                        android:fontFamily="@font/sf_pro_medium" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -307,7 +316,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:text="Đại học: "
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/sf_pro_medium"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvPhone" />
@@ -317,7 +327,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="#A1000000"
+                    android:hint="Đại học"
                     android:textFontWeight="100"
                     android:textSize="14sp"
                     app:counterEnabled="true"
@@ -337,12 +348,10 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="normal"
-
-                        />
+                        android:fontFamily="@font/sf_pro_medium"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -352,18 +361,20 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:text="Khóa:"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvUniversity"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    android:fontFamily="@font/sf_pro_medium"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tvCourse"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="#A1000000"
+                    android:hint="Khóa"
                     android:textFontWeight="100"
                     android:textSize="14sp"
                     app:counterEnabled="true"
@@ -384,10 +395,10 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="normal" />
+                        android:fontFamily="@font/sf_pro_medium" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -397,7 +408,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="26dp"
                     android:text="Phòng ban:"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/sf_pro_medium"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvUniversity"
@@ -408,7 +420,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="#A1000000"
+                    android:hint="Phòng ban"
                     android:textFontWeight="100"
                     android:textSize="14sp"
                     app:counterEnabled="true"
@@ -428,10 +441,10 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="normal" />
+                        android:fontFamily="@font/sf_pro_medium" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -441,7 +454,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:text="Chuyên ngành:"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/sf_pro_medium"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvDepartment"
@@ -452,7 +466,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="#A1000000"
+                    android:hint="Chuyên ngành"
                     android:textFontWeight="100"
                     android:textSize="14sp"
                     app:counterEnabled="true"
@@ -473,10 +488,10 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:inputType="text"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
                         android:textSize="14sp"
-                        android:textStyle="normal"
+                        android:fontFamily="@font/sf_pro_medium"
                         android:layout_marginStart="30dp"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -486,7 +501,7 @@
             android:id="@+id/csButton"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/gradient"
+            android:background="@color/teal_700"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -522,16 +537,24 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ProgressBar
+        <RelativeLayout
             android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7E616161"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.CubeGrid"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                app:SpinKit_Color="#0097D3" />
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

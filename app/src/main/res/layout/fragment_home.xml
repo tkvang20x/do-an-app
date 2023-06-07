@@ -9,7 +9,7 @@
         android:id="@+id/nestScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient"
+        android:background="@color/white"
         android:fillViewport="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,7 +23,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="20dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/image_null"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,9 +35,9 @@
                 android:layout_marginBottom="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="Chào mừng bạn đến với thư viện KMA"
-                android:textColor="@color/white"
+                android:textColor="#FF0000"
                 android:textSize="12sp"
-                android:textStyle="normal"
+                android:fontFamily="@font/sf_paticio"
                 app:layout_constraintStart_toEndOf="@id/imgAvtUser"
                 app:layout_constraintBottom_toTopOf="@id/txtSearch"
                 app:layout_constraintTop_toTopOf="parent"
@@ -53,27 +53,33 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/boder_radius"
-                android:drawableStart="@drawable/ic_baseline_search_24"
                 android:textColorHint="@color/black"
-                android:textSize="14sp"
+                android:hint="Tìm kiếm sách"
+                android:drawableLeft="@drawable/ic_baseline_search_24"
+                android:paddingStart="10dp"
+                android:textSize="12sp"
                 android:textColor="@color/black"
                 app:endIconMode="clear_text"
                 app:layout_constraintBottom_toBottomOf="@id/imgAvtUser"
-                app:layout_constraintEnd_toStartOf="@id/btnSearch"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imgAvtUser"
+                android:imeOptions="actionSend"
+                android:maxLines="1"
+                android:inputType="text"
                 />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSearch"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/ic_baseline_search_24"
-                android:padding="10dp"
-                android:layout_marginEnd="10dp"
-                app:layout_constraintBottom_toBottomOf="@id/txtSearch"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txtSearch" />
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/btnSearch"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:background="@drawable/boder_radius_search_button"-->
+<!--                android:padding="10dp"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/txtSearch"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@id/txtSearch"-->
+<!--                />-->
 
             <TextView
                 android:id="@+id/tvTitle1"
@@ -83,6 +89,7 @@
                 android:layout_marginTop="18dp"
                 android:drawableLeft="@drawable/ic_baseline_checklist_24"
                 android:text=" Sách mới nhất"
+                android:gravity="center_vertical"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -94,10 +101,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="20dp"
+                android:gravity="center"
                 android:text=" Xem tất cả"
-                android:textColor="#00FF22"
+                android:textColor="#007828"
                 android:textSize="12sp"
                 android:textStyle="normal"
+                android:drawableLeft="@drawable/icon_books"
                 app:layout_constraintBottom_toBottomOf="@id/tvTitle1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtSearch" />
@@ -116,7 +125,7 @@
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="90dp"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -145,6 +154,7 @@
                 android:layout_marginTop="10dp"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                android:gravity="center_vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/slider" />
 
@@ -176,12 +186,24 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <ProgressBar
+    <RelativeLayout
         android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="invisible" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#7E616161"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.CubeGrid"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/teal_700" />
+    </RelativeLayout>
 
 </FrameLayout>
 

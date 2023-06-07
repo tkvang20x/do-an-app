@@ -51,7 +51,6 @@ class FragmentLogin : Fragment() {
 
                 model.postLogin(login)
                 model.dataLogin.observe(viewLifecycleOwner) {
-                    Log.d("abcccccccccc", it.toString())
                     if (it?.error == "USERNAME NOT EXIST") {
                         Toast.makeText(this.context, "Tài khoản không tồn tại!", Toast.LENGTH_LONG)
                             .show()
@@ -60,7 +59,7 @@ class FragmentLogin : Fragment() {
                         Toast.makeText(this.context, "Mật khẩu không chính xác!", Toast.LENGTH_LONG)
                             .show()
                         binding.csLoading.visibility = View.GONE
-                    } else {
+                    } else if(it?.error == "OK") {
                         it?.data?.let { it1 -> MySharedPreference(requireActivity()).putToken(it1.token) }
 
                         Const.TOKEN = MySharedPreference(requireActivity()).getToken().toString()
@@ -71,6 +70,10 @@ class FragmentLogin : Fragment() {
                         val intent = Intent()
                         intent.setClass(requireActivity(), MainActivity::class.java)
                         startActivity(intent)
+                    }else{
+                        Toast.makeText(this.context, "Không có kết nối mạng!", Toast.LENGTH_LONG)
+                            .show()
+                        binding.csLoading.visibility = View.GONE
                     }
                     Log.d("zz", "xx${it?.toString()}")
                 }

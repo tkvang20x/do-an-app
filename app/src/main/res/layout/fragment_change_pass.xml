@@ -11,12 +11,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/imgBack"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="10dp"
@@ -33,15 +33,29 @@
                 android:text="Đổi mật khẩu"
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"
+                android:fontFamily="@font/sf_pro_semibold"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnLogin"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:layout_marginHorizontal="50dp"
+                android:fontFamily="@font/sf_pro_medium"
+                android:text="Khi thay đổi mật khảu mới, bạn phải chắc chắn rằng không cho ai biết tránh trường hợp bị người ngoài đăng nhập"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tvUsername"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:hint="Mật khẩu cũ"
-                android:textColorHint="@color/white"
+                android:textColorHint="@color/black"
                 android:textSize="12sp"
                 app:counterEnabled="true"
                 app:counterMaxLength="20"
@@ -50,21 +64,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTitleFragment"
-                app:startIconDrawable="@drawable/ic_baseline_lock_24">
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                >
 
-                <com.google.android.material.textfield.TextInputEditText
+                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/txtUserName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/sf_pro_medium"
+                    android:layout_height="50dp"
+                    android:imeOptions="actionNext"
                     android:inputType="text"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:drawableStart="@drawable/ic_baseline_account_circle_24"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tvPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -72,8 +89,7 @@
                 android:layout_marginRight="20dp"
                 android:hint="Mật khẩu mới"
                 android:textColor="@color/black"
-                android:textColorHint="@color/white"
-                android:textFontWeight="100"
+                android:textColorHint="@color/black"
                 android:textSize="12sp"
                 android:textStyle="normal"
                 app:counterEnabled="true"
@@ -85,15 +101,24 @@
                 app:layout_constraintTop_toBottomOf="@id/tvUsername"
                 app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/txtPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/sf_pro_medium"
-                    android:inputType="textPassword"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:layout_height="50dp"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:drawableStart="@drawable/ic_baseline_account_circle_24"/>
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/txtPassword"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/sf_pro_medium"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="12sp" />-->
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -109,6 +134,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPassword"/>
+
+
+            <RelativeLayout
+                android:id="@+id/loading"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#7E616161"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp">
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/spin_kit"
+                    style="@style/SpinKitView.CubeGrid"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/teal_700" />
+            </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

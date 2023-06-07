@@ -14,7 +14,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/imgBack"
@@ -36,8 +36,8 @@
                 android:textSize="16sp"
                 android:text="Danh mục sách"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/white"
-                android:textStyle="normal" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/sf_pro_medium" />
 
             <TextView
                 android:id="@+id/tvSearchName"
@@ -50,8 +50,8 @@
                 android:text="Tên sách:"
                 android:layout_marginStart="10dp"
                 android:textSize="12sp"
-                android:textColor="@color/white"
-                android:textStyle="normal" />
+                android:textColor="@color/black"
+                android:fontFamily="@font/sf_pro_medium" />
 
             <EditText
                 android:id="@+id/txtSearchName"
@@ -70,7 +70,8 @@
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toEndOf="@id/tvSearchName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                android:fontFamily="@font/sf_pro_medium" />
 
             <TextView
                 android:id="@+id/tvSearchAuthor"
@@ -82,7 +83,7 @@
                 android:text="Tác giả:"
                 android:layout_marginStart="10dp"
                 android:textSize="12sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textStyle="normal" />
 
             <EditText
@@ -103,7 +104,8 @@
                 app:layout_constraintStart_toEndOf="@id/tvSearchAuthor"
                 app:layout_constraintStart_toStartOf="@id/txtSearchName"
                 app:layout_constraintTop_toBottomOf="@id/txtSearchName"
-                app:layout_constraintEnd_toStartOf="@id/btnSearch" />
+                app:layout_constraintEnd_toStartOf="@id/btnSearch"
+                android:fontFamily="@font/sf_pro_medium" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSearch"
@@ -120,6 +122,7 @@
                 app:layout_constraintStart_toEndOf="@id/txtSearchAuthor"
                 app:layout_constraintTop_toTopOf="@id/txtSearchAuthor"
                 app:layout_constraintEnd_toEndOf="@id/txtSearchName"
+                android:fontFamily="@font/sf_pro_medium"
                 />
 
 
@@ -131,6 +134,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -139,11 +143,23 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ProgressBar
+        <RelativeLayout
             android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="invisible" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7E616161"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.CubeGrid"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/teal_700" />
+        </RelativeLayout>
     </FrameLayout>
 </layout>

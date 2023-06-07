@@ -33,7 +33,9 @@ class FragmentDetailBooks : Fragment() {
         val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
         view.visibility = View.GONE
         binding.imgBack.setOnClickListener {
-            findNavController().popBackStack()
+//            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_fragmentDetailBooks_to_fragmentHome)
+
         }
         code = arguments?.getString("code").toString()
         binding.edtAmount.setText(amount.toString())
@@ -81,7 +83,8 @@ class FragmentDetailBooks : Fragment() {
                                 "Thêm vào phiếu mượn thành công",
                                 Toast.LENGTH_LONG
                             ).show()
-                            findNavController().popBackStack()
+//                            findNavController().popBackStack()
+                            findNavController().navigate(R.id.action_fragmentDetailBooks_to_fragmentHome)
                         }
                     }
                 }

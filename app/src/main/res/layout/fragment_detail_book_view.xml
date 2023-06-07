@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -11,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient">
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/imgBack"
@@ -23,17 +24,18 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgAvatarBooks"
             android:layout_width="90dp"
             android:layout_height="120dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgBack"
             android:layout_marginStart="20dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/image_null"
             android:layout_marginTop="5dp"
             android:scaleType="centerCrop"
-            setAvt="@{book.books.avatar}" />
+            setAvt="@{book.books.avatar}"
+            app:shapeAppearanceOverlay="@style/roundedImage4"/>
 
         <TextView
             android:id="@+id/txtCodeBook"
@@ -49,7 +51,8 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/white"
+            android:textColor="@color/teal_700"
+            android:fontFamily="@font/sf_pro_semibold"
             setText="@{book.code_id}"/>
 
         <TextView
@@ -61,12 +64,12 @@
             app:layout_constraintTop_toBottomOf="@id/txtCodeBook"
             android:layout_marginStart="20dp"
             android:text="Thám tử lừng danh CONAN"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_semibold"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/white"
+            android:textColor="#C8000000"
             android:layout_marginTop="10dp"
             setText="@{book.books.name}"/>
 
@@ -80,8 +83,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="20dp"
             android:text="Gosho Aoyama"
-            android:textSize="14sp"
-            android:textStyle="normal"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
@@ -95,7 +98,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgAvatarBooks"
-            android:background="#646464"
+            android:background="@color/teal_700"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp" />
@@ -105,16 +108,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line"
             android:text="Giới thiệu sách"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="normal"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="#000000" />
+            android:textColor="@color/teal_700"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <TextView
             android:id="@+id/tvGroups"
@@ -123,14 +127,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvIntroduce"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="20dp"
             android:text="Thể loại:"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <TextView
             android:id="@+id/txtGroups"
@@ -142,12 +147,12 @@
             android:layout_marginEnd="20dp"
             android:layout_marginStart="10dp"
             android:text="Truyện tranh"
-            android:textSize="14sp"
-            android:textStyle="normal"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             setText="@{book.groups.group_name}"/>
 
         <TextView
@@ -157,14 +162,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvGroups"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="20dp"
             android:text="Tiêu đề:"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="#000000"
+            android:fontFamily="@font/sf_pro_medium"
             />
 
         <TextView
@@ -177,12 +183,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="20dp"
             android:text="Tập 10"
-            android:textSize="14sp"
-            android:textStyle="normal"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             setText="@{book.books.title}"/>
 
         <TextView
@@ -192,14 +198,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="20dp"
             android:text="Năm xuất bản:"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <TextView
             android:id="@+id/txtPublishingYear"
@@ -211,12 +218,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="20dp"
             android:text="2020"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            android:layout_weight="1"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             setText="@{book.books.publishing_year}"/>
 
         <TextView
@@ -226,14 +232,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPublishingYear"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="20dp"
             android:text="Nhà xuất bản:"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:textStyle="normal"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:fontFamily="@font/sf_pro_medium"/>
 
         <TextView
             android:id="@+id/txtOrigin"
@@ -245,59 +252,58 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="20dp"
             android:text="Kim Đồng"
-            android:textSize="14sp"
-            android:textStyle="normal"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             setText="@{book.books.origin}"/>
 
         <View
             android:id="@+id/line1"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvDescription"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvOrigin"
-            android:background="#646464"
+            app:layout_constraintBottom_toBottomOf="@id/tvDescription"
+            android:background="@color/teal_700"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp" />
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="6dp"/>
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintTop_toBottomOf="@id/tvOrigin"
             android:text="Mô tả"
-            android:textSize="16sp"
-            android:textStyle="normal"
+            android:textSize="14sp"
+            android:fontFamily="@font/sf_pro_medium"
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="#000000" />
+            android:textColor="@color/teal_700" />
 
         <TextView
             android:id="@+id/txtDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDescription"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="12dp"
             android:text="Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tả Đây là mô tảĐây là mô tả Đây là mô tả Đây là mô tả "
             android:textSize="14sp"
-            android:textStyle="normal"
-            android:layout_weight="1"
+            android:fontFamily="@font/sf_pro_medium"
             android:ellipsize="end"
             android:maxLines="5"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             setText="@{book.books.description}"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -311,6 +317,7 @@
             app:layout_constraintBottom_toTopOf="@id/btnRemoveBook"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="10dp"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -323,17 +330,27 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="10dp"/>
 
-<!--        <ProgressBar-->
-<!--            android:id="@+id/loading"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:visibility="visible" />-->
+        <RelativeLayout
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#7E616161"
+            android:visibility="gone"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/spin_kit"
+                style="@style/SpinKitView.CubeGrid"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/teal_700" />
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -39,10 +39,7 @@ class FragmentStatusPayed: Fragment(), CallbackVoucher {
             if (it != null) {
                 list2.addAll(it.data.result)
                 adapter.notifyDataSetChanged()
-                binding.txtNullData.visibility = View.GONE
             }
-            // Ẩn progressBar khi kết thúc load dữ liệu
-            binding.loading.visibility = View.GONE
         }
 
         adapter = VoucherAdapter(list2, this)

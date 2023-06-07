@@ -33,8 +33,6 @@ class FragmentRegister: Fragment() {
         binding = FragmentRegisterBinding.inflate(inflater, container,false )
         model = ViewModelProvider(requireActivity())[RegisterViewModel::class.java]
 
-        val loading = ViewBindings.findChildViewById<FrameLayout>(binding.root, R.id.progress_overlay)
-
 
         val date =
             DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
@@ -55,7 +53,6 @@ class FragmentRegister: Fragment() {
 
 
         binding.btnRegister.setOnClickListener {
-            loading?.visibility = View.VISIBLE
 
             val mDataRegister = DataRegister(
                 "",
@@ -77,11 +74,9 @@ class FragmentRegister: Fragment() {
                 if (it?.status == 201) {
                     Toast.makeText(this.context, "Đăng ký thành công !!!", Toast.LENGTH_SHORT)
                         .show()
-                    loading?.visibility = View.GONE
                     findNavController().popBackStack()
                 }
                 else{
-                    loading?.visibility = View.GONE
                 }
             }
 

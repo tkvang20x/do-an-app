@@ -3,9 +3,11 @@ package com.example.do_an_app.fragment
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -109,19 +111,6 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
         binding.rvList.layoutManager =
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
 
-//        books2ViewModel = BooksViewModel()
-//        books2ViewModel.getBooks(1, 10, "", "", "")
-//        books2ViewModel.dataBooks.observe(viewLifecycleOwner) {
-//            if (it != null) {
-//                list2.clear()
-//                list2.addAll(it.data.result)
-//                adapter2.notifyDataSetChanged()
-//
-//            }
-//            // Ẩn progressBar khi kết thúc load dữ liệu
-//            binding.loading.visibility = View.GONE
-//        }
-
         chartViewModel = VoucherViewModel()
         chartViewModel.getChart("05", "2023")
         chartViewModel.chart.observe(viewLifecycleOwner){
@@ -150,8 +139,6 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
                 }
                 adapter2.notifyDataSetChanged()
             }
-            // Ẩn progressBar khi kết thúc load dữ liệu
-            binding.loading.visibility = View.GONE
         }
 
         adapter2 = Books2Adapter(list2, this)
@@ -180,16 +167,27 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
             }
         }
 
+        // Ẩn progressBar khi kết thúc load dữ liệu
+        binding.loading.visibility = View.GONE
+
         binding.tvViewAll1.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentHome_to_fragmentListBooks)
             list.clear()
         }
 
-        binding.btnSearch.setOnClickListener {
-            val bundel = Bundle()
-            bundel.putString("name", binding.txtSearch.text.toString())
-            findNavController().navigate(R.id.action_fragmentHome_to_fragmentListBooks, bundel)
-        }
+
+        binding.txtSearch.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(p0: TextView?, actionId: Int, p2: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    val bundel = Bundle()
+                    bundel.putString("name", binding.txtSearch.text.toString())
+                    findNavController().navigate(R.id.action_fragmentHome_to_fragmentListBooks, bundel)
+                    return true
+                }
+                return false
+            }
+
+        })
 
         return binding.root
     }
@@ -206,7 +204,10 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
     }
 
     override fun onClick(books: BooksCount) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putString("code", books.code_books)
+        findNavController().navigate(R.id.action_fragmentHome_to_fragmentDetailBooks, bundle)
+        list.clear()
     }
 
     override fun onLongClick(job: BooksCount) {

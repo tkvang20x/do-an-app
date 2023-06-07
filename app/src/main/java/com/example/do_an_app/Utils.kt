@@ -18,6 +18,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 object Utils {
@@ -29,8 +30,8 @@ object Utils {
         }
         Glide.with(iv.context)
             .load(Const.BASE_URL+link.replace("\\","/"))
-            .placeholder(R.mipmap.ic_launcher_round)
-            .error(R.mipmap.ic_launcher)
+            .placeholder(R.drawable.image_null)
+            .error(R.drawable.image_null)
             .into(iv)
     }
 //    @JvmStatic

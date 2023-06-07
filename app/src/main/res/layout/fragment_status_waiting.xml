@@ -22,9 +22,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="visible"
+        android:visibility="gone"
         android:text="Không có phiếu mượn"
-        android:textColor="@color/white"/>
+        android:fontFamily="@font/sf_pro_semibold"
+        android:textColor="@color/black"/>
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="wrap_content"

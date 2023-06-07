@@ -27,7 +27,11 @@
     <fragment
         android:id="@+id/fragmentDetailBooks"
         android:name="com.example.do_an_app.fragment.FragmentDetailBooks"
-        android:label="FragmentDetailBooks"/>
+        android:label="FragmentDetailBooks">
+        <action
+            android:id="@+id/action_fragmentDetailBooks_to_fragmentHome"
+            app:destination="@id/fragmentHome" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentListBooks"
         android:name="com.example.do_an_app.fragment.FragmentListBooks"

@@ -30,7 +30,7 @@ class FragmentStatusWaiting: Fragment(), CallbackVoucher {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentStatusWaitingBinding.inflate(inflater, container, false)
-//        binding.loading.visibility = View.VISIBLE
+        binding.loading.visibility = View.VISIBLE
         list1.clear()
 
         voucherViewModel = VoucherViewModel()
@@ -39,7 +39,6 @@ class FragmentStatusWaiting: Fragment(), CallbackVoucher {
             if (it != null) {
                 list1.addAll(it.data.result)
                 adapter.notifyDataSetChanged()
-                binding.txtNullData.visibility = View.GONE
             }
             // Ẩn progressBar khi kết thúc load dữ liệu
 
@@ -50,6 +49,10 @@ class FragmentStatusWaiting: Fragment(), CallbackVoucher {
         binding.rvList1.adapter = adapter
         binding.rvList1.layoutManager =
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
+
+//        if(list1.size == 0){
+//            binding.txtNullData.visibility = View.VISIBLE
+//        }
 
         return binding.root
     }

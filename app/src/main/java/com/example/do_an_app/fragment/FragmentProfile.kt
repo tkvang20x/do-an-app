@@ -55,7 +55,7 @@ class FragmentProfile: Fragment() {
                 data_user = it.data
                 binding.user = it.data
 
-                if (it.data.role === "STUDENT"){
+                if (it.data.role == "STUDENT"){
                     binding.tvCourse.visibility = View.VISIBLE
                     binding.txtCourse.visibility = View.VISIBLE
                     binding.imgCourse.visibility = View.VISIBLE
