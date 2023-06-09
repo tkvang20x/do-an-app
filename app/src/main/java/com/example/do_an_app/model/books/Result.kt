@@ -14,5 +14,7 @@ data class Result(
     val modified_time: String,
     val name: String,
     val title: String,
-    val total_books: Int
+    val total_books: Int,
+    val total_ready: Int,
+    val cabinet: Int,
 )

@@ -2,6 +2,7 @@ package com.example.do_an_app.fragment.fragmentstatus
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,8 +38,12 @@ class FragmentStatusWaiting: Fragment(), CallbackVoucher {
         voucherViewModel.getVoucherUserId(1, code_user, "WAITING_CONFIRM")
         voucherViewModel.dataVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
-                list1.addAll(it.data.result)
-                adapter.notifyDataSetChanged()
+                if(it.data.result.size == 0){
+                    binding.txtNullData.visibility = View.VISIBLE
+                }else{
+                    list1.addAll(it.data.result)
+                    adapter.notifyDataSetChanged()
+                }
             }
             // Ẩn progressBar khi kết thúc load dữ liệu
 
@@ -50,9 +55,9 @@ class FragmentStatusWaiting: Fragment(), CallbackVoucher {
         binding.rvList1.layoutManager =
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
 
-//        if(list1.size == 0){
-//            binding.txtNullData.visibility = View.VISIBLE
-//        }
+        if(list1.size == 0){
+
+        }
 
         return binding.root
     }

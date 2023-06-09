@@ -31,15 +31,21 @@ class FragmentStatusPayed: Fragment(), CallbackVoucher {
     ): View? {
         binding = FragmentStatusPayedBinding.inflate(inflater, container, false)
         list2.clear()
-//        binding.loading.visibility = View.VISIBLE
+        binding.loading.visibility = View.VISIBLE
 
         voucherViewModel = VoucherViewModel()
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "PAYED")
         voucherViewModel.dataVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
-                list2.addAll(it.data.result)
-                adapter.notifyDataSetChanged()
+                if(it.data.result.size == 0){
+                    binding.txtNullData.visibility = View.VISIBLE
+                }else{
+                    list2.addAll(it.data.result)
+                    adapter.notifyDataSetChanged()
+                }
             }
+
+            binding.loading.visibility = View.GONE
         }
 
         adapter = VoucherAdapter(list2, this)

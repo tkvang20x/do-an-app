@@ -29,6 +29,7 @@ class FragmentGroups : Fragment(), CallBackGroups {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentGroupsBinding.inflate(inflater, container, false)
+        binding.loading.visibility = View.VISIBLE
 
         adapter = ItemListGroupsAdapter(list, this)
         binding.rvListGroups.adapter = adapter
@@ -44,20 +45,19 @@ class FragmentGroups : Fragment(), CallBackGroups {
                 adapter.notifyDataSetChanged()
 
             }
+            binding.loading.visibility = View.GONE
         }
 
         return binding.root
     }
 
     override fun onClick(groups: Result) {
-        var bundle = Bundle()
+        val bundle = Bundle()
         bundle.putString("group_name", groups.group_name)
         bundle.putString("group_code", groups.group_code)
         findNavController().navigate(R.id.action_fragmentGroups_to_fragmentListGroupsBooks, bundle)
         list.clear()
     }
 
-    override fun onLongClick(groups: Result) {
-        TODO("Not yet implemented")
-    }
+
 }

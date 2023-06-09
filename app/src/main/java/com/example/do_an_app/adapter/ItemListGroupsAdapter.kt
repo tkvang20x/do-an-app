@@ -26,12 +26,6 @@ class ItemListGroupsAdapter(private val list: List<Result>, private val callback
             callback.onClick(list[position])
         }
 
-        holder.binding.csGroups.setOnLongClickListener {
-            callback.onLongClick(list[position])
-
-            return@setOnLongClickListener true
-        }
-
     }
 
     override fun getItemCount(): Int {

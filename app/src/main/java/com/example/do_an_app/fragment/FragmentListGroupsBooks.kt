@@ -59,7 +59,6 @@ class FragmentListGroupsBooks: Fragment(), CallBack {
                 adapter.notifyDataSetChanged()
 
             }
-            // Ẩn progressBar khi kết thúc load dữ liệu
             binding.loading.visibility = View.GONE
         }
 
@@ -80,9 +79,8 @@ class FragmentListGroupsBooks: Fragment(), CallBack {
                     adapter.notifyDataSetChanged()
 
                 }
-                // Ẩn progressBar khi kết thúc load dữ liệu
-                binding.loading.visibility = View.GONE
             }
+            binding.loading.visibility = View.GONE
         }
 
 
@@ -97,7 +95,4 @@ class FragmentListGroupsBooks: Fragment(), CallBack {
         list.clear()
     }
 
-    override fun onLongClick(job: Result) {
-        TODO("Not yet implemented")
-    }
 }

@@ -45,6 +45,7 @@
             android:background="@color/teal_700"
             app:tabTextColor="@color/white"
             app:tabTextAppearance="@style/MineCustomTabText"
+
             />
 
         <androidx.viewpager2.widget.ViewPager2

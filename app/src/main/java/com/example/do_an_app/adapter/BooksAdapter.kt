@@ -27,12 +27,6 @@ class BooksAdapter(private val list: ArrayList<Result>, private val callback: Ca
             callback.onClick(list[position])
         }
 
-        holder.binding.csBooks.setOnLongClickListener {
-            callback.onLongClick(list[position])
-
-            return@setOnLongClickListener true
-        }
-
     }
 
     override fun getItemCount(): Int {

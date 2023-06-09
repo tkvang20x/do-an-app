@@ -31,16 +31,21 @@ class FragmentStatusExpired: Fragment() , CallbackVoucher{
     ): View? {
         binding = FragmentStatusExpiredBinding.inflate(inflater, container, false)
         list3.clear()
-//        binding.loading.visibility = View.VISIBLE
+        binding.loading.visibility = View.VISIBLE
 
         voucherViewModel = VoucherViewModel()
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "EXPIRED")
         voucherViewModel.dataVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
-                list3.clear()
-                list3.addAll(it.data.result)
-                adapter.notifyDataSetChanged()
+                if (it.data.result.size == 0) {
+                    binding.txtNullData.visibility = View.VISIBLE
+                } else {
+                    list3.addAll(it.data.result)
+                    adapter.notifyDataSetChanged()
+                }
             }
+
+            binding.loading.visibility = View.GONE
         }
 
         adapter = VoucherAdapter(list3, this)

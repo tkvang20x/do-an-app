@@ -18,5 +18,6 @@ data class Data(
     val qr_code_data: String,
     val status_book: String,
     val status_borrow: String,
-    val user_borrow: String
+    val user_borrow: String,
+    val compartment: Int
 )

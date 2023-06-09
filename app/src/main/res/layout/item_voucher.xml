@@ -62,7 +62,7 @@
                 android:id="@+id/txtLength"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="2"
+                setLength="@{voucher.books_borrowed}"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"

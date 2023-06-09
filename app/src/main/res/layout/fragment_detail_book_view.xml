@@ -91,6 +91,32 @@
             android:textColor="#000000"
             setText="@{book.books.author}"/>
 
+        <TextView
+            android:id="@+id/tvCompartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:text="Ngăn số: "
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
+            android:textColor="#000000"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@id/line"
+            app:layout_constraintStart_toEndOf="@id/imgAvatarBooks"/>
+
+        <TextView
+            android:id="@+id/txtCompartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/sf_pro_medium"
+            android:textColor="#000000"
+            setInt="@{book.compartment}"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toEndOf="@id/tvCompartment"
+            app:layout_constraintTop_toTopOf="@id/tvCompartment"/>
         <View
             android:id="@+id/line"
             android:layout_width="0dp"

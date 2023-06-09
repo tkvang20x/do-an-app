@@ -31,6 +31,7 @@ class FragmentDetailBook: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBookViewBinding.inflate(inflater, container, false)
+        binding.loading.visibility = View.VISIBLE
         val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
         view.visibility = View.GONE
         binding.imgBack.setOnClickListener {
@@ -39,8 +40,6 @@ class FragmentDetailBook: Fragment() {
         code_id = arguments?.getString("code_id").toString()
         index = arguments?.getInt("index")!!
         message = arguments?.getString("message").toString()
-
-        Log.d("messagesaaaaaaaaaaaaaaa", message.toString())
 
         if (message == "view_voucher"){
             binding.btnRemoveBook.visibility = View.GONE
@@ -60,6 +59,7 @@ class FragmentDetailBook: Fragment() {
                 binding.book = it.data
                 dataBook = it.data
             }
+            binding.loading.visibility = View.GONE
         }
 
        binding.btnAddBook.setOnClickListener {

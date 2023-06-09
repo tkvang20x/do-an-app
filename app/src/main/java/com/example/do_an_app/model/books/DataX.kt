@@ -21,5 +21,6 @@ data class DataX(
     val origin: String,
     val parent_id: Any,
     val publishing_year: String,
-    val title: String
+    val title: String,
+    val cabinet: Int
 )

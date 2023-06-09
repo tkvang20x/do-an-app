@@ -31,6 +31,7 @@ class FragmentForgetPassword: Fragment() {
 
         loginViewModel = LoginViewModel()
         binding.btnLogin.setOnClickListener {
+            binding.loading.visibility = View.VISIBLE
             val email = binding.txtUserName.text.toString().trim()
             val isValidEmail = email.matches(emailPattern.toRegex())
             if(isValidEmail){
@@ -38,6 +39,7 @@ class FragmentForgetPassword: Fragment() {
                 Toast.makeText(requireContext(), "Thay đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show()
 
                 val action = FragmentForgetPasswordDirections.actionFragmentForgetPasswordToFragmentLogin()
+                binding.loading.visibility = View.GONE
                 findNavController().navigate(action)
             }else{
                 Toast.makeText(requireContext(), "Email không hợp lệ!", Toast.LENGTH_SHORT).show()

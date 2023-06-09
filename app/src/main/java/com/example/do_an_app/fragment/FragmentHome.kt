@@ -1,8 +1,6 @@
 package com.example.do_an_app.fragment
 
-import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +8,8 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -23,12 +21,12 @@ import com.example.do_an_app.adapter.ImageSliderAdapter
 import com.example.do_an_app.callback.CallBack
 import com.example.do_an_app.callback.CallBack2
 import com.example.do_an_app.databinding.FragmentHomeBinding
-import com.example.do_an_app.model.Image
 import com.example.do_an_app.viewmodel.BooksViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.do_an_app.model.books.Result
 import com.example.do_an_app.model.chart.BooksCount
 import com.example.do_an_app.model.users.Data
+import com.example.do_an_app.viewmodel.LoadingViewModel
 import com.example.do_an_app.viewmodel.UserViewModel
 import com.example.do_an_app.viewmodel.VoucherViewModel
 import com.smarteist.autoimageslider.SliderView
@@ -39,9 +37,9 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
     private lateinit var adapter: BooksAdapter
     private lateinit var adapter2: Books2Adapter
     private lateinit var booksViewModel: BooksViewModel
-    private lateinit var books2ViewModel: BooksViewModel
     private lateinit var chartViewModel: VoucherViewModel
     private lateinit var userViewModel: UserViewModel
+    private lateinit var loadingViewModel: LoadingViewModel
     private val list = arrayListOf<Result>()
     private val list2 = arrayListOf<BooksCount>()
     private lateinit var adapter_image: ImageSliderAdapter
@@ -75,13 +73,21 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
         var code_user = ""
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.loading.visibility = View.VISIBLE
+        binding.loading1.visibility =  View.VISIBLE
+        loadingViewModel = ViewModelProvider(requireActivity()).get(LoadingViewModel::class.java)
+
+        loadingViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            binding.loading1.visibility = if (isLoading) View.VISIBLE else View.GONE
+        })
+
+
 
         val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
         view.visibility = View.VISIBLE
@@ -103,7 +109,7 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
 
             }
             // Ẩn progressBar khi kết thúc load dữ liệu
-            binding.loading.visibility = View.GONE
+
         }
 
         adapter = BooksAdapter(list, this)
@@ -163,12 +169,10 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
                         .error(R.mipmap.ic_launcher)
                         .into(binding.imgAvtUser)
                 }
-
+                binding.loading1.visibility = View.GONE
             }
-        }
 
-        // Ẩn progressBar khi kết thúc load dữ liệu
-        binding.loading.visibility = View.GONE
+        }
 
         binding.tvViewAll1.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentHome_to_fragmentListBooks)
@@ -199,10 +203,6 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
         list.clear()
     }
 
-    override fun onLongClick(job: Result) {
-        TODO("Not yet implemented")
-    }
-
     override fun onClick(books: BooksCount) {
         val bundle = Bundle()
         bundle.putString("code", books.code_books)
@@ -213,6 +213,8 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
     override fun onLongClick(job: BooksCount) {
         TODO("Not yet implemented")
     }
+
+
 
 }
 

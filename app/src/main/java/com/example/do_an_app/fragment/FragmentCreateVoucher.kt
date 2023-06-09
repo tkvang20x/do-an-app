@@ -10,15 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.do_an_app.R
-import com.example.do_an_app.adapter.BooksAdapter
 import com.example.do_an_app.adapter.ItemBookVoucherCreateAdapter
 import com.example.do_an_app.callback.CallbackBookInCreateVC
 import com.example.do_an_app.databinding.FragmentCreateVoucherBinding
-import com.example.do_an_app.model.users.Data
 import com.example.do_an_app.model.voucher.DataVoucherCreate
 import com.example.do_an_app.model.voucher.ListIdBook
 import com.example.do_an_app.viewmodel.VoucherViewModel
@@ -57,7 +54,18 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
                 myCalendar.set(Calendar.YEAR, year)
                 myCalendar.set(Calendar.MONTH, monthOfYear)
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateLabel()
+
+                val selectedDate = Calendar.getInstance()
+                selectedDate.set(year, monthOfYear, dayOfMonth)
+
+                val currentDate = Calendar.getInstance()
+                currentDate.add(Calendar.MONTH, 3)
+
+                if (selectedDate.after(currentDate)) {
+                    Toast.makeText(requireContext(), "Vui lòng chọn ngày trong vòng 3 tháng", Toast.LENGTH_SHORT).show()
+                } else {
+                    updateLabel()
+                }
             }
 
         binding.txtBirthDay.setOnClickListener {
@@ -91,6 +99,7 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
                     if (it?.status == 201){
                         Toast.makeText(requireContext(), "Tạo phiếu mượn thành công!", Toast.LENGTH_LONG).show()
                         list_book.clear()
+                        binding.txtBirthDay.setText("")
                         findNavController().navigate(R.id.action_fragmentCreateVoucher_to_fragmentVoucher)
                     }else{
                         Toast.makeText(requireContext(), "Tạo phiếu mượn thất bại!", Toast.LENGTH_LONG).show()

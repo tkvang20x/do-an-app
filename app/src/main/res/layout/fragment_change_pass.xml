@@ -72,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:drawableStart="@drawable/ic_baseline_account_circle_24"/>
@@ -106,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:imeOptions="actionNext"
-                    android:inputType="text"
+                    android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:drawableStart="@drawable/ic_baseline_account_circle_24"/>

@@ -114,7 +114,7 @@
             android:layout_margin="10dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
-            app:cardElevation="20dp"
+            app:cardElevation="6dp"
             app:cardPreventCornerOverlap="false"
             app:contentPadding="0dp"
             app:layout_constraintEnd_toEndOf="parent"

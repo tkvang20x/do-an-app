@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -26,7 +27,7 @@ class FragmentUpdateProfile : Fragment() {
     lateinit var binding: FragmentUpdateProfileBinding
     private lateinit var userViewModel: UserViewModel
     var code = ""
-    var genderUpdate= ""
+    var genderUpdate = ""
     var genderView = ""
     var listGender = arrayListOf("Nam", "Nữ")
     private val myCalendar = Calendar.getInstance()
@@ -45,11 +46,11 @@ class FragmentUpdateProfile : Fragment() {
 
         binding.user = data_user
 
-        if(data_user.role == "STUDENT"){
+        if (data_user.role == "STUDENT") {
             binding.tvCourse.visibility = View.VISIBLE
             binding.tvCareerTitle.visibility = View.VISIBLE
             binding.txtCourse.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.tvDepartmentTitle.visibility = View.VISIBLE
             binding.tvDepartment.visibility = View.VISIBLE
             binding.txtDepartment.visibility = View.VISIBLE
@@ -85,9 +86,9 @@ class FragmentUpdateProfile : Fragment() {
             }
         }
 
-        if(data_user.gender.equals("MALE")){
+        if (data_user.gender.equals("MALE")) {
             genderView = "Nam"
-        }else{
+        } else {
             genderView = "Nữ"
         }
         val index = listGender.indexOf(genderView)
@@ -111,63 +112,87 @@ class FragmentUpdateProfile : Fragment() {
         }
 
         binding.imgBack.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_fragmentUpdateProfile_to_fragmentProfile)
         }
 
         binding.btnUpdate.setOnClickListener {
-            var gender_user = ""
 
-            if (genderUpdate.equals("Nam")){
-                gender_user = "MALE"
-            }else{
-                gender_user = "FEMALE"
-            }
+            if (binding.txtBirthday.text.toString().isEmpty() || binding.txtEmail.text.toString()
+                    .isEmpty() || binding.txtFullName.text.toString()
+                    .isEmpty() || binding.txtPhone.text.toString()
+                    .isEmpty() || binding.txtUniversity.text.toString().isEmpty()
+            ) {
+                Toast.makeText(
+                    requireContext(),
+                    "Điền thiếu thông tin cần thiết!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (binding.txtEmail.text.toString().length > 100 || binding.txtFullName.text.toString().length > 100 ||
+                binding.txtPhone.text.toString().length > 10 || binding.txtUniversity.text.toString().length > 100
+            ) {
+                Toast.makeText(
+                    requireContext(),
+                    "Có thông tin vượt quá giới hạn ký tự cho phép!",
+                    Toast.LENGTH_SHORT
+                ).show()
 
-            if (data_user.role === "STUDENT"){
-                dataUpdate = DataUpdate(
-                    binding.txtCourse.text.toString(),
-                    binding.txtBirthday.text.toString(),
-                    binding.txtEmail.text.toString(),
-                    gender_user,
-                    binding.txtFullName.text.toString(),
-                    binding.txtPhone.text.toString(),
-                    binding.txtUniversity.text.toString(),
-                    "",
-                    "",
-                    data_user.role
+            } else {
+
+                var gender_user = ""
+
+                if (genderUpdate.equals("Nam")) {
+                    gender_user = "MALE"
+                } else {
+                    gender_user = "FEMALE"
+                }
+
+                if (data_user.role === "STUDENT") {
+                    dataUpdate = DataUpdate(
+                        binding.txtCourse.text.toString(),
+                        binding.txtBirthday.text.toString(),
+                        binding.txtEmail.text.toString(),
+                        gender_user,
+                        binding.txtFullName.text.toString(),
+                        binding.txtPhone.text.toString(),
+                        binding.txtUniversity.text.toString(),
+                        "",
+                        "",
+                        data_user.role
                     )
-            }else{
-                dataUpdate = DataUpdate(
-                    binding.txtCourse.text.toString(),
-                    binding.txtBirthday.text.toString(),
-                    binding.txtEmail.text.toString(),
-                    gender_user,
-                    binding.txtFullName.text.toString(),
-                    binding.txtPhone.text.toString(),
-                    binding.txtUniversity.text.toString(),
-                    binding.txtDepartment.text.toString(),
-                    binding.txtSpecial.text.toString(),
-                    data_user.role
-                )
+                } else {
+                    dataUpdate = DataUpdate(
+                        binding.txtCourse.text.toString(),
+                        binding.txtBirthday.text.toString(),
+                        binding.txtEmail.text.toString(),
+                        gender_user,
+                        binding.txtFullName.text.toString(),
+                        binding.txtPhone.text.toString(),
+                        binding.txtUniversity.text.toString(),
+                        binding.txtDepartment.text.toString(),
+                        binding.txtSpecial.text.toString(),
+                        data_user.role
+                    )
+                }
+
+
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setTitle("Sửa Thông Tin")
+                builder.setMessage("Bạn Có Muốn Xác Nhận Sửa?")
+                builder.setNegativeButton(
+                    ("No"),
+                    { dialogInterface: DialogInterface, i: Int -> dialogInterface.dismiss() })
+                builder.setPositiveButton(("Yes"), { dialogInterface: DialogInterface, i: Int ->
+                    userViewModel.updateUser(data_user.code, dataUpdate)
+
+                    dialogInterface.dismiss()
+
+                    findNavController().navigate(R.id.action_fragmentUpdateProfile_to_fragmentProfile)
+                    val builder2 = AlertDialog.Builder(requireContext())
+                    builder2.setMessage("Sửa thành công!!!")
+                    builder2.show()
+                })
+                builder.show()
             }
-
-
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Sửa Thông Tin")
-            builder.setMessage("Bạn Có Muốn Xác Nhận Sửa?")
-            builder.setNegativeButton(("No"), { dialogInterface: DialogInterface, i: Int -> dialogInterface.dismiss() })
-            builder.setPositiveButton(("Yes"), { dialogInterface: DialogInterface, i:Int ->
-                userViewModel.updateUser(data_user.code ,dataUpdate)
-
-                dialogInterface.dismiss()
-
-                findNavController().navigate(R.id.action_fragmentUpdateProfile_to_fragmentProfile)
-                val builder2 = AlertDialog.Builder(requireContext())
-                builder2.setMessage("Sửa thành công!!!")
-                builder2.show()
-            })
-            builder.show()
-
         }
 
 
@@ -181,6 +206,6 @@ class FragmentUpdateProfile : Fragment() {
     private fun updateLabel() {
         val myFormat = "yyyy/MM/dd" // định dạng ngày
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        binding.txtBirthday .setText(sdf.format(myCalendar.time))
+        binding.txtBirthday.setText(sdf.format(myCalendar.time))
     }
 }

@@ -39,7 +39,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/idRectangle"
@@ -57,16 +58,19 @@
             <TextView
                 android:id="@+id/txtNameGroup"
                 setText="@{groups.group_name}"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="Truyện tranh"
                 android:textColor="#141ED2"
                 android:textSize="10sp"
                 android:fontFamily="@font/sf_pro_semibold"
                 app:layout_constraintBottom_toBottomOf="@id/idRectangle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/idRectangle" />
+                app:layout_constraintEnd_toEndOf="@id/idRectangle"
+                app:layout_constraintStart_toStartOf="@id/idRectangle"
+                app:layout_constraintTop_toTopOf="@id/idRectangle"
+                android:textAlignment="center"
+                android:ellipsize="end"
+                android:maxLines="1"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

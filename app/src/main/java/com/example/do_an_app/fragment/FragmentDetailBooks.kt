@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -23,15 +24,20 @@ class FragmentDetailBooks : Fragment() {
     private var amount = 1
     private lateinit var booksViewModel: BooksViewModel
     private var total_ready = 0
+
+    override fun onPause() {
+        super.onPause()
+        view?.findViewById<RelativeLayout>(R.id.loading1)?.visibility = View.VISIBLE
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBooksBinding.inflate(layoutInflater, container, false)
-
-        val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
-        view.visibility = View.GONE
+        binding.loading.visibility = View.VISIBLE
+        val view_bottom = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
+        view_bottom.visibility = View.GONE
         binding.imgBack.setOnClickListener {
 //            findNavController().popBackStack()
             findNavController().navigate(R.id.action_fragmentDetailBooks_to_fragmentHome)
@@ -47,13 +53,16 @@ class FragmentDetailBooks : Fragment() {
                 binding.books = it.data
                 total_ready = it.data.total_ready
             }
+
+            binding.loading.visibility = View.GONE
         }
 
         binding.imgPlus.setOnClickListener {
-            if (amount > total_ready) {
+
+            if (amount == total_ready) {
                 Toast.makeText(
                     requireContext(),
-                    "Số lượng mượn vượt giới hạn!!!",
+                    "Số lượng mượn vượt giới hạn có thể mượn!!!",
                     Toast.LENGTH_LONG
                 ).show()
                 return@setOnClickListener
@@ -70,6 +79,14 @@ class FragmentDetailBooks : Fragment() {
         }
 
         binding.btnAddBooks.setOnClickListener {
+            if (amount > total_ready){
+                Toast.makeText(
+                    requireContext(),
+                    "Sách mượn vượt quá giới hạn có thể mượn!!!",
+                    Toast.LENGTH_LONG
+                ).show()
+                return@setOnClickListener
+            }
             lifecycleScope.launch {
                 booksViewModel.getListIdBook(code, amount, "READY")
                 var apiResultReceived = false // biến theo dõi việc có kết quả trả về từ API
@@ -83,7 +100,6 @@ class FragmentDetailBooks : Fragment() {
                                 "Thêm vào phiếu mượn thành công",
                                 Toast.LENGTH_LONG
                             ).show()
-//                            findNavController().popBackStack()
                             findNavController().navigate(R.id.action_fragmentDetailBooks_to_fragmentHome)
                         }
                     }

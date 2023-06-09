@@ -18,6 +18,7 @@ import com.example.do_an_app.databinding.FragmentStatusConfirmBinding
 import com.example.do_an_app.fragment.FragmentHome
 import com.example.do_an_app.model.voucher.Result
 import com.example.do_an_app.viewmodel.VoucherViewModel
+import com.google.android.play.core.internal.bi
 
 class FragmentStatusConfirm: Fragment(), CallbackVoucher {
     private lateinit var binding: FragmentStatusConfirmBinding
@@ -32,23 +33,26 @@ class FragmentStatusConfirm: Fragment(), CallbackVoucher {
     ): View? {
         binding = FragmentStatusConfirmBinding.inflate(inflater, container, false)
         list4.clear()
-//        binding.loading.visibility = View.VISIBLE
+        binding.loading.visibility = View.VISIBLE
 
         voucherViewModel = VoucherViewModel()
         voucherViewModel.getVoucherUserId(1, FragmentHome.code_user, "CONFIRMED")
         voucherViewModel.dataVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
-                list4.clear()
-                list4.addAll(it.data.result)
-                adapter.notifyDataSetChanged()
+                if (it.data.result.size == 0) {
+                    binding.txtNullData.visibility = View.VISIBLE
+                } else {
+                    list4.addAll(it.data.result)
+                    adapter.notifyDataSetChanged()
+                }
             }
+            binding.loading.visibility = View.GONE
         }
 
         adapter = VoucherAdapter(list4, this)
         binding.rvList2.adapter = adapter
         binding.rvList2.layoutManager =
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.VERTICAL, false)
-
 
         return binding.root
     }

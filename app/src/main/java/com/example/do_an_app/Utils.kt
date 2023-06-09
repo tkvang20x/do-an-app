@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
+import com.example.do_an_app.model.voucher.BooksBorrowed
 import jp.wasabeef.glide.transformations.BlurTransformation
 import java.io.File
 import java.text.SimpleDateFormat
@@ -69,6 +70,16 @@ object Utils {
             tv.text = ""
         } else {
             tv.text = string
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("setLength")
+    fun setLength(tv: TextView, length: MutableList<BooksBorrowed>) {
+        if (length.size == 0) {
+            tv.text = "0"
+        } else {
+            tv.text = length.size.toString()
         }
     }
 

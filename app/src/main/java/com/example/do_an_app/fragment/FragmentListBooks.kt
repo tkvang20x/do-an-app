@@ -1,18 +1,17 @@
 package com.example.do_an_app.fragment
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.do_an_app.R
 import com.example.do_an_app.adapter.ItemListBooksAdapter
@@ -20,6 +19,7 @@ import com.example.do_an_app.callback.CallBack
 import com.example.do_an_app.databinding.FragmentListBooksBinding
 import com.example.do_an_app.model.books.Result
 import com.example.do_an_app.viewmodel.BooksViewModel
+import com.example.do_an_app.viewmodel.LoadingViewModel
 import kotlinx.coroutines.launch
 
 class FragmentListBooks : Fragment(), CallBack {
@@ -27,6 +27,7 @@ class FragmentListBooks : Fragment(), CallBack {
     private lateinit var binding: FragmentListBooksBinding
     private lateinit var adapter: ItemListBooksAdapter
     private lateinit var booksViewModel: BooksViewModel
+    private lateinit var loadingViewModel: LoadingViewModel
     private var name = ""
     private var author = ""
     private val list = arrayListOf<Result>()
@@ -40,10 +41,12 @@ class FragmentListBooks : Fragment(), CallBack {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentListBooksBinding.inflate(inflater, container, false)
+        loadingViewModel = ViewModelProvider(requireActivity()).get(LoadingViewModel::class.java)
         binding.loading.visibility = View.VISIBLE
 
         binding.imgBack.setOnClickListener {
-            findNavController().popBackStack()
+            loadingViewModel.isLoading.value = true
+            findNavController().navigate(R.id.action_fragmentListBooks_to_fragmentHome)
         }
 
         adapter = ItemListBooksAdapter(list, this)
@@ -64,7 +67,7 @@ class FragmentListBooks : Fragment(), CallBack {
             booksViewModel.getBooks(1, 10, "", "", "")
             booksViewModel.dataBooks.observe(viewLifecycleOwner) {
                 if (it != null) {
-                    list.clear()
+//                    list.clear()
                     list.addAll(it.data.result)
                     adapter.notifyDataSetChanged()
 
@@ -77,7 +80,7 @@ class FragmentListBooks : Fragment(), CallBack {
             booksViewModel.getBooks(1, 10, name, "", "")
             booksViewModel.dataBooks.observe(viewLifecycleOwner) {
                 if (it != null) {
-                    list.clear()
+//                    list.clear()
                     list.addAll(it.data.result)
                     adapter.notifyDataSetChanged()
 
@@ -99,7 +102,7 @@ class FragmentListBooks : Fragment(), CallBack {
             )
             booksViewModel.dataBooks.observe(viewLifecycleOwner) {
                 if (it != null) {
-                    list.clear()
+//                    list.clear()
                     list.addAll(it.data.result)
                     adapter.notifyDataSetChanged()
 
@@ -115,7 +118,6 @@ class FragmentListBooks : Fragment(), CallBack {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                // Kiểm tra xem RecyclerView đã cuộn đến vị trí cuối cùng hay chưa
                 val lastVisibleItem =
                     (binding.rvListBooks.layoutManager as GridLayoutManager).findLastVisibleItemPosition()
                 val totalItemCount = adapter.itemCount
@@ -123,7 +125,6 @@ class FragmentListBooks : Fragment(), CallBack {
                     return
                 }else{
                     if (!isLoading && totalItemCount <= (lastVisibleItem + 1)) {
-                        // Nếu RecyclerView đã cuộn đến vị trí cuối cùng và chưa ở trạng thái tải thì tải thêm dữ liệu
                         isLoading = true
                         page += 1
                         loadMoreData()
@@ -158,23 +159,19 @@ class FragmentListBooks : Fragment(), CallBack {
     }
 
     private fun loadMoreData() {
-        // Hiển thị ProgressBar để hiển thị dữ liệu đang được tải
-        binding.loading.visibility = View.VISIBLE
-        // Giả lập thời gian tải dữ liệu
         lifecycleScope.launch {
             booksViewModel.getBooks(page, 10, binding.txtSearchName.text.toString(), binding.txtSearchAuthor.text.toString(), "")
             booksViewModel.dataBooks.observe(viewLifecycleOwner) {
                 if (it != null) {
                     if (it.data.result.size == 0) {
-                        Log.d("vaodayyyyyyyyyyyyyyyyyy", list.toString())
                         isLastPage = true
                     } else {
-//                        for(item in it.data.result){
-//                            list.add(item)
-//                        }
-//                        adapter.notifyItemInserted(startPosition - 1)
+                        for(item in it.data.result){
+                            list.add(item)
+                        }
+                        adapter.notifyItemInserted(list.size)
 
-                        adapter.addItems(it.data.result)
+//                        adapter.addItems(it.data.result)
 
                         isLastPage = false
                     }
@@ -182,9 +179,6 @@ class FragmentListBooks : Fragment(), CallBack {
                     return@observe
                 }
             }
-
-            // Ẩn ProgressBar và cập nhật trạng thái tải
-            binding.loading.visibility = View.GONE
             isLoading = false
         }
     }
@@ -196,7 +190,14 @@ class FragmentListBooks : Fragment(), CallBack {
         list.clear()
     }
 
-    override fun onLongClick(job: Result) {
-        TODO("Not yet implemented")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    findNavController().navigate(R.id.action_fragmentListBooks_to_fragmentHome)
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 }
