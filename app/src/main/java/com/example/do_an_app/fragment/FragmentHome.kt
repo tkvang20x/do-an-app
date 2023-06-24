@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +25,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.do_an_app.model.books.Result
 import com.example.do_an_app.model.chart.BooksCount
 import com.example.do_an_app.model.users.Data
-import com.example.do_an_app.viewmodel.LoadingViewModel
 import com.example.do_an_app.viewmodel.UserViewModel
 import com.example.do_an_app.viewmodel.VoucherViewModel
 import com.smarteist.autoimageslider.SliderView
@@ -39,7 +37,6 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
     private lateinit var booksViewModel: BooksViewModel
     private lateinit var chartViewModel: VoucherViewModel
     private lateinit var userViewModel: UserViewModel
-    private lateinit var loadingViewModel: LoadingViewModel
     private val list = arrayListOf<Result>()
     private val list2 = arrayListOf<BooksCount>()
     private lateinit var adapter_image: ImageSliderAdapter
@@ -81,14 +78,7 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.loading1.visibility =  View.VISIBLE
-        loadingViewModel = ViewModelProvider(requireActivity()).get(LoadingViewModel::class.java)
-
-        loadingViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
-            binding.loading1.visibility = if (isLoading) View.VISIBLE else View.GONE
-        })
-
-
-
+        binding.spinKit.visibility = View.VISIBLE
         val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
         view.visibility = View.VISIBLE
 
@@ -103,7 +93,7 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
         booksViewModel.getBooks(1, 10, "", "", "")
         booksViewModel.dataBooks.observe(viewLifecycleOwner) {
             if (it != null) {
-                list.clear()
+//                list.clear()
                 list.addAll(it.data.result)
                 adapter.notifyDataSetChanged()
 
@@ -118,10 +108,10 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
             LinearLayoutManager(FragmentHome().context, LinearLayoutManager.HORIZONTAL, false)
 
         chartViewModel = VoucherViewModel()
-        chartViewModel.getChart("05", "2023")
+        chartViewModel.getChart("06", "2023")
         chartViewModel.chart.observe(viewLifecycleOwner){
             if (it != null) {
-                list2.clear()
+//                list2.clear()
                 if (it.data.list_books_count.size > 10){
                     for (i in 0..9){
                         val books = BooksCount(it.data.list_books_count[i].author,
@@ -169,14 +159,19 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
                         .error(R.mipmap.ic_launcher)
                         .into(binding.imgAvtUser)
                 }
-                binding.loading1.visibility = View.GONE
             }
+
+        }
+
+        if(list2.size > 0 && list.size > 0){
+            binding.loading1.visibility = View.GONE
 
         }
 
         binding.tvViewAll1.setOnClickListener {
             findNavController().navigate(R.id.action_fragmentHome_to_fragmentListBooks)
             list.clear()
+            list2.clear()
         }
 
 
@@ -192,6 +187,8 @@ class FragmentHome : Fragment(), CallBack, CallBack2 {
             }
 
         })
+
+        binding.spinKit.visibility = View.GONE
 
         return binding.root
     }

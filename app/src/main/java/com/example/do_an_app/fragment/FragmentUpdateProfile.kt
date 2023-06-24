@@ -185,7 +185,6 @@ class FragmentUpdateProfile : Fragment() {
                     userViewModel.updateUser(data_user.code, dataUpdate)
 
                     dialogInterface.dismiss()
-
                     findNavController().navigate(R.id.action_fragmentUpdateProfile_to_fragmentProfile)
                     val builder2 = AlertDialog.Builder(requireContext())
                     builder2.setMessage("Sửa thành công!!!")

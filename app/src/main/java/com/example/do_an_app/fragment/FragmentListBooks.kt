@@ -1,11 +1,9 @@
 package com.example.do_an_app.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +17,6 @@ import com.example.do_an_app.callback.CallBack
 import com.example.do_an_app.databinding.FragmentListBooksBinding
 import com.example.do_an_app.model.books.Result
 import com.example.do_an_app.viewmodel.BooksViewModel
-import com.example.do_an_app.viewmodel.LoadingViewModel
 import kotlinx.coroutines.launch
 
 class FragmentListBooks : Fragment(), CallBack {
@@ -27,7 +24,6 @@ class FragmentListBooks : Fragment(), CallBack {
     private lateinit var binding: FragmentListBooksBinding
     private lateinit var adapter: ItemListBooksAdapter
     private lateinit var booksViewModel: BooksViewModel
-    private lateinit var loadingViewModel: LoadingViewModel
     private var name = ""
     private var author = ""
     private val list = arrayListOf<Result>()
@@ -41,11 +37,9 @@ class FragmentListBooks : Fragment(), CallBack {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentListBooksBinding.inflate(inflater, container, false)
-        loadingViewModel = ViewModelProvider(requireActivity()).get(LoadingViewModel::class.java)
         binding.loading.visibility = View.VISIBLE
 
         binding.imgBack.setOnClickListener {
-            loadingViewModel.isLoading.value = true
             findNavController().navigate(R.id.action_fragmentListBooks_to_fragmentHome)
         }
 

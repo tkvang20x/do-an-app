@@ -38,7 +38,7 @@ class FragmentViewVoucher: Fragment(), CallBackItemBook {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentViewVoucherBinding.inflate(inflater, container, false)
-//        binding.loading.visibility = View.VISIBLE
+        binding.loading.visibility = View.VISIBLE
 
         val view = requireActivity().findViewById<BottomNavigationView>(R.id.bnv_view)
         view.visibility = View.GONE
@@ -63,7 +63,6 @@ class FragmentViewVoucher: Fragment(), CallBackItemBook {
         voucherViewModel.dataDetailVoucher.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.voucher = it.data
-                Log.d("abccccccccc", it.data.toString())
                 list.clear()
                 list.addAll(it.data.books_borrowed)
 

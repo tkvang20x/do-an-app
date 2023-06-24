@@ -26,7 +26,7 @@ import com.example.do_an_app.model.book.UpdateBook
 import com.example.do_an_app.viewmodel.BookViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
+class FragmentCreateVoucher : Fragment(), CallbackBookInCreateVC {
 
     companion object {
         var list_book = arrayListOf<ListIdBook>()
@@ -61,8 +61,20 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
                 val currentDate = Calendar.getInstance()
                 currentDate.add(Calendar.MONTH, 3)
 
+                val currentDate2 = Calendar.getInstance()
+
                 if (selectedDate.after(currentDate)) {
-                    Toast.makeText(requireContext(), "Vui lòng chọn ngày trong vòng 3 tháng", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Vui lòng chọn ngày trong vòng 3 tháng",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (selectedDate.before(currentDate2)) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Vui lòng chọn ngày sau ngày hiện tại",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     updateLabel()
                 }
@@ -83,26 +95,41 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
 
 
         binding.btnAddVoucher.setOnClickListener {
-            if(list_book.size == 0){
-                Toast.makeText(requireContext(), "Danh sách phiếu mượn không được trống!", Toast.LENGTH_LONG).show()
+            if (list_book.size == 0) {
+                Toast.makeText(
+                    requireContext(),
+                    "Danh sách phiếu mượn không được trống!",
+                    Toast.LENGTH_LONG
+                ).show()
                 return@setOnClickListener
-            }else if (binding.txtBirthDay.text.toString().trim().length == 0){
-                Toast.makeText(requireContext(), "Ngày hẹn trả không được trống!", Toast.LENGTH_LONG).show()
+            } else if (binding.txtBirthDay.text.toString().trim().length == 0) {
+                Toast.makeText(
+                    requireContext(),
+                    "Ngày hẹn trả không được trống!",
+                    Toast.LENGTH_LONG
+                ).show()
                 return@setOnClickListener
-            }
-            else{
+            } else {
                 voucherViewModel = VoucherViewModel()
                 voucherViewModel.postVoucher(
-                    DataVoucherCreate(list_book, binding.txtBirthDay.text.toString(),code_user, "")
+                    DataVoucherCreate(list_book, binding.txtBirthDay.text.toString(), code_user, "")
                 )
                 voucherViewModel.dataDetailVoucher.observe(viewLifecycleOwner) {
-                    if (it?.status == 201){
-                        Toast.makeText(requireContext(), "Tạo phiếu mượn thành công!", Toast.LENGTH_LONG).show()
+                    if (it?.status == 201) {
+                        Toast.makeText(
+                            requireContext(),
+                            "Tạo phiếu mượn thành công!",
+                            Toast.LENGTH_LONG
+                        ).show()
                         list_book.clear()
                         binding.txtBirthDay.setText("")
                         findNavController().navigate(R.id.action_fragmentCreateVoucher_to_fragmentVoucher)
-                    }else{
-                        Toast.makeText(requireContext(), "Tạo phiếu mượn thất bại!", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Tạo phiếu mượn thất bại!",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
             }
@@ -122,7 +149,10 @@ class FragmentCreateVoucher: Fragment(), CallbackBookInCreateVC {
         bundle.putString("code_id", voucher.code_id)
         bundle.putInt("index", index)
         bundle.putString("message", "create_voucher")
-        findNavController().navigate(R.id.action_fragmentCreateVoucher_to_fragmentDetailBook, bundle)
+        findNavController().navigate(
+            R.id.action_fragmentCreateVoucher_to_fragmentDetailBook,
+            bundle
+        )
     }
 
     override fun onLongClick(groups: ListIdBook, index: Int) {

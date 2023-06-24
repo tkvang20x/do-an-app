@@ -39,6 +39,12 @@ class FragmentLogin : Fragment() {
 //        }
 
         binding.btnLogin.setOnClickListener {
+
+            if(binding.txtUserName.text.toString().length > 100 || binding.txtPassword.text.toString().length > 20){
+                Toast.makeText(this.context, "Độ dài tài khoản hoặc mật khẩu vượt quá giới hạn!", Toast.LENGTH_LONG)
+                    .show()
+                return@setOnClickListener
+            }
             val progressBar = binding.spinKit as ProgressBar
             val doubleBounce: Sprite = DoubleBounce()
             progressBar.indeterminateDrawable = doubleBounce
@@ -47,6 +53,7 @@ class FragmentLogin : Fragment() {
 
             val login =
                 DataLogin(binding.txtUserName.text.toString(), binding.txtPassword.text.toString())
+
             if (binding.txtUserName.text.toString() != "" && binding.txtPassword.text.toString() != "") {
 
                 model.postLogin(login)

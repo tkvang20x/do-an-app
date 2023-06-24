@@ -188,7 +188,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#7E616161"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="0dp">
 
@@ -199,7 +199,8 @@
                         android:layout_height="24dp"
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
-                        app:SpinKit_Color="@color/teal_700" />
+                        app:SpinKit_Color="@color/teal_700"
+                        android:visibility="gone"/>
                 </RelativeLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
